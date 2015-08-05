@@ -86,25 +86,6 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
-//==================================================syslog============================
-//app.get('/sys_CRUD_index', sys_mongo.index);
-//app.get('/sys_CRUD_insert', sys_mongo.index);
-//app.post('/sys_CRUD_insert',sys_mongo.sys_CRUD_insert(dbfluentd));
-//app.get('/sys_CRUD_query', 	sys_mongo.sys_CRUD_loglist(dbfluentd));
-//app.post('/sys_CRUD_query', sys_mongo.sys_CRUD_query(dbfluentd));
-//app.get('/sys_CRUD_show', 	sys_mongo.sys_CRUD_count(dbfluentd));
-////app.post('/sys_CRUD_show', 	sys_mongo.sys_CRUD_show(dbfluentd));
-//
-//app.get('/sys_ALERT_insert',	sys_alert.index);
-//app.post('/sys_ALERT_insert', 	sys_alert.sys_ALERT_insert(dbfluentd));
-////app.get('/sys_ALERT_list', 		sys_alert.sys_ALERT_count(dbfluentd));
-//app.get('/sys_ALERT_list', 		sys_alert.sys_ALERT_list(dbfluentd));
-////app.get('/sys_ALERT_display', 	sys_alert.sys_ALERT_loglist(dbfluentd));
-//app.get('/sys_ALERT_display', 	sys_alert.sys_ALERT_timeInterval(dbfluentd));
-//app.post('/sys_ALERT_display', 	sys_alert.sys_ALERT_timeInterval(dbfluentd));
-//app.get('/sys_ALERT_delete', 	sys_alert.sys_ALERT_delete(dbfluentd));
-////app.post('/sys_ALERT_display', 	sys_alert.sys_ALERT_query(dbfluentd));
-//app.use('/sys_ALERT_event', 	sys_alert.sys_ALERT_event(dbfluentd));
 
 
 //================================================= C D R 3g ============================
