@@ -112,12 +112,12 @@ print(new Date().toLocaleTimeString()+'\tprocess:'+i);
 //var t0 = new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours()-1,30,0,0);
 //var interval = {$gte:t0,$lt:t1}; //ISODate("2015-03-31T16:00:00Z")
 
-var cdr3g = db.cep3g_gen.find({
+var cdr3g = db.cep3g_sample.find({
 //var cdr3g = db.cep3g_gen.find({
 //     date_time : {$in:[new RegExp('^'+)]}
 //    ,up_flag : {$nin:[1]}
-    _id:{$gte:max_id}
-    ,record_type:{$in:["1","2"]}
+//    _id:{$gte:max_id}
+    record_type:{$in:["1","2"]}
 },{
     "called_number" : 1             //substr(IMSI,0,8)['TWM','FET','CHT','ARTP','T_START','other','MTC']
     ,"called_imei" : 1              //#index phone MTC
