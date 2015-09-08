@@ -1,12 +1,12 @@
-# Syslog0209
-syslog0209
+# BT_201505_CDR
+BT_201505_CDR
 
 ### 前置準備
 
-下載Syslog0209資源
+下載BT_201505_CDR資源
 
 ```bash 
-$ git clone https://github.com/liyuqi/Syslog0209
+$ git clone https://github.com/liyuqi/BT_201505_CDR
 ```
 
 
@@ -20,7 +20,7 @@ $ sudo npm install
 開啟mongod，預設27017 port
 
 ```bash 
-$ mongod
+$ mongod --storageEngine wiredTiger
 ```
 
 修改mongodb設定
@@ -46,7 +46,7 @@ $ vi ./app.js       # 替換連線DB
 var dbfluentd = monk('192.168.0.190/test');
 ```
 
-### 開始使用SYSLOG CRUD功能
+### 開始使用CDR CRUD功能
 
 開啟app
 
@@ -54,30 +54,27 @@ var dbfluentd = monk('192.168.0.190/test');
 $ node app.js
 ```
 
-### Log part
+### raw data
 
-新增 Log
-![Image text](https://github.com/liyuqi/Syslog0130/blob/master/example/syslog_CRUD_insert.png)
-
-查詢 Log
+查詢 CDR
 ![Image text](https://github.com/liyuqi/Syslog0130/blob/master/example/syslog_CRUD_query.png)
 
-顯示 Log
+顯示 CDR
 ![Image text](https://github.com/liyuqi/Syslog0130/blob/master/example/syslog_CRUD_query_result.png)
 
-最新 Log
+最新 CDR
 ![Image text](https://github.com/liyuqi/Syslog0130/blob/master/example/syslog_CRUD_show_pagging.png)
 
-### Alert part
+### agg 統計
 
-設定 Alert
+基站 3G
 ![Image text](https://github.com/liyuqi/Syslog0130/blob/master/example/syslog_ALERT_insert.png)
 
-列表 Alert
+基站 2G
 ![Image text](https://github.com/liyuqi/Syslog0130/blob/master/example/syslog_ALERT_list.png)
 
-顯示 Alert (60sec)
+手機型號
 ![Image text](https://github.com/liyuqi/Syslog0130/blob/master/example/syslog_ALERT_display.png)
 
-流量 Alert
+流量 統計
 ![Image text](https://github.com/liyuqi/Syslog0130/blob/master/example/syslog_ALERT_event.png)
