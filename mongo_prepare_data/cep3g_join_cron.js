@@ -142,7 +142,8 @@ var cdr3g = db.cep3g_sample.find({
     ,"date_time" : 1                //#index date, time
     ,"up_flag" : 1
     ,"_id":1
-}).addOption(DBQuery.Option.noTimeout).sort({_id:1}).limit(pick).skip((n-1)*pick).forEach(function (doc) {
+//}).addOption(DBQuery.Option.noTimeout).sort({_id:1}).limit(pick).skip((n-1)*pick).forEach(function (doc) {
+}).forEach(function (doc) {
 //while(cdr3g.hasNext()){
     //var doc = col.next();
     if(doc.up_flag!=2) {  //======================================== update done, erich up_flag:1
