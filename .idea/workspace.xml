@@ -1,46 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ff5f60e6-e6f7-43d7-8834-5a5ddc08f48e" name="Default" comment="mongo_prepare_data">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/routes/cdr_2g_mongo.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/cdr_2g_site_query.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/cdr_CRUD_2g_query.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/cdr_CRUD_2g_result.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/cdr_CRUD_2g_show.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mongo_prepare_data/cep3g_agg.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mongo_prepare_data/cep3g_gen_time.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mongo_prepare_data/cep3g_import.sh" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mongo_prepare_data/cep3g_import_csv.sh" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mongo_prepare_data/cep3g_join.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mongo_prepare_data/cep3g_join_cron.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mongo_prepare_data/join_cron.sh" />
-      <change type="MOVED" beforePath="C:\nodespace\CDR08\mongo_agg\cep2g_agg.js" afterPath="$PROJECT_DIR$/mongo_agg/2g/cep2g_agg.js" />
-      <change type="MOVED" beforePath="C:\nodespace\CDR08\mongo_agg\cep2g_agg_site.js" afterPath="$PROJECT_DIR$/mongo_agg/2g/cep2g_agg_site.js" />
-      <change type="MOVED" beforePath="C:\nodespace\CDR08\mongo_agg\cep2g_gen.js" afterPath="$PROJECT_DIR$/mongo_agg/2g/cep2g_gen.js" />
-      <change type="MOVED" beforePath="C:\nodespace\CDR08\mongo_agg\cep2g_gen_time.js" afterPath="$PROJECT_DIR$/mongo_agg/2g/cep2g_gen_time.js" />
-      <change type="MOVED" beforePath="C:\nodespace\CDR08\mongo_agg\cep2g_join.js" afterPath="$PROJECT_DIR$/mongo_agg/2g/cep2g_join.js" />
-      <change type="MOVED" beforePath="C:\nodespace\CDR08\mongo_agg\cep2g_mr.js" afterPath="$PROJECT_DIR$/mongo_agg/2g/cep2g_mr.js" />
-      <change type="MOVED" beforePath="C:\nodespace\CDR08\mongo_agg\cep3g_agg.js" afterPath="$PROJECT_DIR$/mongo_agg/3g/cep3g_agg.js" />
-      <change type="MOVED" beforePath="C:\nodespace\CDR08\mongo_agg\cep3g_agg_site.js" afterPath="$PROJECT_DIR$/mongo_agg/3g/cep3g_agg_site.js" />
-      <change type="MOVED" beforePath="C:\nodespace\CDR08\mongo_agg\cep3g_distinct.js" afterPath="$PROJECT_DIR$/mongo_agg/3g/cep3g_distinct.js" />
-      <change type="MOVED" beforePath="C:\nodespace\CDR08\mongo_agg\cep3g_gen.js" afterPath="$PROJECT_DIR$/mongo_agg/3g/cep3g_gen.js" />
-      <change type="MOVED" beforePath="C:\nodespace\CDR08\mongo_agg\cep3g_gen_time.js" afterPath="$PROJECT_DIR$/mongo_agg/3g/cep3g_gen_time.js" />
-      <change type="MOVED" beforePath="C:\nodespace\CDR08\mongo_agg\cep3g_join.js" afterPath="$PROJECT_DIR$/mongo_agg/3g/cep3g_join.js" />
-      <change type="MOVED" beforePath="C:\nodespace\CDR08\mongo_agg\cep3g_join_cron.js" afterPath="$PROJECT_DIR$/mongo_agg/3g/cep3g_join_cron.js" />
-      <change type="MOVED" beforePath="C:\nodespace\CDR08\mongo_agg\cep3g_map_join.js" afterPath="$PROJECT_DIR$/mongo_agg/3g/cep3g_map_join.js" />
-      <change type="MOVED" beforePath="C:\nodespace\CDR08\mongo_agg\cep3g_mr.js" afterPath="$PROJECT_DIR$/mongo_agg/3g/cep3g_mr.js" />
-      <change type="MOVED" beforePath="C:\nodespace\CDR08\mongo_agg\cepgprs_agg.js" afterPath="$PROJECT_DIR$/mongo_agg/gprs/cepgprs_agg.js" />
-      <change type="MOVED" beforePath="C:\nodespace\CDR08\mongo_agg\cepgprs_gen.js" afterPath="$PROJECT_DIR$/mongo_agg/gprs/cepgprs_gen.js" />
-      <change type="MOVED" beforePath="C:\nodespace\CDR08\mongo_agg\cepgprs_gen_time.js" afterPath="$PROJECT_DIR$/mongo_agg/gprs/cepgprs_gen_time.js" />
-      <change type="MOVED" beforePath="C:\nodespace\CDR08\mongo_agg\cepgprs_join.js" afterPath="$PROJECT_DIR$/mongo_agg/gprs/cepgprs_join.js" />
-      <change type="MOVED" beforePath="C:\nodespace\CDR08\mongo_agg\cepgprs_mr.js" afterPath="$PROJECT_DIR$/mongo_agg/gprs/cepgprs_mr.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mongo_schema/3g_schema.js" afterPath="$PROJECT_DIR$/mongo_schema/3g_schema.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/cdr_3g_site_query.ejs" afterPath="$PROJECT_DIR$/views/cdr_3g_site_query.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/cdr_CRUD_query.ejs" afterPath="$PROJECT_DIR$/views/cdr_CRUD_query.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/cdr_CRUD_show.ejs" afterPath="$PROJECT_DIR$/views/cdr_CRUD_show.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/layout.ejs" afterPath="$PROJECT_DIR$/views/layout.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nodeLogFile.log" afterPath="$PROJECT_DIR$/nodeLogFile.log" />
+    <list default="true" id="ff5f60e6-e6f7-43d7-8834-5a5ddc08f48e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="CDR0324.iws" />
@@ -78,7 +39,7 @@
       <file leaf-file-name="cep3g_join_cron.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mongo_prepare_data/cep3g_join_cron.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33333334" vertical-offset="821" max-vertical-offset="4930">
+            <state vertical-scroll-proportion="0.21724138" vertical-offset="821" max-vertical-offset="4930">
               <caret line="54" column="42" selection-start-line="54" selection-start-column="42" selection-end-line="54" selection-end-column="42" />
               <folding />
             </state>
@@ -481,7 +442,13 @@
       <option name="project" value="LOCAL" />
       <updated>1438740576449</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="mongo_prepare_data">
+      <created>1441701615378</created>
+      <option name="number" value="00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1441701615378</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -508,7 +475,7 @@
     <frame x="96" y="59" width="1415" height="907" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.7280702" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.60150373" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879582" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32903227" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -965,7 +932,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mongo_prepare_data/cep3g_join_cron.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334" vertical-offset="821" max-vertical-offset="4930">
+        <state vertical-scroll-proportion="0.21724138" vertical-offset="821" max-vertical-offset="4930">
           <caret line="54" column="42" selection-start-line="54" selection-start-column="42" selection-end-line="54" selection-end-column="42" />
           <folding />
         </state>
