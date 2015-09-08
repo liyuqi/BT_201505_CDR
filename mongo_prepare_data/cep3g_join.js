@@ -1,6 +1,4 @@
 // mongo cdr cep3g_join.js > ~/fluentd/agg/log/cep3g_join.txt
-
-
 print(new Date().toLocaleTimeString()+'\tbuildMapsStart:');
 
 var phone_map = {}, site2g_map = {}, site3g_map = {}, SIM_map = {}, CARRIER_map = {};
@@ -21,7 +19,6 @@ function buildPhoneMap(){
     });
 }buildPhoneMap();
 
-
 function buildSite2gMap(){
     var obj = {};
     var site2g = db.siteview2g_sample.find({});
@@ -39,7 +36,6 @@ function buildSite2gMap(){
         site2g_map[site.LAC_OD +'-'+ site.CELL_NO] = obj;
     });
 } buildSite2gMap();
-
 
 function buildSite3gMap(){
     var obj = {};
@@ -59,7 +55,6 @@ function buildSite3gMap(){
     });
 }buildSite3gMap();
 
-
 function buildSIMmap(){
     SIM_map['46693']  = {SIM_TYPE:'SIM' ,GENERATION:'2G',IMSI_STARTOF:/^46693/};
     SIM_map['466970'] = {SIM_TYPE:'SIM' ,GENERATION:'2G',IMSI_STARTOF:/^466970/};
@@ -77,7 +72,6 @@ function buildSIMmap(){
 } buildSIMmap();
 // for(var key in SIM_map){print(key)}
 // for(var key in SIM_map){printjson(SIM_map[key])}
-
 
 function buildCARRIERmap(){
     CARRIER_map['9']={CARRIER:'台灣大哥大',NPRN:/^9/};
@@ -113,8 +107,6 @@ function buildCARRIERmap(){
 //for(var key in CARRIER_map){printjson(CARRIER_map[key])}
 
 print(new Date().toLocaleTimeString()+'\tbuildMapsEnd:');
-
-
 
 
 var i=0;
@@ -304,6 +296,4 @@ var cdr3g = db.cep3g_sample.find({
     i++;
 });
 print(new Date().toLocaleTimeString()+'\tprocess:'+i);
-
-
 // db.cep3g_gen.findOne({up_flag:1},{time:1,up_flag:1});
