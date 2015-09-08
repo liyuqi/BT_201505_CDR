@@ -17,6 +17,8 @@
 
 <form class="form-horizontal" method="post">
     <fieldset>
+        <!--<legend>查詢 CDR</legend>-->
+
         <table class="table table-hover table-condensed borderless">
             <caption></caption>
             <thead>
@@ -30,6 +32,17 @@
             </thead>
 
             <tbody>
+
+            <% for (var key in schema){
+                if(key=='_id') continue ;
+            %>
+                <!--<tr>-->
+                    <!--<td id="column"><%= schema[key].column %></td>-->
+                    <!--<td id="field17"><label for="<%= key%>"><%= key%></label></td>-->
+                    <!--<td id="input17"><input type="text"  class="input-large" id="<%= key%>" name="<%= key%>"/></td>-->
+                    <!--<td id="sample17">schema[key].sample</td>&lt;!&ndash;type="date"&ndash;&gt;-->
+                <!--</tr>-->
+            <%}%>
 
             <tr>
                 <td id="name17">日期</td>
@@ -100,8 +113,7 @@
         </div>
     </fieldset>
 </form>
-
-
+<p></p>
         </div>
     </div>
 </div>
@@ -124,7 +136,7 @@
         <% for(var key in resp[0]){
             if(key=='_id') continue ;
         %>
-            <th id="th_<%= key%>"><%= key %></th>
+        <th id="th_<%= key%>"><%= key %></th>
         <%}%>
         <!--<th>_id</th>-->
         <!--<th id="th_DATE"    >日期</th>-->
@@ -153,19 +165,19 @@
         <th><%= JSON.stringify(body[key]) %></th>
         <%}%>
 
-        <!--<td id="_id"        text="日期時間" ><%# JSON.stringify(body._id) %></td>-->
-        <!--<td id="DATE"       text="日期" ><%# JSON.stringify(body.DATE) %></td>-->
-        <!--<td id="HOUR"       text="小時" ><%# JSON.stringify(body.HOUR) %></td>-->
-        <!--<td id="COUNTRY"    text="縣市" ><%# JSON.stringify(body.COUNTRY) %></td>-->
-        <!--<td id="DISTRICT"   text="區域" ><%# JSON.stringify(body.DISTRICT) %></td>-->
-        <!--<td id="SITE_NAME"  text="基站" ><%# JSON.stringify(body.SITE_NAME) %></td>-->
-        <!--<td id="SITE_ID"    text="基站" ><%# JSON.stringify(body.SITE_ID) %></td>-->
-        <!--<td id="END_CODE"   text="結束" ><%# JSON.stringify(body.END_CODE) %></td>-->
-        <!--<td id="SIM_TYPE"   text="卡別" ><%# JSON.stringify(body.SIM_TYPE) %></td>-->
-        <!--<td id="CARRIER"    text="業者" ><%# JSON.stringify(body.CARRIER) %></td>-->
-        <!--<td id="HO_COUNT"   text="次數" ><%# JSON.stringify(body.HO_CALLED_COUNT) %></td>-->
-        <!--<td id="HO_SECOND"  text="秒數" ><%# JSON.stringify(body.HO_CALLED_SECOND) %></td>-->
-        <!--<td id="HO_MINUTES" text="分鐘" ><%# JSON.stringify(body.HO_CALLED_MINUTES) %></td>-->
+        <!--<td id="_id"        text="日期時間" ><%= JSON.stringify(body._id) %></td>-->
+        <!--<td id="DATE"       text="日期" ><%= JSON.stringify(body.DATE) %></td>-->
+        <!--<td id="HOUR"       text="小時" ><%= JSON.stringify(body.HOUR) %></td>-->
+        <!--<td id="COUNTRY"    text="縣市" ><%= JSON.stringify(body.COUNTRY) %></td>-->
+        <!--<td id="DISTRICT"   text="區域" ><%= JSON.stringify(body.DISTRICT) %></td>-->
+        <!--<td id="SITE_NAME"  text="基站" ><%= JSON.stringify(body.SITE_NAME) %></td>-->
+        <!--<td id="SITE_ID"    text="基站" ><%= JSON.stringify(body.SITE_ID) %></td>-->
+        <!--<td id="END_CODE"   text="結束" ><%= JSON.stringify(body.END_CODE) %></td>-->
+        <!--<td id="SIM_TYPE"   text="卡別" ><%= JSON.stringify(body.SIM_TYPE) %></td>-->
+        <!--<td id="CARRIER"    text="業者" ><%= JSON.stringify(body.CARRIER) %></td>-->
+        <!--<td id="HO_COUNT"   text="次數" ><%= JSON.stringify(body.HO_CALLED_COUNT) %></td>-->
+        <!--<td id="HO_SECOND"  text="秒數" ><%= JSON.stringify(body.HO_CALLED_SECOND) %></td>-->
+        <!--<td id="HO_MINUTES" text="分鐘" ><%= JSON.stringify(body.HO_CALLED_MINUTES) %></td>-->
     </tr>
     <% }); %>
     </tbody>

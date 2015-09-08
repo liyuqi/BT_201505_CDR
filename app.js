@@ -13,7 +13,7 @@ var routes = require('./routes');
 var sys_mongo = require('./routes/sys_mongo');
 var sys_alert = require('./routes/sys_alert');
 var cdr_mongo = require('./routes/cdr_mongo');
-//var cdr_2g_mongo = require('./routes/cdr_2g_mongo');
+var cdr_2g_mongo = require('./routes/cdr_2g_mongo');
 var cdr_gprs_mongo = require('./routes/cdr_gprs_mongo');
 
 var util = require('util');
@@ -28,7 +28,7 @@ var MongoStore = require('connect-mongo')(express);
 var monk = require('monk');
 //var dbevents = monk('192.168.0.190/events');
 //var dbalerts = monk('192.168.0.190/alerts');
-var dbfluentd = monk('127.0.0.1/fluentd');
+//var dbfluentd = monk('127.0.0.1/fluentd');
 //var dbfluentd = monk('192.168.0.196/fluentd');
 //var dbCDR = monk('172.17.24.196:27017/cdr');
 //var dbCDR = monk('192.168.0.196:40000/cdr');
@@ -87,6 +87,17 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 
+//================================================= C D R 2g ============================
+//app.get('/cdr_CRUD_insert', cdr_2g_mongo.index);
+//app.post('/cdr_CRUD_insert',cdr_mongo.cdr_CRUD_insert(dbCDR));
+app.get('/cdr_CRUD_2g_query', 		cdr_2g_mongo.cdr_CRUD_loglist(dbCDR));
+app.post('/cdr_CRUD_2g_query', 	cdr_2g_mongo.cdr_CRUD_query(dbCDR));
+app.get('/cdr_CRUD_2g_show', 		cdr_2g_mongo.cdr_CRUD_count(dbCDR));
+
+//app.get('/cdr_2g_site_query', 	cdr_2g_mongo.cdr_2g_site_report(dbCDR));
+//app.post('/cdr_2g_site_query', 	cdr_2g_mongo.cdr_2g_site_query(dbCDR));
+//app.use('/cdr_3g_phone_report', cdr_mongo.cdr_3g_phone_report(dbCDR));
+
 
 //================================================= C D R 3g ============================
 app.get('/cdr_CRUD_insert', cdr_mongo.index);
@@ -94,6 +105,7 @@ app.get('/cdr_CRUD_insert', cdr_mongo.index);
 app.get('/cdr_CRUD_query', 		cdr_mongo.cdr_CRUD_loglist(dbCDR));
 app.post('/cdr_CRUD_query', 	cdr_mongo.cdr_CRUD_query(dbCDR));
 app.get('/cdr_CRUD_show', 		cdr_mongo.cdr_CRUD_count(dbCDR));
+
 app.get('/cdr_3g_site_query', 	cdr_mongo.cdr_3g_site_report(dbCDR));
 app.post('/cdr_3g_site_query', 	cdr_mongo.cdr_3g_site_query(dbCDR));
 //app.use('/cdr_3g_phone_report', cdr_mongo.cdr_3g_phone_report(dbCDR));

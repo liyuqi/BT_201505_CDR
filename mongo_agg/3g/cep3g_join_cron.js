@@ -51,7 +51,7 @@ function buildSite3gMap(){
             BELONG_TO   : site.BELONG_TO,
             CELL_NO     : site.CELL_NO,     //cell
             LAC_OD      : site.LAC_OD,       //lac
-            BTS_ADDRESS : site.BTS_ADDRESS,
+            BTS_ADDRESS : site.BTS_ADDRESS
         };
         site3g_map[site.LAC_OD +'-'+ site.CELL_NO] = obj;
     });
