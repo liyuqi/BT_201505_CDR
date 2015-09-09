@@ -41,7 +41,11 @@ var agg_3g = db.cep3g_agg.aggregate([
 
             , HO_CALLED_COUNT : 1
             , HO_CALLED_SECOND : 1
-            , SUM_CALLED_COUNT_0_3 :{$and:[{$gt:["$HO_CALLED_MINUTES",0]},{$lte:["$HO_CALLED_MINUTES",3]}]}
+            , SUM_CALLED_COUNT_0_3 :{"$HO_CALLED_MINUTES":{$gt:0,$lte:3}}
+            , SUM_CALLED_COUNT_3_5 :{"$HO_CALLED_MINUTES":{$gt:3,$lte:5}}
+            , SUM_CALLED_COUNT_5_7 :{"$HO_CALLED_MINUTES":{$gt:5,$lte:7}}
+            , SUM_CALLED_COUNT_7_10:{"$HO_CALLED_MINUTES":{$gt:7,$lte:10}}
+            , SUM_CALLED_COUNT_10UP:{"$HO_CALLED_MINUTES":{$gt:10}}
             //, SUM_CALLED_COUNT_0_3 :{"$cond" : {"$HO_CALLED_MINUTES" :{$and:[{$gt:0},{$lte:3}]}},"$HO_CALLED_COUNT",0}
             //, SUM_CALLED_COUNT_3_5 :{"$cond" : {"$HO_CALLED_MINUTES" :{$and:[{$gt:3},{$lte:5}]}},"$HO_CALLED_COUNT",0}
             //, SUM_CALLED_COUNT_5_7 :{"$cond" : {"$HO_CALLED_MINUTES" :{$and:[{$gt:0},{$lte:3}]}},"$HO_CALLED_COUNT",0}
@@ -80,6 +84,10 @@ var agg_3g = db.cep3g_agg.aggregate([
             , HO_CALLED_COUNT : {$sum:"$HO_CALLED_COUNT"}
             , HO_CALLED_SECOND : {$sum:"$HO_CALLED_SECOND"}
             , SUM_CALLED_COUNT_0_3 : {$sum:"$SUM_CALLED_COUNT_0_3"}
+            , SUM_CALLED_COUNT_3_5 : {$sum:"$SUM_CALLED_COUNT_3_5"}
+            , SUM_CALLED_COUNT_5_7 : {$sum:"$SUM_CALLED_COUNT_5_7"}
+            , SUM_CALLED_COUNT_7_10: {$sum:"$SUM_CALLED_COUNT_7_10"}
+            , SUM_CALLED_COUNT_10UP: {$sum:"$SUM_CALLED_COUNT_10UP"}
         }}
         ,{    $out:"cep3g_stat_site"}
     ]
