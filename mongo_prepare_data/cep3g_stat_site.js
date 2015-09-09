@@ -42,8 +42,8 @@ var agg_3g = db.cep3g_join.aggregate([
             , SIM_TYPE : "$SIM_TYPE"
             , CARRIER : "$CARRIER"
 
-            , HO_CALLED_COUNT : 1
-            , HO_CALLED_SECOND : 1
+            //, HO_COUNT : 1
+            //, HO_CALLED_SECOND : 1
 
             //, SUM_CALLED_COUNT_0_3 :{"$HO_CALLED_MINUTES":{$gt:0,$lte:3}}
             //, SUM_CALLED_COUNT_3_5 :{"$HO_CALLED_MINUTES":{$gt:3,$lte:5}}
@@ -51,11 +51,11 @@ var agg_3g = db.cep3g_join.aggregate([
             //, SUM_CALLED_COUNT_7_10:{"$HO_CALLED_MINUTES":{$gt:7,$lte:10}}
             //, SUM_CALLED_COUNT_10UP:{"$HO_CALLED_MINUTES":{$gt:10}}
 
-            , SUM_CALLED_COUNT_0_3  :{"$cond" : [{"$HO_CALLED_SECOND":{$gt:0,$lte:3}},"$HO_CALLED_COUNT",0]}
-            , SUM_CALLED_COUNT_3_5  :{"$cond" : [{"$HO_CALLED_SECOND":{$gt:3,$lte:5}},"$HO_CALLED_COUNT",0]}
-            , SUM_CALLED_COUNT_5_7  :{"$cond" : [{"$HO_CALLED_SECOND":{$gt:5,$lte:7}},"$HO_CALLED_COUNT",0]}
-            , SUM_CALLED_COUNT_7_10 :{"$cond" : [{"$HO_CALLED_SECOND":{$gt:7,$lte:10}},"$HO_CALLED_COUNT",0]}
-            , SUM_CALLED_COUNT_10UP :{"$cond" : [{"$HO_CALLED_SECOND":{$gt:10       }},"$HO_CALLED_COUNT",0]}
+            , SUM_CALLED_COUNT_0_3  :{"$cond" : [{"$HO_SECOND":{$gt:0,$lte:3 }},"$HO",0]}
+            , SUM_CALLED_COUNT_3_5  :{"$cond" : [{"$HO_SECOND":{$gt:3,$lte:5 }},"$HO",0]}
+            , SUM_CALLED_COUNT_5_7  :{"$cond" : [{"$HO_SECOND":{$gt:5,$lte:7 }},"$HO",0]}
+            , SUM_CALLED_COUNT_7_10 :{"$cond" : [{"$HO_SECOND":{$gt:7,$lte:10}},"$HO",0]}
+            , SUM_CALLED_COUNT_10UP :{"$cond" : [{"$HO_SECOND":{$gt:10       }},"$HO",0]}
 
             //, SUM_CALLED_MINUTES_0_3  :{"$cond" : {"$HO_CALLED_MINUTES" :{$and:[{$gt:0},{$lte:3}]}},"$HO_CALLED_MINUTES",0}
             //, SUM_CALLED_MINUTES_3_5  :{"$cond" : {"$HO_CALLED_MINUTES" :{$and:[{$gt:0},{$lte:3}]}},"$HO_CALLED_MINUTES",0}
