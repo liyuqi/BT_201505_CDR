@@ -85,8 +85,8 @@
       <file leaf-file-name="cep3g_stat_site.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mongo_prepare_data/cep3g_stat_site.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.30807248" vertical-offset="1020" max-vertical-offset="1802">
-              <caret line="49" column="107" selection-start-line="49" selection-start-column="107" selection-end-line="49" selection-end-column="107" />
+            <state vertical-scroll-proportion="0.53212523" vertical-offset="595" max-vertical-offset="1819">
+              <caret line="54" column="110" selection-start-line="54" selection-start-column="110" selection-end-line="54" selection-end-column="110" />
               <folding />
             </state>
           </provider>
@@ -580,7 +580,13 @@
       <option name="project" value="LOCAL" />
       <updated>1441786479967</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="cep3g_stat_035710">
+      <created>1441786667917</created>
+      <option name="number" value="00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1441786667917</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -1083,8 +1089,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mongo_prepare_data/cep3g_stat_site.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.30807248" vertical-offset="1020" max-vertical-offset="1802">
-          <caret line="49" column="107" selection-start-line="49" selection-start-column="107" selection-end-line="49" selection-end-column="107" />
+        <state vertical-scroll-proportion="0.53212523" vertical-offset="595" max-vertical-offset="1819">
+          <caret line="54" column="110" selection-start-line="54" selection-start-column="110" selection-end-line="54" selection-end-column="110" />
           <folding />
         </state>
       </provider>
