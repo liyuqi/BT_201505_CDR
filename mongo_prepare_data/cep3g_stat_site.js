@@ -81,6 +81,7 @@ var agg_3g = db.cep3g_agg.aggregate([
             , HO_CALLED_SECOND : {$sum:"$HO_CALLED_SECOND"}
             , SUM_CALLED_COUNT_0_3 : {$sum:"$SUM_CALLED_COUNT_0_3"}
         }}
+        ,{    $out:"cep3g_stat_site"}
     ]
     //,{    explain: true}
     ,{    allowDiskUse: true}
