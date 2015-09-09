@@ -103,6 +103,7 @@ function buildCARRIERmap(){
     CARRIER_map['1418']={CARRIER:'台灣之星'  ,NPRN:/^1418/};
     CARRIER_map['1434']={CARRIER:'台灣之星'  ,NPRN:/^1434/};
     CARRIER_map['']={CARRIER:'其他業者'  ,NPRN:''};
+    CARRIER_map['MTC']={CARRIER:'MTC'  ,NPRN:''};
 } buildCARRIERmap();
 //for(var key in site3g_map){print(key)}
 var i=0;
@@ -159,7 +160,7 @@ var cdr3g = db.cep3g_gen.find({
                     if(site3g_map[cell].SITE_ID){
                         doc.NETWORK_TYPE = "3G";
                         doc.HO    = 0; //========================= 換手 ======//
-                        doc.HO_MIN= 0;
+                        doc.HO_SECOND= 0;
                     }
                 } catch(e){ } //doc.SITE_ID = '3g'; }
                 try {
@@ -170,9 +171,9 @@ var cdr3g = db.cep3g_gen.find({
                     doc.LAC_OD      = site2g_map[cell].LAC_OD;   //#
                     doc.BTS_ADDRESS = site2g_map[cell].BTS_ADDRESS;
                     if(site2g_map[cell].SITE_ID){
-                        doc.NETWORK_TYPE = "2G";
+                        doc.NETWORK_TYPE = "3G";
                         doc.HO    = 1; //========================= 換手 ======//
-                        doc.HO_MIN= Number(doc.orig_mcz_duration);
+                        doc.HO_SECOND= Number(doc.orig_mcz_duration);
                     }
                 } catch(e){ } //doc.SITE_ID = '2g'; doc.HANGOVER    = 1;}
                 try {
@@ -232,7 +233,7 @@ var cdr3g = db.cep3g_gen.find({
                     if(site3g_map[cell].SITE_ID){
                         doc.NETWORK_TYPE = "3G";
                         doc.HO    = 0; //========================= 換手 ======//
-                        doc.HO_MIN= 0;
+                        doc.HO_SECOND= 0;
                     }
                 } catch (e) { } //doc.SITE_ID = '3g'; }
                 try {
@@ -243,9 +244,9 @@ var cdr3g = db.cep3g_gen.find({
                     doc.LAC_OD      = site2g_map[cell].LAC_OD;   //#
                     doc.BTS_ADDRESS = site2g_map[cell].BTS_ADDRESS;
                     if(site2g_map[cell].SITE_ID){
-                        doc.NETWORK_TYPE = "2G";
+                        doc.NETWORK_TYPE = "3G";
                         doc.HO    = 1; //========================= 換手 ======//
-                        doc.HO_MIN= Number(doc.term_mcz_duration);
+                        doc.HO_SECOND= Number(doc.term_mcz_duration);
                     }
                 } catch(e){ } //doc.SITE_ID = '2g'; doc.HANGOVER    = 1;}
                 try {
@@ -273,7 +274,7 @@ var cdr3g = db.cep3g_gen.find({
                     //else if(doc.called_number.substr(0,2)=='14')
                     //    doc.CARRIER = CARRIER_map[doc.called_number.substr(0,4)].CARRIER;
                     //else
-                        doc.CARRIER = CARRIER_map[''].CARRIER;
+                        doc.CARRIER = CARRIER_map['MTC'].CARRIER;
                 }catch (e) {} //doc.CARRIER
                 try{
                     doc.cause_for_termination = doc.cause_for_termination.substr(-4,4);
