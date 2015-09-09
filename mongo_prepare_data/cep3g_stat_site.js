@@ -5,7 +5,7 @@ var agg_3g = db.cep3g_join.aggregate([
         {$match: {
             /*time: interval,up_falg:1,*/
             //record_type:{$in:["1","2"]}
-            DATE  :{$in:[/^20/]}
+            //DATE  :{$in:[/^20/]}
             //, HOUR      :{$in:[]}
             //, NETWORK_TYPE :{$in:[]}
             //, COUNTY    :{$in:[]}
@@ -15,7 +15,7 @@ var agg_3g = db.cep3g_join.aggregate([
             //, END_CODE  : {$in:[]}
             //, SIM_TYPE  : {$in:[]}
             //, CARRIER   : {$in:[]}
-            , HO  : {$gte:1}
+            //, HO  : {$gte:1}
             //, HO_CALLED_SECOND : {$gt:0}
             //, HO_CALLED_MINUTES: {$gt:0}
         }}
