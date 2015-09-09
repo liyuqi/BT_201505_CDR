@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ff5f60e6-e6f7-43d7-8834-5a5ddc08f48e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mongo_prepare_data/cep3g_agg.js" afterPath="$PROJECT_DIR$/mongo_prepare_data/cep3g_agg.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mongo_prepare_data/cep3g_agg_site.js" afterPath="$PROJECT_DIR$/mongo_prepare_data/cep3g_agg_site.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mongo_prepare_data/cep3g_stat_site.js" afterPath="$PROJECT_DIR$/mongo_prepare_data/cep3g_stat_site.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="CDR0324.iws" />
@@ -64,11 +62,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cep3g_agg.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="cep3g_agg.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mongo_prepare_data/cep3g_agg.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1802">
-              <caret line="73" column="36" selection-start-line="73" selection-start-column="36" selection-end-line="73" selection-end-column="36" />
+            <state vertical-scroll-proportion="0.65485364" vertical-offset="935" max-vertical-offset="1802">
+              <caret line="80" column="41" selection-start-line="80" selection-start-column="41" selection-end-line="80" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -77,18 +75,18 @@
       <file leaf-file-name="cep3g_agg_site.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mongo_prepare_data/cep3g_agg_site.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="595" max-vertical-offset="1734">
-              <caret line="54" column="42" selection-start-line="54" selection-start-column="30" selection-end-line="54" selection-end-column="42" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1085" max-vertical-offset="1734">
+              <caret line="76" column="40" selection-start-line="76" selection-start-column="33" selection-end-line="76" selection-end-column="40" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cep3g_stat_site.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="cep3g_stat_site.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mongo_prepare_data/cep3g_stat_site.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.60708785" vertical-offset="983" max-vertical-offset="1632">
-              <caret line="81" column="37" selection-start-line="81" selection-start-column="37" selection-end-line="81" selection-end-column="37" />
+            <state vertical-scroll-proportion="-4.1034484" vertical-offset="85" max-vertical-offset="1632">
+              <caret line="12" column="18" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -150,9 +148,9 @@
         <option value="$PROJECT_DIR$/mongo_prepare_data/cep3g_agg_phone.js" />
         <option value="$PROJECT_DIR$/mongo_prepare_data/cep3g_stat_phone.js" />
         <option value="$PROJECT_DIR$/mongo_prepare_data/cep3g_join_cron.js" />
-        <option value="$PROJECT_DIR$/mongo_prepare_data/cep3g_agg.js" />
         <option value="$PROJECT_DIR$/mongo_prepare_data/cep3g_agg_site.js" />
         <option value="$PROJECT_DIR$/mongo_prepare_data/cep3g_stat_site.js" />
+        <option value="$PROJECT_DIR$/mongo_prepare_data/cep3g_agg.js" />
       </list>
     </option>
   </component>
@@ -546,7 +544,13 @@
       <option name="project" value="LOCAL" />
       <updated>1441783379670</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="cep3g_join_stat">
+      <created>1441784693482</created>
+      <option name="number" value="00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1441784693482</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -1028,26 +1032,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mongo_prepare_data/cep3g_agg.js">
+    <entry file="file://$PROJECT_DIR$/mongo_prepare_data/cep3g_stat_site.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1020" max-vertical-offset="1802">
-          <caret line="73" column="36" selection-start-line="73" selection-start-column="36" selection-end-line="73" selection-end-column="36" />
+        <state vertical-scroll-proportion="-4.1034484" vertical-offset="85" max-vertical-offset="1632">
+          <caret line="12" column="18" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mongo_prepare_data/cep3g_agg_site.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="595" max-vertical-offset="1734">
-          <caret line="54" column="42" selection-start-line="54" selection-start-column="30" selection-end-line="54" selection-end-column="42" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1085" max-vertical-offset="1734">
+          <caret line="76" column="40" selection-start-line="76" selection-start-column="33" selection-end-line="76" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mongo_prepare_data/cep3g_stat_site.js">
+    <entry file="file://$PROJECT_DIR$/mongo_prepare_data/cep3g_agg.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.60708785" vertical-offset="983" max-vertical-offset="1632">
-          <caret line="81" column="37" selection-start-line="81" selection-start-column="37" selection-end-line="81" selection-end-column="37" />
+        <state vertical-scroll-proportion="0.65485364" vertical-offset="935" max-vertical-offset="1802">
+          <caret line="80" column="41" selection-start-line="80" selection-start-column="41" selection-end-line="80" selection-end-column="41" />
           <folding />
         </state>
       </provider>
