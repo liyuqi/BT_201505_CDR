@@ -40,9 +40,10 @@
       <file leaf-file-name="cep3g_join_cron.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mongo_prepare_data/cep3g_join_cron.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4267">
-              <caret line="0" column="2" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2465" max-vertical-offset="4267">
+              <caret line="234" column="78" selection-start-line="234" selection-start-column="78" selection-end-line="234" selection-end-column="78" />
               <folding>
+                <element signature="n#!!doc" expanded="true" />
                 <element signature="n#!!block;n#buildPhoneMap#0" expanded="false" />
                 <element signature="n#!!block;n#buildSite2gMap#0" expanded="false" />
                 <element signature="n#!!block;n#buildSite3gMap#0" expanded="false" />
@@ -85,8 +86,8 @@
       <file leaf-file-name="cep3g_stat_site.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mongo_prepare_data/cep3g_stat_site.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.53212523" vertical-offset="595" max-vertical-offset="1819">
-              <caret line="54" column="110" selection-start-line="54" selection-start-column="110" selection-end-line="54" selection-end-column="110" />
+            <state vertical-scroll-proportion="0.5601318" vertical-offset="0" max-vertical-offset="2040">
+              <caret line="20" column="42" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -586,7 +587,13 @@
       <option name="project" value="LOCAL" />
       <updated>1441786667917</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="cep3g_stat_035710 cond">
+      <created>1441786972581</created>
+      <option name="number" value="00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1441786972581</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -670,7 +677,8 @@
     <MESSAGE value="cep3g_agg_divide" />
     <MESSAGE value="cep3g_stat" />
     <MESSAGE value="cep3g_stat_035710" />
-    <option name="LAST_COMMIT_MESSAGE" value="cep3g_stat_035710" />
+    <MESSAGE value="cep3g_stat_035710 cond" />
+    <option name="LAST_COMMIT_MESSAGE" value="cep3g_stat_035710 cond" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1058,16 +1066,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mongo_prepare_data/cep3g_join_cron.js">
+    <entry file="file://$PROJECT_DIR$/mongo_prepare_data/cep3g_agg_site.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4267">
-          <caret line="0" column="2" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="25" />
-          <folding>
-            <element signature="n#!!block;n#buildPhoneMap#0" expanded="false" />
-            <element signature="n#!!block;n#buildSite2gMap#0" expanded="false" />
-            <element signature="n#!!block;n#buildSite3gMap#0" expanded="false" />
-            <element signature="n#!!block;n#buildSIMmap#0" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="1085" max-vertical-offset="1734">
+          <caret line="78" column="31" selection-start-line="78" selection-start-column="7" selection-end-line="78" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1079,18 +1082,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mongo_prepare_data/cep3g_agg_site.js">
+    <entry file="file://$PROJECT_DIR$/mongo_prepare_data/cep3g_join_cron.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1085" max-vertical-offset="1734">
-          <caret line="78" column="31" selection-start-line="78" selection-start-column="7" selection-end-line="78" selection-end-column="31" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="2465" max-vertical-offset="4267">
+          <caret line="234" column="78" selection-start-line="234" selection-start-column="78" selection-end-line="234" selection-end-column="78" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!block;n#buildPhoneMap#0" expanded="false" />
+            <element signature="n#!!block;n#buildSite2gMap#0" expanded="false" />
+            <element signature="n#!!block;n#buildSite3gMap#0" expanded="false" />
+            <element signature="n#!!block;n#buildSIMmap#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mongo_prepare_data/cep3g_stat_site.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.53212523" vertical-offset="595" max-vertical-offset="1819">
-          <caret line="54" column="110" selection-start-line="54" selection-start-column="110" selection-end-line="54" selection-end-column="110" />
+        <state vertical-scroll-proportion="0.5601318" vertical-offset="0" max-vertical-offset="2040">
+          <caret line="20" column="42" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
           <folding />
         </state>
       </provider>

@@ -17,8 +17,8 @@ var agg_3g = db.cep3g_agg.aggregate([
             //, SIM_TYPE  : {$in:[]}
             //, CARRIER   : {$in:[]}
             , HO_CALLED_COUNT  : {$gte:1}
-            , HO_CALLED_SECOND : {$gt:0}
-            , HO_CALLED_MINUTES: {$gt:0}
+            //, HO_CALLED_SECOND : {$gt:0}
+            //, HO_CALLED_MINUTES: {$gt:0}
         }}
         ,{$project:{
             //STATISTIC_DATE : "$time"
@@ -99,3 +99,17 @@ var agg_3g = db.cep3g_agg.aggregate([
 );
 
 print(new Date().toLocaleTimeString());
+
+db.cep3g.find({
+"Continent" : {
+    "$cond" : [
+        {"$Country" : {$in:["UK","Spain","Sweden","Germany","Norway",'Denmark','Netherlands','Finland','Italy']}},
+        "Europe", {
+            "$cond" : {"$Country" :{$in: ['USA','Canada','Brazil']}},
+            "America" ,
+            "Asia-Pacific"
+
+        }
+    ]
+}
+}}
