@@ -1,23 +1,11 @@
-// mongo cdr cep3g_stat_site.js  > ./log/agg_$(date +"%Y%m%d")_$(date +"%H%M%S").txt
+// mongo cdr cep3g_agg.js  > ./log/agg_$(date +"%Y%m%d")_$(date +"%H%M%S").txt
+
 
 print(new Date().toLocaleTimeString());
 var agg_3g = db.cep3g_join.aggregate([
         {$match: {
             /*time: interval,up_falg:1,*/
-            //record_type:{$in:["1","2"]}
-            //DATE  :{$in:[/^20/]}
-            //, HOUR      :{$in:[]}
-            //, NETWORK_TYPE :{$in:[]}
-            //, COUNTY    :{$in:[]}
-            //, DISTRICT  :{$in:[]}
-            //, SITE_NAME :{$in:[]}
-            //
-            //, END_CODE  : {$in:[]}
-            //, SIM_TYPE  : {$in:[]}
-            //, CARRIER   : {$in:[]}
-            //, HO  : {$gte:1}
-            //, HO_CALLED_SECOND : {$gt:0}
-            //, HO_CALLED_MINUTES: {$gt:0}
+            record_type:{$in:["1","2"]}
         }}
         ,{$project:{
             //STATISTIC_DATE : "$time"
@@ -62,6 +50,7 @@ var agg_3g = db.cep3g_join.aggregate([
             //, SUM_CALLED_MINUTES_5_7  :{"$cond" : {"$HO_CALLED_MINUTES" :{$and:[{$gt:0},{$lte:3}]}},"$HO_CALLED_MINUTES",0}
             //, SUM_CALLED_MINUTES_7_10 :{"$cond" : {"$HO_CALLED_MINUTES" :{$and:[{$gt:0},{$lte:3}]}},"$HO_CALLED_MINUTES",0}
             //, SUM_CALLED_MINUTES_10UP :{"$cond" : {"$HO_CALLED_MINUTES" :{$and:[{$gt:0},{$lte:3}]}},"$HO_CALLED_MINUTES",0}
+
         }}
         ,{$group:{
             _id: {
@@ -131,3 +120,13 @@ var agg_3g = db.cep3g_join.aggregate([
 );
 
 print(new Date().toLocaleTimeString());
+
+//@ version2.4
+//print(agg_3g.result.length);
+
+//@ version3.0
+//print(agg_3g.toArray.length)
+
+//agg_3g.result.forEach(function(doc){
+//    //print(JSON.stringify(doc));
+//});
