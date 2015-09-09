@@ -12,7 +12,6 @@ var agg_3g = db.cep3g_join.aggregate([
             DATE:{ $substr: [ "$date_time", 0, 10 ] }
             , HOUR:{ $substr: [ "$date_time", 11, 2 ] }
 
-
             //site
             , COUNTY : { $substr: [ "$BTS_ADDRESS", 0, 9 ] }//"$BTS_ADDRESS" //縣市3 zh zhar
             , DISTRICT : { $substr: [ "$BTS_ADDRESS", 9, 9 ] }//"$BTS_CODE" //地區
@@ -24,14 +23,11 @@ var agg_3g = db.cep3g_join.aggregate([
             //, MODEL  : "$MODEL"
 
             , NETWORK_TYPE : 1
-            , HO : 1
-            , HO_SECOND : 1
             , END_CODE : "$cause_for_termination"
             , SIM_TYPE : "$SIM_TYPE"
             , CARRIER : "$CARRIER"
-
-            //, HO_CALLED_1 : 1
-            //, CALLDURATION : {$add:["$orig_mcz_duration","$term_mcz_duration"]}
+            , HO : 1
+            , HO_SECOND : 1
         }}
         ,{$group:{
             _id: {
@@ -78,7 +74,7 @@ var agg_3g = db.cep3g_join.aggregate([
             //, END_CODE: "$_id.END_CODE"
             , HO_CALLED_COUNT :1
             , HO_CALLED_SECOND:1
-            //, HO_CALLED_MINUTES:{$devide:["$HO_CALLED_SECOND",60]}
+            , HO_CALLED_MINUTES:{$divide:["$HO_CALLED_SECOND",60]}
         }}
         ,{    $out:"cep3g_agg"}
     ]

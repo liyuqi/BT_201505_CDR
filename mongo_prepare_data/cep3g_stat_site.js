@@ -6,7 +6,7 @@ var agg_3g = db.cep3g_agg.aggregate([
         {$match: {
             /*time: interval,up_falg:1,*/
             //record_type:{$in:["1","2"]}
-            //DATE        :{$in:[]}
+            DATE        :{$in:[/^20/]}
             //, HOUR      :{$in:[]}
             //, NETWORK_TYPE :{$in:[]}
             //, COUNTY    :{$in:[]}
@@ -16,14 +16,15 @@ var agg_3g = db.cep3g_agg.aggregate([
             //, END_CODE  : {$in:[]}
             //, SIM_TYPE  : {$in:[]}
             //, CARRIER   : {$in:[]}
-             HO     : {$gt:0}
-            , HO_SECOND : {$gt:0}
+            , HO_CALLED_COUNT  : {$gt:0}
+            , HO_CALLED_SECOND : {$gt:0}
+            , HO_CALLED_MINUTES: {$gt:0}
         }}
         ,{$project:{
             //STATISTIC_DATE : "$time"
             DATE:"$_id.DATE"
             , HOUR:"$_id.HOUR"
-            , NETWORK_TYPE : "_id.NETWORK_TYPE"
+            , NETWORK_TYPE : "$_id.NETWORK_TYPE"
             //site
             , COUNTY : "$_id.COUNTRY"
             , DISTRICT : "$_id.DISTRICT"
@@ -38,19 +39,20 @@ var agg_3g = db.cep3g_agg.aggregate([
             , SIM_TYPE : "$_id.SIM_TYPE"
             , CARRIER : "$_id.CARRIER"
 
-            , HO : 1
-            , HO_SECOND : 1
-            //, SUM_CALLED_COUNT_0_3 :{"$cond" : {"$HO_MIN" :{$and:[{$gt:0},{$lte:3}]},"$HO",0}}
-            //, SUM_CALLED_COUNT_3_5 :{"$cond" : {"$HO_MIN" :{$and:[{$gt:3},{$lte:5}]},"$HO",0}}
-            //, SUM_CALLED_COUNT_5_7 :{"$cond" : {"$HO_MIN" :{$and:[{$gt:0},{$lte:3}]},"$HO",0}}
-            //, SUM_CALLED_COUNT_7_10 :{"$cond" : {"$HO_MIN" :{$and:[{$gt:0},{$lte:3}]},"$HO",0}}
-            //, SUM_CALLED_COUNT_10UP :{"$cond" : {"$HO_MIN" :{$and:[{$gt:0},{$lte:3}]},"$HO",0}}
+            , HO_CALLED_COUNT : 1
+            , HO_CALLED_SECOND : 1
+            , SUM_CALLED_COUNT_0_3 :{$and:[{$gt:["$HO_CALLED_MINUTES",0]},{$lte:["$HO_CALLED_MINUTES",3]}]}
+            //, SUM_CALLED_COUNT_0_3 :{"$cond" : {"$HO_CALLED_MINUTES" :{$and:[{$gt:0},{$lte:3}]}},"$HO_CALLED_COUNT",0}
+            //, SUM_CALLED_COUNT_3_5 :{"$cond" : {"$HO_CALLED_MINUTES" :{$and:[{$gt:3},{$lte:5}]}},"$HO_CALLED_COUNT",0}
+            //, SUM_CALLED_COUNT_5_7 :{"$cond" : {"$HO_CALLED_MINUTES" :{$and:[{$gt:0},{$lte:3}]}},"$HO_CALLED_COUNT",0}
+            //, SUM_CALLED_COUNT_7_10 :{"$cond" : {"$HO_CALLED_MINUTES" :{$and:[{$gt:0},{$lte:3}]}},"$HO_CALLED_COUNT",0}
+            //, SUM_CALLED_COUNT_10UP :{"$cond" : {"$HO_CALLED_MINUTES" :{$and:[{$gt:0},{$lte:3}]}},"$HO_CALLED_COUNT",0}
 
-            //, SUM_CALLED_MINUTES_0_3 :{"$cond" : {"$HO_MIN" :{$and:[{$gt:0},{$lte:3}]},"$HO_MIN",0}}
-            //, SUM_CALLED_MINUTES_3_5 :{"$cond" : {"$HO_MIN" :{$and:[{$gt:0},{$lte:3}]},"$HO_MIN",0}}
-            //, SUM_CALLED_MINUTES_5_7 :{"$cond" : {"$HO_MIN" :{$and:[{$gt:0},{$lte:3}]},"$HO_MIN",0}}
-            //, SUM_CALLED_MINUTES_7_10 :{"$cond" : {"$HO_MIN" :{$and:[{$gt:0},{$lte:3}]},"$HO_MIN",0}}
-            //, SUM_CALLED_MINUTES_10UP :{"$cond" : {"$HO_MIN" :{$and:[{$gt:0},{$lte:3}]},"$HO_MIN",0}}
+            //, SUM_CALLED_MINUTES_0_3 :{"$cond" : {"$HO_CALLED_MINUTES" :{$and:[{$gt:0},{$lte:3}]}},"$HO_CALLED_MINUTES",0}
+            //, SUM_CALLED_MINUTES_3_5 :{"$cond" : {"$HO_CALLED_MINUTES" :{$and:[{$gt:0},{$lte:3}]}},"$HO_CALLED_MINUTES",0}
+            //, SUM_CALLED_MINUTES_5_7 :{"$cond" : {"$HO_CALLED_MINUTES" :{$and:[{$gt:0},{$lte:3}]}},"$HO_CALLED_MINUTES",0}
+            //, SUM_CALLED_MINUTES_7_10 :{"$cond" : {"$HO_CALLED_MINUTES" :{$and:[{$gt:0},{$lte:3}]}},"$HO_CALLED_MINUTES",0}
+            //, SUM_CALLED_MINUTES_10UP :{"$cond" : {"$HO_CALLED_MINUTES" :{$and:[{$gt:0},{$lte:3}]}},"$HO_CALLED_MINUTES",0}
         }}
         ,{$group:{
             _id: {
@@ -75,8 +77,9 @@ var agg_3g = db.cep3g_agg.aggregate([
                 //, IMEI: "$IMEI"
             }
 
-            , HO_CALLED_COUNT:{$sum:"$HO"}
-            , HO_CALLED_SECOND:{$sum:"$HO_SECOND"}
+            , HO_CALLED_COUNT : {$sum:"$HO_CALLED_COUNT"}
+            , HO_CALLED_SECOND : {$sum:"$HO_CALLED_SECOND"}
+            , SUM_CALLED_COUNT_0_3 : {$sum:"$SUM_CALLED_COUNT_0_3"}
         }}
     ]
     //,{    explain: true}
