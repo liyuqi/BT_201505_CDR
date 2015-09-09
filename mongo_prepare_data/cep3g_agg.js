@@ -49,7 +49,7 @@ var agg_3g = db.cep3g_join.aggregate([
                 //, VENDOR: "$VENDOR"
                 //, MODEL: "$MODEL"
 
-                , NETWORK_TYPE : 1
+                , NETWORK_TYPE : "$NETWORK_TYPE"
                 , END_CODE: "$END_CODE"
                 , SIM_TYPE: "$SIM_TYPE"
                 , CARRIER: "$CARRIER"
