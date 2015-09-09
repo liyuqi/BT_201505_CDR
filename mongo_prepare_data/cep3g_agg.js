@@ -1,4 +1,4 @@
-// mongo cdr cep3g_agg.js  > ~/fluentd/agg/log/cep3g_agg.txt
+// mongo cdr cep3g_agg.js  > ./log/agg_$(date +"%Y%m%d")_$(date +"%H%M%S").txt
 
 
 print(new Date().toLocaleTimeString());
@@ -12,6 +12,7 @@ var agg_3g = db.cep3g_join.aggregate([
               DATE:{ $substr: [ "$date_time", 0, 10 ] }
             , HOUR:{ $substr: [ "$date_time", 11, 2 ] }
 
+
             //site
             , COUNTY : { $substr: [ "$BTS_ADDRESS", 0, 9 ] }//"$BTS_ADDRESS" //縣市3 zh zhar
             , DISTRICT : { $substr: [ "$BTS_ADDRESS", 9, 9 ] }//"$BTS_CODE" //地區
@@ -22,7 +23,9 @@ var agg_3g = db.cep3g_join.aggregate([
             //, VENDOR : "$VENDOR"
             //, MODEL  : "$MODEL"
 
-            , HANGOVER : 1
+            , NETWORK_TYPE : 1
+            , HO : 1
+            , HO_MIN : 1
             , END_CODE : "$cause_for_termination"
             , SIM_TYPE : "$SIM_TYPE"
             , CARRIER : "$CARRIER"
@@ -32,10 +35,10 @@ var agg_3g = db.cep3g_join.aggregate([
         }}
         ,{$group:{
             _id: {
-                STATISTIC_DATE: {
+                //STATISTIC_DATE : {
                     DATE : "$DATE"
                   , HOUR : "$HOUR"
-                }
+                //}
                 //site
                 , COUNTY: "$COUNTY" //縣市
                 , DISTRICT: "$DISTRICT" //地區
@@ -52,27 +55,27 @@ var agg_3g = db.cep3g_join.aggregate([
                 //, IMEI: "$IMEI"
             }
 
-            ,HO_CALLED_COUNT:{$sum:"$HANGOVER"}
-            ,HO_CALLED_SECOND:{$sum:"$CALLDURATION"}
+            , HO_CALLED_COUNT:{$sum:"$HO"}
+            , HO_CALLED_MIN:{$sum:"$HO_MIN"}
         }}
         ,{$project:{
             _id:1
-            //,STATISTIC_DATE:"$_id.STATISTIC_DATE"
+            , STATISTIC_DATE:"$_id.DATE"
+            , STATISTIC_HOUR:"$_id.HOUR"
             ////site
-            //,COUNTY : "$_id.COUNTY"
+            //, COUNTY : "$_id.COUNTY"
             //, DISTRICT: "$_id.DISTRICT"
-            //,SITE_NAME : "$_id.SITE_NAME"
+            //, SITE_NAME : "$_id.SITE_NAME"
 
             ////phone_type
-            //,VENDOR : "$_id.VENDOR"
-            //,MODEL : "$_id.MODEL"
+            //, VENDOR : "$_id.VENDOR"
+            //, MODEL : "$_id.MODEL"
 
-            //,SIM_TYPE : "$_id.SIM_TYPE"
-            //,CARRIER : "$_id.CARRIER"
-            //,END_CODE: "$_id.END_CODE"
-            ,HO_CALLED_COUNT :1
-//            ,HO_CALLED_MINUTES :{$divide:["$HO_CALLED_SECOND",60]}
-	    ,HO_CALLED_SECOND:1
+            //, SIM_TYPE : "$_id.SIM_TYPE"
+            //, CARRIER : "$_id.CARRIER"
+            //, END_CODE: "$_id.END_CODE"
+            , HO_CALLED_COUNT :1
+	        , HO_CALLED_MIN:1
         }}
         ,{    $out:"cep3g_agg"}
     ]
