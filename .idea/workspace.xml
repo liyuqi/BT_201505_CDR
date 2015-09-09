@@ -85,8 +85,8 @@
       <file leaf-file-name="cep3g_stat_site.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mongo_prepare_data/cep3g_stat_site.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6721582" vertical-offset="1105" max-vertical-offset="1785">
-              <caret line="89" column="68" selection-start-line="89" selection-start-column="68" selection-end-line="89" selection-end-column="68" />
+            <state vertical-scroll-proportion="-0.30807248" vertical-offset="1020" max-vertical-offset="1802">
+              <caret line="49" column="107" selection-start-line="49" selection-start-column="107" selection-end-line="49" selection-end-column="107" />
               <folding />
             </state>
           </provider>
@@ -574,7 +574,13 @@
       <option name="project" value="LOCAL" />
       <updated>1441786076999</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="cep3g_stat_035710">
+      <created>1441786479967</created>
+      <option name="number" value="00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1441786479967</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -657,7 +663,8 @@
     <MESSAGE value="cep3g_join_stat" />
     <MESSAGE value="cep3g_agg_divide" />
     <MESSAGE value="cep3g_stat" />
-    <option name="LAST_COMMIT_MESSAGE" value="cep3g_stat" />
+    <MESSAGE value="cep3g_stat_035710" />
+    <option name="LAST_COMMIT_MESSAGE" value="cep3g_stat_035710" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1076,8 +1083,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mongo_prepare_data/cep3g_stat_site.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6721582" vertical-offset="1105" max-vertical-offset="1785">
-          <caret line="89" column="68" selection-start-line="89" selection-start-column="68" selection-end-line="89" selection-end-column="68" />
+        <state vertical-scroll-proportion="-0.30807248" vertical-offset="1020" max-vertical-offset="1802">
+          <caret line="49" column="107" selection-start-line="49" selection-start-column="107" selection-end-line="49" selection-end-column="107" />
           <folding />
         </state>
       </provider>
