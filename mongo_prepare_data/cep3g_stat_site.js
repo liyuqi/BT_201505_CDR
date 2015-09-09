@@ -51,11 +51,11 @@ var agg_3g = db.cep3g_join.aggregate([
             //, SUM_CALLED_COUNT_7_10:{"$HO_CALLED_MINUTES":{$gt:7,$lte:10}}
             //, SUM_CALLED_COUNT_10UP:{"$HO_CALLED_MINUTES":{$gt:10}}
 
-            , SUM_CALLED_COUNT_0_3  :{"$cond" : [{"$HO_SECOND":{$gt:0,$lte:3 }},"$HO",0]}
-            , SUM_CALLED_COUNT_3_5  :{"$cond" : [{"$HO_SECOND":{$gt:3,$lte:5 }},"$HO",0]}
-            , SUM_CALLED_COUNT_5_7  :{"$cond" : [{"$HO_SECOND":{$gt:5,$lte:7 }},"$HO",0]}
-            , SUM_CALLED_COUNT_7_10 :{"$cond" : [{"$HO_SECOND":{$gt:7,$lte:10}},"$HO",0]}
-            , SUM_CALLED_COUNT_10UP :{"$cond" : [{"$HO_SECOND":{$gt:10       }},"$HO",0]}
+            //, SUM_CALLED_COUNT_0_3  :{"$cond" : [{"$HO_SECOND":{$gt:0,$lte:3 }},"$HO",0]}
+            //, SUM_CALLED_COUNT_3_5  :{"$cond" : [{"$HO_SECOND":{$gt:3,$lte:5 }},"$HO",0]}
+            //, SUM_CALLED_COUNT_5_7  :{"$cond" : [{"$HO_SECOND":{$gt:5,$lte:7 }},"$HO",0]}
+            //, SUM_CALLED_COUNT_7_10 :{"$cond" : [{"$HO_SECOND":{$gt:7,$lte:10}},"$HO",0]}
+            //, SUM_CALLED_COUNT_10UP :{"$cond" : [{"$HO_SECOND":{$gt:10       }},"$HO",0]}
 
             //, SUM_CALLED_MINUTES_0_3  :{"$cond" : {"$HO_CALLED_MINUTES" :{$and:[{$gt:0},{$lte:3}]}},"$HO_CALLED_MINUTES",0}
             //, SUM_CALLED_MINUTES_3_5  :{"$cond" : {"$HO_CALLED_MINUTES" :{$and:[{$gt:0},{$lte:3}]}},"$HO_CALLED_MINUTES",0}
@@ -86,13 +86,13 @@ var agg_3g = db.cep3g_join.aggregate([
                 //, IMEI: "$IMEI"
             }
 
-            , HO_CALLED_COUNT : {$sum:"$HO_CALLED_COUNT"}
-            , HO_CALLED_SECOND : {$sum:"$HO_CALLED_SECOND"}
-            , SUM_CALLED_COUNT_0_3 : {$sum:"$SUM_CALLED_COUNT_0_3"}
-            , SUM_CALLED_COUNT_3_5 : {$sum:"$SUM_CALLED_COUNT_3_5"}
-            , SUM_CALLED_COUNT_5_7 : {$sum:"$SUM_CALLED_COUNT_5_7"}
-            , SUM_CALLED_COUNT_7_10: {$sum:"$SUM_CALLED_COUNT_7_10"}
-            , SUM_CALLED_COUNT_10UP: {$sum:"$SUM_CALLED_COUNT_10UP"}
+            //, HO_CALLED_COUNT : {$sum:"$HO_CALLED_COUNT"}
+            //, HO_CALLED_SECOND : {$sum:"$HO_CALLED_SECOND"}
+            //, SUM_CALLED_COUNT_0_3 : {$sum:"$SUM_CALLED_COUNT_0_3"}
+            //, SUM_CALLED_COUNT_3_5 : {$sum:"$SUM_CALLED_COUNT_3_5"}
+            //, SUM_CALLED_COUNT_5_7 : {$sum:"$SUM_CALLED_COUNT_5_7"}
+            //, SUM_CALLED_COUNT_7_10: {$sum:"$SUM_CALLED_COUNT_7_10"}
+            //, SUM_CALLED_COUNT_10UP: {$sum:"$SUM_CALLED_COUNT_10UP"}
         }}
         ,{    $out:"cep3g_stat_site"}
     ]
