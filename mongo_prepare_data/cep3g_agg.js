@@ -63,19 +63,23 @@ var agg_3g = db.cep3g_join.aggregate([
             _id:1
             //, STATISTIC_DATE:"$_id.DATE"
             //, STATISTIC_HOUR:"$_id.HOUR"
-
+            , DATE: "$_id.DATE"
+            , HOUR: "$_id.HOUR"
             ////site
-            //, COUNTY : "$_id.COUNTY"
-            //, DISTRICT: "$_id.DISTRICT"
-            //, SITE_NAME : "$_id.SITE_NAME"
+            , COUNTY : "$_id.COUNTY"
+            , DISTRICT: "$_id.DISTRICT"
+            , SITE_NAME : "$_id.SITE_NAME"
+            , SITE_ID: "$_id.SITE_ID"
 
             ////phone_type
             //, VENDOR : "$_id.VENDOR"
             //, MODEL : "$_id.MODEL"
 
-            //, SIM_TYPE : "$_id.SIM_TYPE"
-            //, CARRIER : "$_id.CARRIER"
-            //, END_CODE: "$_id.END_CODE"
+            , NETWORK_TYPE : "$_id.NETWORK_TYPE"
+            , SIM_TYPE : "$_id.SIM_TYPE"
+            , CARRIER : "$_id.CARRIER"
+            , END_CODE: "$_id.END_CODE"
+
             , HO_CALLED_COUNT :1
             , HO_CALLED_SECOND :1
 	        , HO_CALLED_MINUTES :{$divide:["$HO_CALLED_SECOND",60]}

@@ -6,7 +6,7 @@ var agg_3g = db.cep3g_agg.aggregate([
         {$match: {
             /*time: interval,up_falg:1,*/
             //record_type:{$in:["1","2"]}
-            "$_id.DATE"        :{$in:[/^20/]}
+            DATE  :{$in:[/^20/]}
             //, HOUR      :{$in:[]}
             //, NETWORK_TYPE :{$in:[]}
             //, COUNTY    :{$in:[]}
