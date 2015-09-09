@@ -75,7 +75,7 @@
       <file leaf-file-name="cep3g_agg_site.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mongo_prepare_data/cep3g_agg_site.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1085" max-vertical-offset="1734">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1734">
               <caret line="78" column="31" selection-start-line="78" selection-start-column="7" selection-end-line="78" selection-end-column="31" />
               <folding />
             </state>
@@ -85,8 +85,8 @@
       <file leaf-file-name="cep3g_stat_site.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mongo_prepare_data/cep3g_stat_site.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.64354837" vertical-offset="1012" max-vertical-offset="1649">
-              <caret line="83" column="35" selection-start-line="83" selection-start-column="35" selection-end-line="83" selection-end-column="35" />
+            <state vertical-scroll-proportion="0.21935484" vertical-offset="0" max-vertical-offset="1649">
+              <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -556,7 +556,13 @@
       <option name="project" value="LOCAL" />
       <updated>1441784987287</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="cep3g_stat">
+      <created>1441785310383</created>
+      <option name="number" value="00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1441785310383</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -638,7 +644,8 @@
     <MESSAGE value="cep3g_join_agg_network2" />
     <MESSAGE value="cep3g_join_stat" />
     <MESSAGE value="cep3g_agg_divide" />
-    <option name="LAST_COMMIT_MESSAGE" value="cep3g_agg_divide" />
+    <MESSAGE value="cep3g_stat" />
+    <option name="LAST_COMMIT_MESSAGE" value="cep3g_stat" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1057,8 +1064,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mongo_prepare_data/cep3g_stat_site.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.64354837" vertical-offset="1012" max-vertical-offset="1649">
-          <caret line="83" column="35" selection-start-line="83" selection-start-column="35" selection-end-line="83" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.21935484" vertical-offset="0" max-vertical-offset="1649">
+          <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
           <folding />
         </state>
       </provider>
