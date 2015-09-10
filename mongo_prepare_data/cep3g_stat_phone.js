@@ -48,7 +48,8 @@ var agg_3g = db.cep3g_join.aggregate([
             //    , ""
             //]}
 
-            , DISTINCT:"$called_number"
+            //, DISTINCT:"$called_number"
+            , HO_DISTINCT:{$cond :[{$gt:["$HO",0]},"$called_number",0]}
         }}
         ,{$group:{
             _id: {
