@@ -29,17 +29,17 @@ var agg_3g = db.cep3g_join.aggregate([
             , HO : 1
             , HO_SECOND : 1
 
-            , SUM_CALLED_COUNT_0_3  :{"$cond" :[{$and:[{$gt:["$HO_SECOND",0 ]},{$lte:["$HO_SECOND",3 ]} ]},"$HO",0]}
-            , SUM_CALLED_COUNT_3_5  :{"$cond" :[{$and:[{$gt:["$HO_SECOND",3 ]},{$lte:["$HO_SECOND",5 ]} ]},"$HO",0]}
-            , SUM_CALLED_COUNT_5_7  :{"$cond" :[{$and:[{$gt:["$HO_SECOND",5 ]},{$lte:["$HO_SECOND",7 ]} ]},"$HO",0]}
-            , SUM_CALLED_COUNT_7_10 :{"$cond" :[{$and:[{$gt:["$HO_SECOND",7 ]},{$lte:["$HO_SECOND",10]} ]},"$HO",0]}
-            , SUM_CALLED_COUNT_10UP :{"$cond" :[       {$gt:["$HO_SECOND",10]}                            ,"$HO",0]}
+            , SUM_CALLED_COUNT_0_3  :{$cond :[{$and:[{$gt:["$HO_SECOND",0 ]},{$lte:["$HO_SECOND",3 ]} ]},"$HO",0]}
+            , SUM_CALLED_COUNT_3_5  :{$cond :[{$and:[{$gt:["$HO_SECOND",3 ]},{$lte:["$HO_SECOND",5 ]} ]},"$HO",0]}
+            , SUM_CALLED_COUNT_5_7  :{$cond :[{$and:[{$gt:["$HO_SECOND",5 ]},{$lte:["$HO_SECOND",7 ]} ]},"$HO",0]}
+            , SUM_CALLED_COUNT_7_10 :{$cond :[{$and:[{$gt:["$HO_SECOND",7 ]},{$lte:["$HO_SECOND",10]} ]},"$HO",0]}
+            , SUM_CALLED_COUNT_10UP :{$cond :[       {$gt:["$HO_SECOND",10]}                            ,"$HO",0]}
 
-            , SUM_CALLED_SECOND_0_3  :{"$cond" :[{$and:[{$gt:["$HO_SECOND",0 ]},{$lte:["$HO_SECOND",3 ]} ]},"$HO_SECOND",0]}
-            , SUM_CALLED_SECOND_3_5  :{"$cond" :[{$and:[{$gt:["$HO_SECOND",3 ]},{$lte:["$HO_SECOND",5 ]} ]},"$HO_SECOND",0]}
-            , SUM_CALLED_SECOND_5_7  :{"$cond" :[{$and:[{$gt:["$HO_SECOND",5 ]},{$lte:["$HO_SECOND",7 ]} ]},"$HO_SECOND",0]}
-            , SUM_CALLED_SECOND_7_10 :{"$cond" :[{$and:[{$gt:["$HO_SECOND",7 ]},{$lte:["$HO_SECOND",10]} ]},"$HO_SECOND",0]}
-            , SUM_CALLED_SECOND_10UP :{"$cond" :[       {$gt:["$HO_SECOND",10]}                            ,"$HO_SECOND",0]}
+            , SUM_CALLED_SECOND_0_3  :{$cond :[{$and:[{$gt:["$HO_SECOND",0 ]},{$lte:["$HO_SECOND",3 ]} ]},"$HO_SECOND",0]}
+            , SUM_CALLED_SECOND_3_5  :{$cond :[{$and:[{$gt:["$HO_SECOND",3 ]},{$lte:["$HO_SECOND",5 ]} ]},"$HO_SECOND",0]}
+            , SUM_CALLED_SECOND_5_7  :{$cond :[{$and:[{$gt:["$HO_SECOND",5 ]},{$lte:["$HO_SECOND",7 ]} ]},"$HO_SECOND",0]}
+            , SUM_CALLED_SECOND_7_10 :{$cond :[{$and:[{$gt:["$HO_SECOND",7 ]},{$lte:["$HO_SECOND",10]} ]},"$HO_SECOND",0]}
+            , SUM_CALLED_SECOND_10UP :{$cond :[       {$gt:["$HO_SECOND",10]}                            ,"$HO_SECOND",0]}
 
         }}
         ,{$group:{
