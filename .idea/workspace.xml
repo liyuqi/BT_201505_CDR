@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ff5f60e6-e6f7-43d7-8834-5a5ddc08f48e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mongo_schema/3g_schema.js" afterPath="$PROJECT_DIR$/mongo_schema/3g_schema.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/cdr_CRUD_query.ejs" afterPath="$PROJECT_DIR$/views/cdr_CRUD_query.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/cdr_mongo.js" afterPath="$PROJECT_DIR$/routes/cdr_mongo.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nodeLogFile.log" afterPath="$PROJECT_DIR$/nodeLogFile.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="CDR0324.iws" />
@@ -130,20 +126,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cdr_CRUD_query.ejs" pinned="false" current-in-tab="true">
+      <file leaf-file-name="cdr_CRUD_query.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/cdr_CRUD_query.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6511628" vertical-offset="2601" max-vertical-offset="3417">
+            <state vertical-scroll-proportion="-18.307692" vertical-offset="2601" max-vertical-offset="3417">
               <caret line="181" column="18" selection-start-line="181" selection-start-column="18" selection-end-line="181" selection-end-column="18" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="2278">
+            <state vertical-scroll-proportion="0.52987015" vertical-offset="170" max-vertical-offset="2278">
               <caret line="34" column="27" selection-start-line="34" selection-start-column="27" selection-end-line="34" selection-end-column="27" />
               <folding />
             </state>
@@ -374,21 +370,21 @@
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../BT_201509_CDR" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="99" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="151" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="117" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="180" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="118" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="182" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="536" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="856" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="115" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="174" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="114" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="173" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="115" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="174" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="539" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="848" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
   </component>
   <component name="RecentsManager">
@@ -462,12 +458,6 @@
       <created>1427168524473</created>
       <option name="number" value="Default" />
       <updated>1427168524473</updated>
-    </task>
-    <task id="LOCAL-00031" summary="cep3g_join_stat">
-      <created>1441783379670</created>
-      <option name="number" value="00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1441783379670</updated>
     </task>
     <task id="LOCAL-00032" summary="cep3g_join_stat">
       <created>1441784693482</created>
@@ -757,7 +747,13 @@
       <option name="project" value="LOCAL" />
       <updated>1441869102942</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="all agg">
+      <created>1441879247822</created>
+      <option name="number" value="00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1441879247822</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -1226,14 +1222,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="2278">
-          <caret line="34" column="27" selection-start-line="34" selection-start-column="27" selection-end-line="34" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mongo_schema/3g_schema.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="4930">
@@ -1270,8 +1258,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/cdr_CRUD_query.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6511628" vertical-offset="2601" max-vertical-offset="3417">
+        <state vertical-scroll-proportion="-18.307692" vertical-offset="2601" max-vertical-offset="3417">
           <caret line="181" column="18" selection-start-line="181" selection-start-column="18" selection-end-line="181" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.52987015" vertical-offset="170" max-vertical-offset="2278">
+          <caret line="34" column="27" selection-start-line="34" selection-start-column="27" selection-end-line="34" selection-end-column="27" />
           <folding />
         </state>
       </provider>
