@@ -23,14 +23,31 @@ var agg_3g = db.cep3g_join.aggregate([
             //, MODEL  : "$MODEL"
 
             , NETWORK_TYPE : 1
-            , HO : 1
-            , HO_SECOND : 1
             , END_CODE : "$cause_for_termination"
             , SIM_TYPE : "$SIM_TYPE"
             , CARRIER : "$CARRIER"
 
-            //, HO_COUNT : 1
-            //, HO_CALLED_SECOND : 1
+            , HO : 1
+            , HO_SECOND : 1
+
+            //, SUM_CALLED_COUNT_0_3 :{"$HO_CALLED_MINUTES":{$gt:0,$lte:3}}
+            //, SUM_CALLED_COUNT_3_5 :{"$HO_CALLED_MINUTES":{$gt:3,$lte:5}}
+            //, SUM_CALLED_COUNT_5_7 :{"$HO_CALLED_MINUTES":{$gt:5,$lte:7}}
+            //, SUM_CALLED_COUNT_7_10:{"$HO_CALLED_MINUTES":{$gt:7,$lte:10}}
+            //, SUM_CALLED_COUNT_10UP:{"$HO_CALLED_MINUTES":{$gt:10}}
+
+            , SUM_CALLED_COUNT_0_3  :{$sum:{"$cond" : [{"$HO_SECOND":{$gt:0,$lte:3 }},"$HO",0]}}
+            //, SUM_CALLED_COUNT_3_5  :{"$cond" : [{"$HO_SECOND":{$gt:3,$lte:5 }},"$HO",0]}
+            //, SUM_CALLED_COUNT_5_7  :{"$cond" : [{"$HO_SECOND":{$gt:5,$lte:7 }},"$HO",0]}
+            //, SUM_CALLED_COUNT_7_10 :{"$cond" : [{"$HO_SECOND":{$gt:7,$lte:10}},"$HO",0]}
+            //, SUM_CALLED_COUNT_10UP :{"$cond" : [{"$HO_SECOND":{$gt:10       }},"$HO",0]}
+
+            //, SUM_CALLED_MINUTES_0_3  :{"$cond" : {"$HO_CALLED_MINUTES" :{$and:[{$gt:0},{$lte:3}]}},"$HO_CALLED_MINUTES",0}
+            //, SUM_CALLED_MINUTES_3_5  :{"$cond" : {"$HO_CALLED_MINUTES" :{$and:[{$gt:0},{$lte:3}]}},"$HO_CALLED_MINUTES",0}
+            //, SUM_CALLED_MINUTES_5_7  :{"$cond" : {"$HO_CALLED_MINUTES" :{$and:[{$gt:0},{$lte:3}]}},"$HO_CALLED_MINUTES",0}
+            //, SUM_CALLED_MINUTES_7_10 :{"$cond" : {"$HO_CALLED_MINUTES" :{$and:[{$gt:0},{$lte:3}]}},"$HO_CALLED_MINUTES",0}
+            //, SUM_CALLED_MINUTES_10UP :{"$cond" : {"$HO_CALLED_MINUTES" :{$and:[{$gt:0},{$lte:3}]}},"$HO_CALLED_MINUTES",0}
+
         }}
         ,{$group:{
             _id: {
@@ -57,25 +74,7 @@ var agg_3g = db.cep3g_join.aggregate([
 
             , HO_CALLED_COUNT:{$sum:"$HO"}
             , HO_CALLED_SECOND:{$sum:"$HO_SECOND"}
-
-            //, SUM_CALLED_COUNT_0_3 :{"$HO_CALLED_MINUTES":{$gt:0,$lte:3}}
-            //, SUM_CALLED_COUNT_3_5 :{"$HO_CALLED_MINUTES":{$gt:3,$lte:5}}
-            //, SUM_CALLED_COUNT_5_7 :{"$HO_CALLED_MINUTES":{$gt:5,$lte:7}}
-            //, SUM_CALLED_COUNT_7_10:{"$HO_CALLED_MINUTES":{$gt:7,$lte:10}}
-            //, SUM_CALLED_COUNT_10UP:{"$HO_CALLED_MINUTES":{$gt:10}}
-
-            , SUM_CALLED_COUNT_0_3  :{$sum:{"$cond" : [{"$HO_SECOND":{$gt:0,$lte:3 }},"$HO",0]}}
-            //, SUM_CALLED_COUNT_3_5  :{"$cond" : [{"$HO_SECOND":{$gt:3,$lte:5 }},"$HO",0]}
-            //, SUM_CALLED_COUNT_5_7  :{"$cond" : [{"$HO_SECOND":{$gt:5,$lte:7 }},"$HO",0]}
-            //, SUM_CALLED_COUNT_7_10 :{"$cond" : [{"$HO_SECOND":{$gt:7,$lte:10}},"$HO",0]}
-            //, SUM_CALLED_COUNT_10UP :{"$cond" : [{"$HO_SECOND":{$gt:10       }},"$HO",0]}
-
-            //, SUM_CALLED_MINUTES_0_3  :{"$cond" : {"$HO_CALLED_MINUTES" :{$and:[{$gt:0},{$lte:3}]}},"$HO_CALLED_MINUTES",0}
-            //, SUM_CALLED_MINUTES_3_5  :{"$cond" : {"$HO_CALLED_MINUTES" :{$and:[{$gt:0},{$lte:3}]}},"$HO_CALLED_MINUTES",0}
-            //, SUM_CALLED_MINUTES_5_7  :{"$cond" : {"$HO_CALLED_MINUTES" :{$and:[{$gt:0},{$lte:3}]}},"$HO_CALLED_MINUTES",0}
-            //, SUM_CALLED_MINUTES_7_10 :{"$cond" : {"$HO_CALLED_MINUTES" :{$and:[{$gt:0},{$lte:3}]}},"$HO_CALLED_MINUTES",0}
-            //, SUM_CALLED_MINUTES_10UP :{"$cond" : {"$HO_CALLED_MINUTES" :{$and:[{$gt:0},{$lte:3}]}},"$HO_CALLED_MINUTES",0}
-
+            , SUM_CALLED_COUNT_0_3 : {$sum:"$SUM_CALLED_COUNT_0_3"}
         }}
         ,{$project:{
             _id:0
@@ -102,7 +101,7 @@ var agg_3g = db.cep3g_join.aggregate([
             , HO_CALLED_SECOND :1
             , HO_CALLED_MINUTES :{$divide:["$HO_CALLED_SECOND",60]}
 
-            , SUM_CALLED_COUNT_0_3 : {$sum:"$SUM_CALLED_COUNT_0_3"}
+            , SUM_CALLED_COUNT_0_3 : 1
             //, SUM_CALLED_COUNT_3_5 : {$sum:"$SUM_CALLED_COUNT_3_5"}
             //, SUM_CALLED_COUNT_5_7 : {$sum:"$SUM_CALLED_COUNT_5_7"}
             //, SUM_CALLED_COUNT_7_10: {$sum:"$SUM_CALLED_COUNT_7_10"}

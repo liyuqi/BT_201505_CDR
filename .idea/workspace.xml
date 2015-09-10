@@ -86,9 +86,12 @@
       <file leaf-file-name="cep3g_stat_site.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mongo_prepare_data/cep3g_stat_site.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.3360791" vertical-offset="311" max-vertical-offset="2295">
-              <caret line="66" column="42" selection-start-line="66" selection-start-column="38" selection-end-line="66" selection-end-column="42" />
-              <folding />
+            <state vertical-scroll-proportion="0.49492016" vertical-offset="1274" max-vertical-offset="2142">
+              <caret line="103" column="38" selection-start-line="103" selection-start-column="38" selection-end-line="103" selection-end-column="38" />
+              <folding>
+                <element signature="e#1022#1085#0" expanded="false" />
+                <element signature="e#1864#1977#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -160,9 +163,8 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="62" />
-    <option name="y" value="79" />
     <option name="width" value="1395" />
-    <option name="height" value="786" />
+    <option name="height" value="907" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -358,12 +360,6 @@
       <created>1427168524473</created>
       <option name="number" value="Default" />
       <updated>1427168524473</updated>
-    </task>
-    <task id="LOCAL-00001" summary="1st">
-      <created>1427169030774</created>
-      <option name="number" value="00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1427169030774</updated>
     </task>
     <task id="LOCAL-00002" summary="express3">
       <created>1427195144330</created>
@@ -653,7 +649,13 @@
       <option name="project" value="LOCAL" />
       <updated>1441795729881</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="sum">
+      <created>1441796168980</created>
+      <option name="number" value="00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1441796168982</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -677,7 +679,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="62" y="79" width="1395" height="786" extended-state="0" />
+    <frame x="62" y="0" width="1395" height="907" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5989975" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
@@ -742,7 +744,8 @@
     <MESSAGE value="cep3g_stat_035710 HO_MINute" />
     <MESSAGE value="cep3g_stat_035710 HO_MINUTES" />
     <MESSAGE value="stat" />
-    <option name="LAST_COMMIT_MESSAGE" value="stat" />
+    <MESSAGE value="sum" />
+    <option name="LAST_COMMIT_MESSAGE" value="sum" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1162,9 +1165,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mongo_prepare_data/cep3g_stat_site.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.3360791" vertical-offset="311" max-vertical-offset="2295">
-          <caret line="66" column="42" selection-start-line="66" selection-start-column="38" selection-end-line="66" selection-end-column="42" />
-          <folding />
+        <state vertical-scroll-proportion="0.49492016" vertical-offset="1274" max-vertical-offset="2142">
+          <caret line="103" column="38" selection-start-line="103" selection-start-column="38" selection-end-line="103" selection-end-column="38" />
+          <folding>
+            <element signature="e#1022#1085#0" expanded="false" />
+            <element signature="e#1864#1977#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
