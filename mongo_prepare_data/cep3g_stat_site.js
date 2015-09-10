@@ -36,7 +36,7 @@ var agg_3g = db.cep3g_join.aggregate([
             //, SUM_CALLED_COUNT_7_10:{"$HO_CALLED_MINUTES":{$gt:7,$lte:10}}
             //, SUM_CALLED_COUNT_10UP:{"$HO_CALLED_MINUTES":{$gt:10}}
 
-            , SUM_CALLED_COUNT_0_3  :{$sum:{"$cond" : [{"$HO_SECOND":{$gt:0,$lte:3 }},"$HO",0]}}
+            , SUM_CALLED_COUNT_0_3  :{"$cond" : [{"$HO_SECOND":{$gt:0,$lte:3 }},"$HO",0]}
             //, SUM_CALLED_COUNT_3_5  :{"$cond" : [{"$HO_SECOND":{$gt:3,$lte:5 }},"$HO",0]}
             //, SUM_CALLED_COUNT_5_7  :{"$cond" : [{"$HO_SECOND":{$gt:5,$lte:7 }},"$HO",0]}
             //, SUM_CALLED_COUNT_7_10 :{"$cond" : [{"$HO_SECOND":{$gt:7,$lte:10}},"$HO",0]}
@@ -78,10 +78,9 @@ var agg_3g = db.cep3g_join.aggregate([
         }}
         ,{$project:{
             _id:0
-            //, STATISTIC_DATE:"$_id.DATE"
-            //, STATISTIC_HOUR:"$_id.HOUR"
             , DATE: "$_id.DATE"
             , HOUR: "$_id.HOUR"
+
             ////site
             , COUNTY : "$_id.COUNTY"
             , DISTRICT: "$_id.DISTRICT"
