@@ -293,7 +293,7 @@ var cdr3g = db.cep3g_gen.find({
 //            '\tCARRIER:'+ doc.CARRIER +'\ted_num:'+ doc.called_number.substr(0,4));
         }
         //doc.up_flag = 1; //======================================== update done, erich up_flag:1
-        db.cep3g_sample.update({_id: doc._id}, {$set: {up_flag:1}});
+        //db.cep3g_sample.update({_id: doc._id}, {$set: {up_flag:1}});
 //        db.cep3g_gen.update({_id: doc._id}, {$set: {up_flag:1}});
         db.cep3g_join.save(doc);
 	print(doc._id)
@@ -301,5 +301,5 @@ var cdr3g = db.cep3g_gen.find({
     i++;
 });
 print(new Date().toLocaleTimeString()+'\tprocess:'+i);
-db.cep3g_sample.findOne({up_flag:1},{time:1,up_flag:1});
+//db.cep3g_sample.findOne({up_flag:1},{time:1,up_flag:1});
 //mongo cdr cep3g_join.js > ./cep3g_join_result_$(date +"%Y%m%d")_$(date +"%H%M%S").txt
