@@ -1,90 +1,81 @@
 // mongo cdr cep3g_agg.js  > ./log/agg_$(date +"%Y%m%d")_$(date +"%H%M%S").txt
 
-
 print(new Date().toLocaleTimeString());
 var agg_3g = db.cep3g_join.aggregate([
         {$match: {
-        /*time: interval,up_falg:1,*/
+            /*time: interval,up_falg:1,*/
             record_type:{$in:["1","2"]}
         }}
         ,{$project:{
-            //STATISTIC_DATE : "$time"
-              DATE:{ $substr: [ "$date_time", 0, 10 ] }
+            DATE:{ $substr: [ "$date_time", 0, 10 ] }
             , HOUR:{ $substr: [ "$date_time", 11, 2 ] }
-
-
-            //site
-            , COUNTY : { $substr: [ "$BTS_ADDRESS", 0, 9 ] }//"$BTS_ADDRESS" //縣市3 zh zhar
-            , DISTRICT : { $substr: [ "$BTS_ADDRESS", 9, 9 ] }//"$BTS_CODE" //地區
-            , SITE_NAME : "$SITE_NAME"
-            , SITE_ID : "$SITE_ID"
-
-            ////phone_type
-            //, VENDOR : "$VENDOR"
-            //, MODEL  : "$MODEL"
-
             , NETWORK_TYPE : 1
-            , HO : 1
-            , HO_SECOND : 1
             , END_CODE : "$cause_for_termination"
             , SIM_TYPE : "$SIM_TYPE"
             , CARRIER : "$CARRIER"
 
-            //, HO_CALLED_1 : 1
-            //, CALLDURATION : {$add:["$orig_mcz_duration","$term_mcz_duration"]}
+            //site
+            //, COUNTY : { $substr: [ "$BTS_ADDRESS", 0, 9 ] }//"$BTS_ADDRESS" //縣市3 zh zhar
+            //, DISTRICT : { $substr: [ "$BTS_ADDRESS", 9, 9 ] }//"$BTS_CODE" //地區
+            //, SITE_NAME : "$SITE_NAME"
+            //, SITE_ID : "$SITE_ID"
+
+            ////phone_type
+            , VENDOR : "$VENDOR"
+            , MODEL  : "$MODEL"
+
+            , HO_DISTINCT:{$cond :[{$gt:["$HO",0]},"$called_number",""]}
+            , HO : 1
+            , HO_SECOND : 1
         }}
         ,{$group:{
             _id: {
-                //STATISTIC_DATE : {
-                    DATE : "$DATE"
-                  , HOUR : "$HOUR"
-                //}
-                //site
-                , COUNTY: "$COUNTY" //縣市
-                , DISTRICT: "$DISTRICT" //地區
-                , SITE_NAME: "$SITE_NAME"
-                , SITE_ID: "$SITE_ID"
-
-                ////phone_type
-                //, VENDOR: "$VENDOR"
-                //, MODEL: "$MODEL"
-
+                DATE : "$DATE"
+                , HOUR : "$HOUR"
                 , NETWORK_TYPE : "$NETWORK_TYPE"
                 , END_CODE: "$END_CODE"
                 , SIM_TYPE: "$SIM_TYPE"
                 , CARRIER: "$CARRIER"
-                //, IMEI: "$IMEI"
-            }
 
+                //site
+                //, COUNTY: "$COUNTY" //縣市
+                //, DISTRICT: "$DISTRICT" //地區
+                //, SITE_NAME: "$SITE_NAME"
+                //, SITE_ID: "$SITE_ID"
+
+                ////phone_type
+                , VENDOR: "$VENDOR"
+                , MODEL: "$MODEL"
+            }
+            , HO_DISTINCT:{$addToSet:"$HO_DISTINCT"}
             , HO_CALLED_COUNT:{$sum:"$HO"}
             , HO_CALLED_SECOND:{$sum:"$HO_SECOND"}
         }}
         ,{$project:{
             _id:0
-            //, STATISTIC_DATE:"$_id.DATE"
-            //, STATISTIC_HOUR:"$_id.HOUR"
-            , DATE: "$_id.DATE"
-            , HOUR: "$_id.HOUR"
+            , DATE          : "$_id.DATE"
+            , HOUR          : "$_id.HOUR"
+            , NETWORK_TYPE  : "$_id.NETWORK_TYPE"
+            , SIM_TYPE      : "$_id.SIM_TYPE"
+            , CARRIER       : "$_id.CARRIER"
+            , END_CODE      : "$_id.END_CODE"
+
             ////site
-            , COUNTY : "$_id.COUNTY"
-            , DISTRICT: "$_id.DISTRICT"
-            , SITE_NAME : "$_id.SITE_NAME"
-            , SITE_ID: "$_id.SITE_ID"
+            , COUNTY        : "$_id.COUNTY"
+            , DISTRICT      : "$_id.DISTRICT"
+            , SITE_NAME     : "$_id.SITE_NAME"
+            , SITE_ID       : "$_id.SITE_ID"
 
             ////phone_type
-            //, VENDOR : "$_id.VENDOR"
-            //, MODEL : "$_id.MODEL"
+            //, VENDOR        : "$_id.VENDOR"
+            //, MODEL         : "$_id.MODEL"
 
-            , NETWORK_TYPE : "$_id.NETWORK_TYPE"
-            , SIM_TYPE : "$_id.SIM_TYPE"
-            , CARRIER : "$_id.CARRIER"
-            , END_CODE: "$_id.END_CODE"
-
-            , HO_CALLED_COUNT :1
-            , HO_CALLED_SECOND :1
-	        , HO_CALLED_MINUTES :{$divide:["$HO_CALLED_SECOND",60]}
+            , HO_DISTINCT       :1
+            , HO_CALLED_COUNT   :1
+            , HO_CALLED_SECOND  :1
+            , HO_CALLED_MINUTES :{$divide:["$HO_CALLED_SECOND",60]}
         }}
-        ,{    $out:"cep3g_agg"}
+        ,{    $out:"cep3g_stat_phone"}
     ]
     //,{    explain: true}
     ,{    allowDiskUse: true}
