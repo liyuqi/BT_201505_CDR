@@ -42,11 +42,11 @@ var agg_3g = db.cep3g_join.aggregate([
 
             , DISTINCT:
 
-            {$cond : [{
-                "$record_type" : "1"},
+            {$cond : [
+                {"$record_type" : "1"},
                 "$called_number"
-                , {$cond : [{
-                    "$record_type" :"2"}
+                , {$cond : [
+                    {"$record_type" :"2"}
                     ,"$calling_imsi"
                     ,""
                 ]}
