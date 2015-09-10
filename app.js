@@ -3,7 +3,7 @@
  */
 
 var fs = require('fs');
-var logFile = fs.createWriteStream('./nodeLogFile.log', {flags: 'a'});
+//var logFile = fs.createWriteStream('./nodeLogFile.log', {flags: 'a'});
 
 var express = require('express');
 var routes = require('./routes');
