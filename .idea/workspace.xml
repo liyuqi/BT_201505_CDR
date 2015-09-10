@@ -97,7 +97,7 @@
         <entry file="file://$PROJECT_DIR$/mongo_prepare_data/cep3g_stat_phone.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.6147799" vertical-offset="425" max-vertical-offset="2618">
-              <caret line="48" column="42" selection-start-line="48" selection-start-column="42" selection-end-line="48" selection-end-column="42" />
+              <caret line="48" column="46" selection-start-line="48" selection-start-column="46" selection-end-line="48" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -368,12 +368,6 @@
       <created>1427168524473</created>
       <option name="number" value="Default" />
       <updated>1427168524473</updated>
-    </task>
-    <task id="LOCAL-00011" summary="mongo_prepare_data">
-      <created>1441701615378</created>
-      <option name="number" value="00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1441701615378</updated>
     </task>
     <task id="LOCAL-00012" summary="mongo_prepare_data">
       <created>1441701733117</created>
@@ -663,7 +657,13 @@
       <option name="project" value="LOCAL" />
       <updated>1441853370376</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="distinct">
+      <created>1441853448961</created>
+      <option name="number" value="00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1441853448961</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -1175,7 +1175,7 @@
     <entry file="file://$PROJECT_DIR$/mongo_prepare_data/cep3g_stat_phone.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6147799" vertical-offset="425" max-vertical-offset="2618">
-          <caret line="48" column="42" selection-start-line="48" selection-start-column="42" selection-end-line="48" selection-end-column="42" />
+          <caret line="48" column="46" selection-start-line="48" selection-start-column="46" selection-end-line="48" selection-end-column="46" />
           <folding />
         </state>
       </provider>
