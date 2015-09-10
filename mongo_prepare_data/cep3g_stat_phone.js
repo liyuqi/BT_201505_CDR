@@ -40,6 +40,7 @@ var agg_3g = db.cep3g_join.aggregate([
             , SUM_CALLED_SECOND_7_10 :{$cond :[{$and:[{$gt:["$HO_SECOND",7 ]},{$lte:["$HO_SECOND",10]} ]},"$HO_SECOND",0]}
             , SUM_CALLED_SECOND_10UP :{$cond :[       {$gt:["$HO_SECOND",10]}                            ,"$HO_SECOND",0]}
 
+            , record_type :1
             , DISTINCT:
 
             {$cond : [
