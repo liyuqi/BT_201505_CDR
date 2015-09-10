@@ -60,7 +60,7 @@ var agg_3g = db.cep3g_join.aggregate([
             , HO_CALLED_SECOND:{$sum:"$HO_SECOND"}
         }}
         ,{$project:{
-            _id:1
+            _id:0
             //, STATISTIC_DATE:"$_id.DATE"
             //, STATISTIC_HOUR:"$_id.HOUR"
             , DATE: "$_id.DATE"

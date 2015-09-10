@@ -90,13 +90,13 @@ app.get('/', routes.index);
 //================================================= C D R 2g ============================
 //app.get('/cdr_CRUD_insert', cdr_2g_mongo.index);
 //app.post('/cdr_CRUD_insert',cdr_mongo.cdr_CRUD_insert(dbCDR));
-app.get('/cdr_CRUD_2g_query', 		cdr_2g_mongo.cdr_CRUD_loglist(dbCDR));
-app.post('/cdr_CRUD_2g_query', 	cdr_2g_mongo.cdr_CRUD_query(dbCDR));
-app.get('/cdr_CRUD_2g_show', 		cdr_2g_mongo.cdr_CRUD_count(dbCDR));
+//app.get('/cdr_CRUD_2g_query', 	cdr_2g_mongo.cdr_CRUD_loglist(dbCDR));
+//app.post('/cdr_CRUD_2g_query', 	cdr_2g_mongo.cdr_CRUD_query(dbCDR));
+//app.get('/cdr_CRUD_2g_show', 		cdr_2g_mongo.cdr_CRUD_count(dbCDR));
 
 //app.get('/cdr_2g_site_query', 	cdr_2g_mongo.cdr_2g_site_report(dbCDR));
 //app.post('/cdr_2g_site_query', 	cdr_2g_mongo.cdr_2g_site_query(dbCDR));
-//app.use('/cdr_3g_phone_report', cdr_mongo.cdr_3g_phone_report(dbCDR));
+//app.use('/cdr_3g_phone_report', 	cdr_mongo.cdr_3g_phone_report(dbCDR));
 
 
 //================================================= C D R 3g ============================
@@ -108,7 +108,8 @@ app.get('/cdr_CRUD_show', 		cdr_mongo.cdr_CRUD_count(dbCDR));
 
 app.get('/cdr_3g_site_query', 	cdr_mongo.cdr_3g_site_report(dbCDR));
 app.post('/cdr_3g_site_query', 	cdr_mongo.cdr_3g_site_query(dbCDR));
-//app.use('/cdr_3g_phone_report', cdr_mongo.cdr_3g_phone_report(dbCDR));
+//app.post('/cdr_3g_phone_query', 	cdr_mongo.cdr_3g_site_query(dbCDR));
+app.use('/cdr_3g_phone_report', cdr_mongo.cdr_3g_phone_report(dbCDR));
 
 
 //app.get('/mongoStatus',mongoStatus.page);

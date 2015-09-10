@@ -302,7 +302,7 @@ exports.cdr_3g_phone_report = function(mongodb){
         collection.count({},function(err,db_count){
             collection.count({}, function (err, query_count) {
                 collection.find({}, {limit: _max_pageunit}, function (err, docs) {
-                    if (docs.length) console.log('docs.length: ' + docs.length);
+                    //if (docs.length) console.log('docs.length: ' + docs.length);
 
                     res.render('cdr_3g_phone_report', {
                         title: 'cep3g phone',
