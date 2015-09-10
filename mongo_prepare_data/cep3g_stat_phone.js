@@ -88,7 +88,8 @@ var agg_3g = db.cep3g_join.aggregate([
             , SUM_CALLED_SECOND_7_10: {$sum:"$SUM_CALLED_SECOND_5_7"}
             , SUM_CALLED_SECOND_10UP: {$sum:"$SUM_CALLED_SECOND_7_10"}
 
-            , DISTINCT:{$addToSet:"$DISTINCT"}
+            //, DISTINCT:{$addToSet:"$DISTINCT"}
+            , HO_DISTINCT:{$addToSet:"$DISTINCT"}
         }}
         ,{$project:{
             _id:0
@@ -126,7 +127,8 @@ var agg_3g = db.cep3g_join.aggregate([
             , SUM_CALLED_MINUTES_7_10: {$divide:["$SUM_CALLED_SECOND_7_10",60]}
             , SUM_CALLED_MINUTES_10UP: {$divide:["$SUM_CALLED_SECOND_10UP",60]}
 
-            , DISTINCT:1
+            //, DISTINCT:1
+            , HO_DISTINCT:1
         }}
         ,{    $out:"cep3g_stat_phone"}
     ]
