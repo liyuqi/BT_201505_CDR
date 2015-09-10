@@ -12,7 +12,7 @@ db.cep3g_sample.find({
 });
 
 //req fields
-db.cep3g.findOne({
+db.cep3g_sample.findOne({
     //"record_type":{$in:["1","2"]}
 },{
     "called_number" : 1,          //^[]#index

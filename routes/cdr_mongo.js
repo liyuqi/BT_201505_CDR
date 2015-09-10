@@ -208,7 +208,7 @@ exports.cdr_3g_site_query = function(mongodb){
         for (var key in req.body){
             if(req.body[key].length==0);
             else
-                query['_id.'+key] = req.body[key].trim();
+                query[''+key] = req.body[key].trim();
         }
 
 
@@ -249,7 +249,7 @@ exports.cdr_3g_site_query = function(mongodb){
             res.redirect('cdr_3g_site_query');
 
         //query
-        var collection = mongodb.get('cep3g_agg');
+        var collection = mongodb.get('cep3g_join');
         collection.count({},function(err,db_count){
             collection.count(query, function (err, query_count) {
                 collection.find(query, {limit: _max_pageunit}, function (err, docs) {
@@ -298,7 +298,7 @@ exports.cdr_3g_phone_report = function(mongodb){
     return function(req, res) {
 
         //query
-        var collection = mongodb.get('cep3g_agg');
+        var collection = mongodb.get('cep3g_join');
         collection.count({},function(err,db_count){
             collection.count({}, function (err, query_count) {
                 collection.find({}, {limit: _max_pageunit}, function (err, docs) {
