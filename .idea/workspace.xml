@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ff5f60e6-e6f7-43d7-8834-5a5ddc08f48e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mongo_prepare_data/cep3g_stat_phone.js" afterPath="$PROJECT_DIR$/mongo_prepare_data/cep3g_stat_phone.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="CDR0324.iws" />
@@ -429,12 +428,6 @@
       <option name="number" value="Default" />
       <updated>1427168524473</updated>
     </task>
-    <task id="LOCAL-00028" summary="cep3g_join_agg">
-      <created>1441769154686</created>
-      <option name="number" value="00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1441769154686</updated>
-    </task>
     <task id="LOCAL-00029" summary="cep3g_join_agg_network">
       <created>1441770741118</created>
       <option name="number" value="00029" />
@@ -723,7 +716,13 @@
       <option name="project" value="LOCAL" />
       <updated>1441867711365</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="distinct">
+      <created>1441867936183</created>
+      <option name="number" value="00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1441867936183</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -810,11 +809,11 @@
     <MESSAGE value="cond" />
     <MESSAGE value="035710" />
     <MESSAGE value="sec to minutes" />
-    <MESSAGE value="distinct" />
     <MESSAGE value="distinct record type" />
     <MESSAGE value="HO distinct" />
     <MESSAGE value="agg _id:0" />
-    <option name="LAST_COMMIT_MESSAGE" value="agg _id:0" />
+    <MESSAGE value="distinct" />
+    <option name="LAST_COMMIT_MESSAGE" value="distinct" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
