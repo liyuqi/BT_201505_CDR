@@ -75,7 +75,7 @@ var agg_3g = db.cep3g_join.aggregate([
             , HO_CALLED_SECOND  :1
             , HO_CALLED_MINUTES :{$divide:["$HO_CALLED_SECOND",60]}
         }}
-        ,{    $out:"cep3g_stat_phone"}
+        ,{    $out:"cep3g_agg"}
     ]
     //,{    explain: true}
     ,{    allowDiskUse: true}
