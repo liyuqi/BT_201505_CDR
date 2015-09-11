@@ -179,7 +179,7 @@ var cdr3g = db.cep3g_gen.find({
                 } catch(e){ } //doc.SITE_ID = '2g'; doc.HANGOVER    = 1;}
                 try {
                     //var calling_imei = doc.calling_imei.substr(0,8);
-                    if(phone_map[doc.calling_imei.substr(0,8)].IMEI_VALUE==doc.called_imei.substr(0,8)){}
+                    if(phone_map[doc.calling_imei.substr(0,8)].IMEI_VALUE==doc.calling_imei.substr(0,8)){}
                     else {
                         doc.PT_OID      = "NA";
                         doc.DMS_ID      = "NA";
@@ -229,7 +229,7 @@ var cdr3g = db.cep3g_gen.find({
         }else if(doc.record_type=="2") {
             try {
                 var cell = doc.called_subs_last_lac +'-'+ doc.called_subs_last_ci;
-                var called_imei = doc.called_imei.substr(0, 8);
+                //var called_imei = doc.called_imei.substr(0, 8);
                 try {
                     doc.SITE_ID     = site3g_map[cell].SITE_ID;
                     doc.SITE_NAME   = site3g_map[cell].SITE_NAME;
@@ -257,7 +257,7 @@ var cdr3g = db.cep3g_gen.find({
                     }
                 } catch(e){ } //doc.SITE_ID = '2g'; doc.HANGOVER    = 1;}
                 try {
-                    if(phone_map[doc.calling_imei.substr(0,8)].IMEI_VALUE==doc.called_imei.substr(0,8)){}
+                    if(phone_map[doc.called_imei.substr(0,8)].IMEI_VALUE==doc.called_imei.substr(0,8)){}
                     else {
                         doc.PT_OID      = "NA";
                         doc.DMS_ID      = "NA";
