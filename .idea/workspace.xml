@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ff5f60e6-e6f7-43d7-8834-5a5ddc08f48e" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mongo_prepare_data/cep3g_join.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mongo_prepare_data/cep3g_join_cron.js" afterPath="$PROJECT_DIR$/mongo_prepare_data/cep3g_join_cron.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -29,8 +30,8 @@
             <file leaf-file-name="cep3g_join_cron.js" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/mongo_prepare_data/cep3g_join_cron.js">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.48626372" vertical-offset="1108" max-vertical-offset="2465">
-                    <caret line="192" column="84" selection-start-line="192" selection-start-column="84" selection-end-line="192" selection-end-column="84" />
+                  <state vertical-scroll-proportion="0.6181818" vertical-offset="935" max-vertical-offset="2465">
+                    <caret line="187" column="21" selection-start-line="187" selection-start-column="21" selection-end-line="187" selection-end-column="21" />
                     <folding>
                       <element signature="n#!!doc" expanded="true" />
                       <element signature="n#!!block;n#buildSite2gMap#0" expanded="false" />
@@ -39,20 +40,20 @@
                       <element signature="n#!!block;n#buildCARRIERmap#0" expanded="false" />
                       <element signature="e#4959#4980#0" expanded="false" />
                       <element signature="e#5257#5290#0" expanded="false" />
-                      <element signature="e#6895#7558#0" expanded="false" />
-                      <element signature="e#7615#8306#0" expanded="false" />
-                      <element signature="e#8067#8288#0" expanded="false" />
-                      <element signature="e#9301#9863#0" expanded="false" />
-                      <element signature="e#9910#10478#0" expanded="false" />
-                      <element signature="e#10524#10631#0" expanded="false" />
-                      <element signature="e#10997#11082#0" expanded="false" />
-                      <element signature="e#11669#12331#0" expanded="false" />
-                      <element signature="e#12390#13081#0" expanded="false" />
-                      <element signature="e#14000#14561#0" expanded="false" />
-                      <element signature="e#14608#15193#0" expanded="false" />
-                      <element signature="e#15239#15346#0" expanded="false" />
-                      <element signature="e#15713#15798#0" expanded="false" />
-                      <element signature="e#16175#16265#0" expanded="false" />
+                      <element signature="e#6909#7572#0" expanded="false" />
+                      <element signature="e#7629#8320#0" expanded="false" />
+                      <element signature="e#8081#8302#0" expanded="false" />
+                      <element signature="e#9315#9877#0" expanded="false" />
+                      <element signature="e#9924#10492#0" expanded="false" />
+                      <element signature="e#10538#10645#0" expanded="false" />
+                      <element signature="e#11011#11096#0" expanded="false" />
+                      <element signature="e#11683#12345#0" expanded="false" />
+                      <element signature="e#12404#13095#0" expanded="false" />
+                      <element signature="e#14014#14575#0" expanded="false" />
+                      <element signature="e#14622#15207#0" expanded="false" />
+                      <element signature="e#15253#15360#0" expanded="false" />
+                      <element signature="e#15727#15812#0" expanded="false" />
+                      <element signature="e#16189#16279#0" expanded="false" />
                     </folding>
                   </state>
                 </provider>
@@ -73,9 +74,7 @@
                 <provider selected="true" editor-type-id="text-editor">
                   <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1700">
                     <caret line="64" column="45" selection-start-line="64" selection-start-column="45" selection-end-line="64" selection-end-column="45" />
-                    <folding>
-                      <marker date="1441868766722" expanded="true" signature="190:219" placeholder="/*...*/" />
-                    </folding>
+                    <folding />
                   </state>
                 </provider>
               </entry>
@@ -111,11 +110,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="cdr_3g_site_query.ejs" pinned="false" current-in-tab="false">
+      <file leaf-file-name="cdr_3g_site_query.ejs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/cdr_3g_site_query.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="7.923077" vertical-offset="2348" max-vertical-offset="3128">
-              <caret line="126" column="49" selection-start-line="126" selection-start-column="49" selection-end-line="126" selection-end-column="49" />
+            <state vertical-scroll-proportion="-0.07521368" vertical-offset="2543" max-vertical-offset="3128">
+              <caret line="147" column="34" selection-start-line="147" selection-start-column="34" selection-end-line="147" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -153,10 +152,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.37478992" vertical-offset="1562" max-vertical-offset="2278">
+            <state vertical-scroll-proportion="-7.6896553" vertical-offset="1562" max-vertical-offset="2278">
               <caret line="105" column="65" selection-start-line="105" selection-start-column="65" selection-end-line="105" selection-end-column="65" />
               <folding />
             </state>
@@ -420,8 +419,8 @@
       <recent name="https://github.com/nswbmw/N-blog.git" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\nodespace\CDR08\views" />
       <recent name="C:\nodespace\CDR08\mongo_prepare_data" />
+      <recent name="C:\nodespace\CDR08\views" />
       <recent name="C:\nodespace\CDR08\routes" />
       <recent name="C:\workspace\CDR0324\mongo_agg" />
       <recent name="C:\workspace\CDR0324\views" />
@@ -486,12 +485,6 @@
       <created>1427168524473</created>
       <option name="number" value="Default" />
       <updated>1427168524473</updated>
-    </task>
-    <task id="LOCAL-00036" summary="cep3g_stat">
-      <created>1441786076999</created>
-      <option name="number" value="00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1441786076999</updated>
     </task>
     <task id="LOCAL-00037" summary="cep3g_stat_035710">
       <created>1441786479967</created>
@@ -781,7 +774,13 @@
       <option name="project" value="LOCAL" />
       <updated>1441942049357</updated>
     </task>
-    <option name="localTasksCounter" value="85" />
+    <task id="LOCAL-00085" summary="phone not match">
+      <created>1441942273483</created>
+      <option name="number" value="00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1441942273483</updated>
+    </task>
+    <option name="localTasksCounter" value="86" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -883,18 +882,11 @@
           <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="14" />
+      <option name="time" value="15" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/mongo_agg/gprs/cepgprs_agg.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.60387516" vertical-offset="0" max-vertical-offset="1921">
-          <caret line="36" column="34" selection-start-line="36" selection-start-column="34" selection-end-line="36" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mongo_agg/gprs/cepgprs_join.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.87190527" vertical-offset="1893" max-vertical-offset="3077">
@@ -1203,36 +1195,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mongo_prepare_data/cep3g_agg.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1700">
-          <caret line="64" column="45" selection-start-line="64" selection-start-column="45" selection-end-line="64" selection-end-column="45" />
-          <folding>
-            <marker date="1441868766722" expanded="true" signature="190:219" placeholder="/*...*/" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mongo_prepare_data/cep3g_stat_site.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2210">
-          <caret line="10" column="55" selection-start-line="10" selection-start-column="55" selection-end-line="10" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mongo_schema/3g_schema.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="4930">
           <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/cdr_3g_site_query.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="7.923077" vertical-offset="2348" max-vertical-offset="3128">
-          <caret line="126" column="49" selection-start-line="126" selection-start-column="49" selection-end-line="126" selection-end-column="49" />
           <folding />
         </state>
       </provider>
@@ -1279,18 +1245,56 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mongo_prepare_data/cep3g_stat_site.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2210">
+          <caret line="10" column="55" selection-start-line="10" selection-start-column="55" selection-end-line="10" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37478992" vertical-offset="1562" max-vertical-offset="2278">
+        <state vertical-scroll-proportion="-7.6896553" vertical-offset="1562" max-vertical-offset="2278">
           <caret line="105" column="65" selection-start-line="105" selection-start-column="65" selection-end-line="105" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/cdr_3g_site_query.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.07521368" vertical-offset="2543" max-vertical-offset="3128">
+          <caret line="147" column="34" selection-start-line="147" selection-start-column="34" selection-end-line="147" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mongo_prepare_data/cep3g_join.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3655914" vertical-offset="0" max-vertical-offset="3604">
+          <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!block;n#buildPhoneMap#0" expanded="false" />
+            <element signature="n#!!block;n#buildSite2gMap#0" expanded="false" />
+            <element signature="n#!!block;n#buildSite3gMap#0" expanded="false" />
+            <element signature="n#!!block;n#buildSIMmap#0" expanded="false" />
+            <element signature="n#!!block;n#buildCARRIERmap#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mongo_prepare_data/cep3g_agg.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1700">
+          <caret line="64" column="45" selection-start-line="64" selection-start-column="45" selection-end-line="64" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mongo_prepare_data/cep3g_join_cron.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48626372" vertical-offset="1108" max-vertical-offset="2465">
-          <caret line="192" column="84" selection-start-line="192" selection-start-column="84" selection-end-line="192" selection-end-column="84" />
+        <state vertical-scroll-proportion="0.6181818" vertical-offset="935" max-vertical-offset="2465">
+          <caret line="187" column="21" selection-start-line="187" selection-start-column="21" selection-end-line="187" selection-end-column="21" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="n#!!block;n#buildSite2gMap#0" expanded="false" />
@@ -1299,20 +1303,20 @@
             <element signature="n#!!block;n#buildCARRIERmap#0" expanded="false" />
             <element signature="e#4959#4980#0" expanded="false" />
             <element signature="e#5257#5290#0" expanded="false" />
-            <element signature="e#6895#7558#0" expanded="false" />
-            <element signature="e#7615#8306#0" expanded="false" />
-            <element signature="e#8067#8288#0" expanded="false" />
-            <element signature="e#9301#9863#0" expanded="false" />
-            <element signature="e#9910#10478#0" expanded="false" />
-            <element signature="e#10524#10631#0" expanded="false" />
-            <element signature="e#10997#11082#0" expanded="false" />
-            <element signature="e#11669#12331#0" expanded="false" />
-            <element signature="e#12390#13081#0" expanded="false" />
-            <element signature="e#14000#14561#0" expanded="false" />
-            <element signature="e#14608#15193#0" expanded="false" />
-            <element signature="e#15239#15346#0" expanded="false" />
-            <element signature="e#15713#15798#0" expanded="false" />
-            <element signature="e#16175#16265#0" expanded="false" />
+            <element signature="e#6909#7572#0" expanded="false" />
+            <element signature="e#7629#8320#0" expanded="false" />
+            <element signature="e#8081#8302#0" expanded="false" />
+            <element signature="e#9315#9877#0" expanded="false" />
+            <element signature="e#9924#10492#0" expanded="false" />
+            <element signature="e#10538#10645#0" expanded="false" />
+            <element signature="e#11011#11096#0" expanded="false" />
+            <element signature="e#11683#12345#0" expanded="false" />
+            <element signature="e#12404#13095#0" expanded="false" />
+            <element signature="e#14014#14575#0" expanded="false" />
+            <element signature="e#14622#15207#0" expanded="false" />
+            <element signature="e#15253#15360#0" expanded="false" />
+            <element signature="e#15727#15812#0" expanded="false" />
+            <element signature="e#16189#16279#0" expanded="false" />
           </folding>
         </state>
       </provider>
