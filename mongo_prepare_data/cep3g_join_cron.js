@@ -117,33 +117,34 @@ var cdr3g = db.cep3g_gen.find({
 //var cdr3g = db.cep3g_gen.find({
 //     date_time : {$in:[new RegExp('^'+)]}
 //    ,up_flag : {$nin:[1]}
-    _id:{$gte:max_id}
-    ,record_type:{$in:["1","2"]}
-},{
-    "called_number" : 1             //substr(IMSI,0,8)['TWM','FET','CHT','ARTP','T_START','other','MTC']
-    ,"called_imei" : 1              //#index phone MTC
-    ,"called_imsi" : 1              //substr(IMSI,0,6)['SIM_2G','USIM_3G','ISIM_4G','roaming']
-    ,"called_subs_last_ci" : 1      //#index site MTC
-    ,"called_subs_last_lac" : 1     //#index site MTC
+//    _id:{$gte:max_id},
+    record_type:{$in:["1","2"]}
+}, {
+    "called_number": 1             //substr(IMSI,0,8)['TWM','FET','CHT','ARTP','T_START','other','MTC']
+    , "called_imei": 1              //#index phone MTC
+    , "called_imsi": 1              //substr(IMSI,0,6)['SIM_2G','USIM_3G','ISIM_4G','roaming']
+    , "called_subs_last_ci": 1      //#index site MTC
+    , "called_subs_last_lac": 1     //#index site MTC
 
-    ,"calling_imei" : 1             //#index phone MOC
-    ,"calling_imsi" : 1             //substr(IMSI,0,6)['SIM_2G','USIM_3G','ISIM_4G','roaming']
-    ,"calling_number" : 1           //^[]
-    ,"calling_subs_last_ci" : 1     //#index site MOC
-    ,"calling_subs_last_lac" : 1    //#index site MOC
+    , "calling_imei": 1             //#index phone MOC
+    , "calling_imsi": 1             //substr(IMSI,0,6)['SIM_2G','USIM_3G','ISIM_4G','roaming']
+    , "calling_number": 1           //^[]
+    , "calling_subs_last_ci": 1     //#index site MOC
+    , "calling_subs_last_lac": 1    //#index site MOC
 
-    ,"cause_for_termination" : 1    //c = 100
-    ,"charging_end_time" : 1
-    ,"charging_start_time" : 1
-    ,"exchange_id" : 1
-    ,"orig_mcz_duration" : 1        //$sum
-    ,"radio_network_type" : 1
-    ,"record_type" : 1
-    ,"term_mcz_duration" : 1        //$sum
-    ,"date_time" : 1                //#index date, time
-    ,"up_flag" : 1
-    ,"_id":1
-}).addOption(DBQuery.Option.noTimeout).sort({_id:1}).limit(pick).skip((n-1)*pick).forEach(function (doc) {
+    , "cause_for_termination": 1    //c = 100
+    , "charging_end_time": 1
+    , "charging_start_time": 1
+    , "exchange_id": 1
+    , "orig_mcz_duration": 1        //$sum
+    , "radio_network_type": 1
+    , "record_type": 1
+    , "term_mcz_duration": 1        //$sum
+    , "date_time": 1                //#index date, time
+    , "up_flag": 1
+    , "_id": 1
+}).forEach(function (doc) {
+//}).addOption(DBQuery.Option.noTimeout).sort({_id:1}).limit(pick).skip((n-1)*pick).forEach(function (doc) {
 //while(cdr3g.hasNext()){
     //var doc = col.next();
     if(doc.up_flag!=2) {  //======================================== update done, erich up_flag:1
@@ -183,7 +184,7 @@ var cdr3g = db.cep3g_gen.find({
                     doc.DMS_ID      = phone_map[doc.calling_imei.substr(0,8)].DMS_ID;
                     doc.VENDOR      = phone_map[doc.calling_imei.substr(0,8)].VENDOR;
                     doc.MODEL       = phone_map[doc.calling_imei.substr(0,8)].MODEL;
-                    if(phone_map[doc.calling_imei.substr(0,8)].IMEI_VALUE){}
+                    if(phone_map[doc.calling_imei.substr(0,8)].IMEI_VALUE==doc.called_imei.substr(0,8)){}
                     else {
                         doc.PT_OID      = "NA";
                         doc.DMS_ID      = "NA";
@@ -261,7 +262,7 @@ var cdr3g = db.cep3g_gen.find({
                     doc.DMS_ID      = phone_map[doc.called_imei.substr(0,8)].DMS_ID;
                     doc.VENDOR      = phone_map[doc.called_imei.substr(0,8)].VENDOR;
                     doc.MODEL       = phone_map[doc.called_imei.substr(0,8)].MODEL;
-                    if(phone_map[doc.calling_imei.substr(0,8)].IMEI_VALUE){}
+                    if(phone_map[doc.calling_imei.substr(0,8)].IMEI_VALUE==doc.called_imei.substr(0,8)){}
                     else {
                         doc.PT_OID      = "NA";
                         doc.DMS_ID      = "NA";
