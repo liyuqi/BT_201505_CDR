@@ -76,7 +76,7 @@ app.use(express.session({
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.enable('trust proxy');
-app.use(express.logger({stream: logFile}));  //========logging========
+//app.use(express.logger({stream: logFile}));  //========logging========
 app.use(app.router);
 
 

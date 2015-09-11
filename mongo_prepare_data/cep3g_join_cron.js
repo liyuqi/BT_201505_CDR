@@ -178,11 +178,18 @@ var cdr3g = db.cep3g_gen.find({
                 } catch(e){ } //doc.SITE_ID = '2g'; doc.HANGOVER    = 1;}
                 try {
                     //var calling_imei = doc.calling_imei.substr(0,8);
-                    //doc.IMEI_VALUE  = phone_map[doc.calling_imei.substr(0,8)].IMEI_VALUE;
+                    doc.IMEI_VALUE  = phone_map[doc.calling_imei.substr(0,8)].IMEI_VALUE;
                     doc.PT_OID      = phone_map[doc.calling_imei.substr(0,8)].PT_OID;
                     doc.DMS_ID      = phone_map[doc.calling_imei.substr(0,8)].DMS_ID;
                     doc.VENDOR      = phone_map[doc.calling_imei.substr(0,8)].VENDOR;
                     doc.MODEL       = phone_map[doc.calling_imei.substr(0,8)].MODEL;
+                    if(phone_map[doc.calling_imei.substr(0,8)].IMEI_VALUE){}
+                    else {
+                        doc.PT_OID      = "NA";
+                        doc.DMS_ID      = "NA";
+                        doc.VENDOR      = "NA";
+                        doc.MODEL       = "NA";
+                    }
                 } catch (e) { } // doc.PT_OID
                 try{
                     if(doc.calling_imsi.substr(0,5)=='46693')
@@ -218,7 +225,6 @@ var cdr3g = db.cep3g_gen.find({
 //            '\t發imsi:'+ doc.calling_imsi.substr(0,6)+ '\tSIM:'+ doc.SIM_TYPE +
 //            '\t發imei:'+ doc.calling_imei.substr(0,8) + '\tPT:'+ doc.PT_OID +
 //            '\tCARRIER:'+ doc.CARRIER + '\ted_num:'+ doc.called_number.substr(0,4));
-
         }else if(doc.record_type=="2") {
             try {
                 var cell = doc.called_subs_last_lac +'-'+ doc.called_subs_last_ci;
@@ -250,11 +256,18 @@ var cdr3g = db.cep3g_gen.find({
                     }
                 } catch(e){ } //doc.SITE_ID = '2g'; doc.HANGOVER    = 1;}
                 try {
-                    //doc.IMEI_VALUE  = phone_map[doc.called_imei.substr(0,8)].IMEI_VALUE;
+                    doc.IMEI_VALUE  = phone_map[doc.called_imei.substr(0,8)].IMEI_VALUE;
                     doc.PT_OID      = phone_map[doc.called_imei.substr(0,8)].PT_OID;
                     doc.DMS_ID      = phone_map[doc.called_imei.substr(0,8)].DMS_ID;
                     doc.VENDOR      = phone_map[doc.called_imei.substr(0,8)].VENDOR;
                     doc.MODEL       = phone_map[doc.called_imei.substr(0,8)].MODEL;
+                    if(phone_map[doc.calling_imei.substr(0,8)].IMEI_VALUE){}
+                    else {
+                        doc.PT_OID      = "NA";
+                        doc.DMS_ID      = "NA";
+                        doc.VENDOR      = "NA";
+                        doc.MODEL       = "NA";
+                    }
                 } catch (e) { } // doc.PT_OID
                 try{
                          if(doc.called_imsi.substr(0,5)=='46693')
