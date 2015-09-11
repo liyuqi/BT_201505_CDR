@@ -179,11 +179,6 @@ var cdr3g = db.cep3g_gen.find({
                 } catch(e){ } //doc.SITE_ID = '2g'; doc.HANGOVER    = 1;}
                 try {
                     //var calling_imei = doc.calling_imei.substr(0,8);
-                    doc.IMEI_VALUE  = phone_map[doc.calling_imei.substr(0,8)].IMEI_VALUE;
-                    doc.PT_OID      = phone_map[doc.calling_imei.substr(0,8)].PT_OID;
-                    doc.DMS_ID      = phone_map[doc.calling_imei.substr(0,8)].DMS_ID;
-                    doc.VENDOR      = phone_map[doc.calling_imei.substr(0,8)].VENDOR;
-                    doc.MODEL       = phone_map[doc.calling_imei.substr(0,8)].MODEL;
                     if(phone_map[doc.calling_imei.substr(0,8)].IMEI_VALUE==doc.called_imei.substr(0,8)){}
                     else {
                         doc.PT_OID      = "NA";
@@ -191,6 +186,11 @@ var cdr3g = db.cep3g_gen.find({
                         doc.VENDOR      = "NA";
                         doc.MODEL       = "NA";
                     }
+                    doc.IMEI_VALUE  = phone_map[doc.calling_imei.substr(0,8)].IMEI_VALUE;
+                    doc.PT_OID      = phone_map[doc.calling_imei.substr(0,8)].PT_OID;
+                    doc.DMS_ID      = phone_map[doc.calling_imei.substr(0,8)].DMS_ID;
+                    doc.VENDOR      = phone_map[doc.calling_imei.substr(0,8)].VENDOR;
+                    doc.MODEL       = phone_map[doc.calling_imei.substr(0,8)].MODEL;
                 } catch (e) { } // doc.PT_OID
                 try{
                     if(doc.calling_imsi.substr(0,5)=='46693')
@@ -257,11 +257,6 @@ var cdr3g = db.cep3g_gen.find({
                     }
                 } catch(e){ } //doc.SITE_ID = '2g'; doc.HANGOVER    = 1;}
                 try {
-                    doc.IMEI_VALUE  = phone_map[doc.called_imei.substr(0,8)].IMEI_VALUE;
-                    doc.PT_OID      = phone_map[doc.called_imei.substr(0,8)].PT_OID;
-                    doc.DMS_ID      = phone_map[doc.called_imei.substr(0,8)].DMS_ID;
-                    doc.VENDOR      = phone_map[doc.called_imei.substr(0,8)].VENDOR;
-                    doc.MODEL       = phone_map[doc.called_imei.substr(0,8)].MODEL;
                     if(phone_map[doc.calling_imei.substr(0,8)].IMEI_VALUE==doc.called_imei.substr(0,8)){}
                     else {
                         doc.PT_OID      = "NA";
@@ -269,6 +264,11 @@ var cdr3g = db.cep3g_gen.find({
                         doc.VENDOR      = "NA";
                         doc.MODEL       = "NA";
                     }
+                    doc.IMEI_VALUE  = phone_map[doc.called_imei.substr(0,8)].IMEI_VALUE;
+                    doc.PT_OID      = phone_map[doc.called_imei.substr(0,8)].PT_OID;
+                    doc.DMS_ID      = phone_map[doc.called_imei.substr(0,8)].DMS_ID;
+                    doc.VENDOR      = phone_map[doc.called_imei.substr(0,8)].VENDOR;
+                    doc.MODEL       = phone_map[doc.called_imei.substr(0,8)].MODEL;
                 } catch (e) { } // doc.PT_OID
                 try{
                          if(doc.called_imsi.substr(0,5)=='46693')
