@@ -179,6 +179,13 @@
     <tbody>
     <% resp.forEach( function(body){ %>
     <tr>
+        <% var fields = {};
+            for (var key in req.body){
+                if(req.body[key].length==0);
+                else
+                    query[key] = req.body[key].trim();
+            }
+        %>
         <% var i=0; %>
         <td id="#"><%= i++ %></td>
         <td id="_id"  text="日期時間" ><%= JSON.stringify(body._id) %></td>

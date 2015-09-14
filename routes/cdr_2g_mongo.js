@@ -309,90 +309,90 @@ exports.cdr_2g_site_query = function(mongodb){
     };
 };
 
-//exports.cdr_2g_site_report = function(mongodb){
-//    return function(req, res) {
-//
-//        var collection = mongodb.get('cep2g_join');
-//        var i =0;
-//        console.log("flow : ");
-//        collection.col.aggregate([
-//            {$match: {
-//                /*time: interval,up_falg:1,*/
-//                CALLTRANSACTIONTYPE:{$in:['1','2']}
-//            }}
-//            ,{$project:{
-//                //time:1,
-//                //STATISTIC_DATE : "$time"
-//                DATE: "$STARTOFCHARGINGDATE"
-//                , HOUR: {$substr:["$TIMESTAMP",0,2]}
-//
-//                //site
-//                , COUNTY : { $substr: [ "$BTS_ADDRESS", 0, 9 ] }//"$BTS_ADDRESS" //縣市
-//                , DISTRICT : { $substr: [ "$BTS_ADDRESS", 9, 9 ] }//"$BTS_CODE" //地區
-//                , SITE_NAME : "$SITE_NAME"
-//                , SITE_ID : "$SITE_ID"
-//
-//                ////phone_type
-//                //, VENDOR : "$VENDOR"
-//                //, MODEL : "$MODEL"
-//
-//                , END_CODE : "$CAUSEFORTERMINATION"
-//                , SIM_TYPE : "$SIM_TYPE"
-//                , CARRIER : "$CARRIER"
-//                //, HO_CALLED_1 : 1
-//                , CALLDURATION : "$CALLDURATION"
-//            }}
-//            ,{$group:{
-//                _id: {
-//                    STATISTIC_DATE: {
-//                        DATE : "$DATE"
-//                        , HOUR : "$HOUR"
-//                    }
-//                    //site
-//                    , COUNTY: "$COUNTY" //縣市
-//                    , DISTRICT: "$DISTRICT" //地區
-//                    , SITE_NAME: "$SITE_NAME"
-//                    , SITE_ID: "$SITE_ID"
-//
-//                    ////phone_type
-//                    //, VENDOR: "$VENDOR"
-//                    //, MODEL: "$MODEL"
-//
-//                    , END_CODE: "$END_CODE"
-//                    , SIM_TYPE: "$SIM_TYPE"
-//                    , CARRIER: "$CARRIER"
-//                    //, IMEI: "$IMEI"
-//                }
-//
-//                ,HO_CALLED_COUNT:{$sum:1}
-//                ,HO_CALLED_SECOND:{$sum:"$CALLDURATION"}
-//            }}
-//            ,{$project:{
-//                _id:1
-//                //,STATISTIC_DATE:"$_id.STATISTIC_DATE"
-//
-//                ////site
-//                //,COUNTY : "$_id.COUNTY"
-//                //,SITE_NAME : "$_id.SITE_NAME"
-//
-//                ////phone_type
-//                //,VENDOR : "$_id.VENDOR"
-//                //,MODEL : "$_id.MODEL"
-//
-//                //,SIM_TYPE : "$_id.SIM_TYPE"
-//                //,CARRIER : "$_id.CARRIER"
-//                ,HO_CALLED_COUNT :1
-//                ,HO_CALLED_MINUTES :{$divide:["$HO_CALLED_SECOND",60]}
-//            }}
-//            //,{    $out:"cdr2g_agg"}
-//        ], function(err, result) {
-//            i++
-//            if(err) res.redirect('cdr_CRUD_2g_show');//console.log("err : "+err.message);
-//            if(i==5) console.log("result : "+util.inspect(result));
-//            res.render('cdr_2g_site_report', {title: 'flow', resp: result });
-//        });
-//    };
-//};
+exports.cdr_2g_site_report = function(mongodb){
+    return function(req, res) {
+
+        var collection = mongodb.get('cep2g_join');
+        var i =0;
+        console.log("flow : ");
+        collection.col.aggregate([
+            {$match: {
+                /*time: interval,up_falg:1,*/
+                CALLTRANSACTIONTYPE:{$in:['1','2']}
+            }}
+            ,{$project:{
+                //time:1,
+                //STATISTIC_DATE : "$time"
+                DATE: "$STARTOFCHARGINGDATE"
+                , HOUR: {$substr:["$TIMESTAMP",0,2]}
+
+                //site
+                , COUNTY : { $substr: [ "$BTS_ADDRESS", 0, 9 ] }//"$BTS_ADDRESS" //縣市
+                , DISTRICT : { $substr: [ "$BTS_ADDRESS", 9, 9 ] }//"$BTS_CODE" //地區
+                , SITE_NAME : "$SITE_NAME"
+                , SITE_ID : "$SITE_ID"
+
+                ////phone_type
+                //, VENDOR : "$VENDOR"
+                //, MODEL : "$MODEL"
+
+                , END_CODE : "$CAUSEFORTERMINATION"
+                , SIM_TYPE : "$SIM_TYPE"
+                , CARRIER : "$CARRIER"
+                //, HO_CALLED_1 : 1
+                , CALLDURATION : "$CALLDURATION"
+            }}
+            ,{$group:{
+                _id: {
+                    STATISTIC_DATE: {
+                        DATE : "$DATE"
+                        , HOUR : "$HOUR"
+                    }
+                    //site
+                    , COUNTY: "$COUNTY" //縣市
+                    , DISTRICT: "$DISTRICT" //地區
+                    , SITE_NAME: "$SITE_NAME"
+                    , SITE_ID: "$SITE_ID"
+
+                    ////phone_type
+                    //, VENDOR: "$VENDOR"
+                    //, MODEL: "$MODEL"
+
+                    , END_CODE: "$END_CODE"
+                    , SIM_TYPE: "$SIM_TYPE"
+                    , CARRIER: "$CARRIER"
+                    //, IMEI: "$IMEI"
+                }
+
+                ,HO_CALLED_COUNT:{$sum:1}
+                ,HO_CALLED_SECOND:{$sum:"$CALLDURATION"}
+            }}
+            ,{$project:{
+                _id:1
+                //,STATISTIC_DATE:"$_id.STATISTIC_DATE"
+
+                ////site
+                //,COUNTY : "$_id.COUNTY"
+                //,SITE_NAME : "$_id.SITE_NAME"
+
+                ////phone_type
+                //,VENDOR : "$_id.VENDOR"
+                //,MODEL : "$_id.MODEL"
+
+                //,SIM_TYPE : "$_id.SIM_TYPE"
+                //,CARRIER : "$_id.CARRIER"
+                ,HO_CALLED_COUNT :1
+                ,HO_CALLED_MINUTES :{$divide:["$HO_CALLED_SECOND",60]}
+            }}
+            //,{    $out:"cdr2g_agg"}
+        ], function(err, result) {
+            i++
+            if(err) res.redirect('cdr_CRUD_2g_show');//console.log("err : "+err.message);
+            if(i==5) console.log("result : "+util.inspect(result));
+            res.render('cdr_2g_site_report', {title: 'flow', resp: result });
+        });
+    };
+};
 //
 //exports.cdr_2g_phone_report = function(mongodb){
 //    return function(req, res) {

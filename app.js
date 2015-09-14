@@ -32,7 +32,7 @@ var monk = require('monk');
 //var dbfluentd = monk('192.168.0.196/fluentd');
 //var dbCDR = monk('172.17.24.196:27017/cdr');
 //var dbCDR = monk('192.168.0.196:40000/cdr');
-var dbCDR = monk('127.0.0.1:27017/cdr');
+var dbCDR = monk('192.168.30.131:27017/cdr');
 
 
 var partials = require('express-partials');
@@ -109,7 +109,7 @@ app.get('/cdr_CRUD_show', 		cdr_mongo.cdr_CRUD_count(dbCDR));
 app.get('/cdr_3g_site_query', 	cdr_mongo.cdr_3g_site_report(dbCDR));
 app.post('/cdr_3g_site_query', 	cdr_mongo.cdr_3g_site_query(dbCDR));
 //app.post('/cdr_3g_phone_query', 	cdr_mongo.cdr_3g_site_query(dbCDR));
-app.use('/cdr_3g_phone_report', cdr_mongo.cdr_3g_phone_report(dbCDR));
+//app.use('/cdr_3g_phone_report', cdr_mongo.cdr_3g_phone_report(dbCDR));
 
 
 //app.get('/mongoStatus',mongoStatus.page);

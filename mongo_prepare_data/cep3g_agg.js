@@ -15,10 +15,10 @@ var agg_3g = db.cep3g_join.aggregate([
             , CARRIER : "$CARRIER"
 
             //site
-            //, COUNTY : { $substr: [ "$BTS_ADDRESS", 0, 9 ] }//"$BTS_ADDRESS" //縣市3 zh zhar
-            //, DISTRICT : { $substr: [ "$BTS_ADDRESS", 9, 9 ] }//"$BTS_CODE" //地區
-            //, SITE_NAME : "$SITE_NAME"
-            //, SITE_ID : "$SITE_ID"
+            , COUNTY : { $substr: [ "$BTS_ADDRESS", 0, 9 ] }//"$BTS_ADDRESS" //縣市3 zh zhar
+            , DISTRICT : { $substr: [ "$BTS_ADDRESS", 9, 9 ] }//"$BTS_CODE" //地區
+            , SITE_NAME : "$SITE_NAME"
+            , SITE_ID : "$SITE_ID"
 
             ////phone_type
             , VENDOR : "$VENDOR"
@@ -38,10 +38,10 @@ var agg_3g = db.cep3g_join.aggregate([
                 , CARRIER: "$CARRIER"
 
                 //site
-                //, COUNTY: "$COUNTY" //縣市
-                //, DISTRICT: "$DISTRICT" //地區
-                //, SITE_NAME: "$SITE_NAME"
-                //, SITE_ID: "$SITE_ID"
+                , COUNTY: "$COUNTY" //縣市
+                , DISTRICT: "$DISTRICT" //地區
+                , SITE_NAME: "$SITE_NAME"
+                , SITE_ID: "$SITE_ID"
 
                 ////phone_type
                 , VENDOR: "$VENDOR"
@@ -75,7 +75,7 @@ var agg_3g = db.cep3g_join.aggregate([
             , HO_CALLED_SECOND  :1
             , HO_CALLED_MINUTES :{$divide:["$HO_CALLED_SECOND",60]}
         }}
-        ,{    $out:"cep3g_agg"}
+        //,{    $out:"cep3g_agg"}
     ]
     //,{    explain: true}
     ,{    allowDiskUse: true}
