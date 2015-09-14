@@ -14,7 +14,7 @@ var agg_3g = db.cep3g_join.aggregate([
             , SIM_TYPE : "$SIM_TYPE"
             , CARRIER : "$CARRIER"
             ////site
-            , COUNTY : { $substr: [ "$BTS_ADDRESS", 0, 9 ] }//"$BTS_ADDRESS" //縣市3 zh zhar
+            , COUNTY : { $substr: [ "$BTS_ADDRESS", 0, 9 ] }//"$BTS_ADDRESS" //縣市3 zh
             , DISTRICT : { $substr: [ "$BTS_ADDRESS", 9, 9 ] }//"$BTS_CODE" //地區
             , SITE_NAME : "$SITE_NAME"
             , SITE_ID : "$SITE_ID"

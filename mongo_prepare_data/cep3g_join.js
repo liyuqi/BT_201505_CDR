@@ -170,7 +170,7 @@ var cdr3g = db.cep3g_gen.find({
                     if(site3g_map[cell].SITE_ID){
                         doc.NETWORK_TYPE = "3G";
                         doc.HO    = 0; //========================= 換手 ======//
-                        doc.HO_SECOND= 0;
+                        doc.HO_SECOND= Number(doc.orig_mcz_duration);
                     }
                 } catch(e){ } //doc.SITE_ID = '3g'; }
                 try {
@@ -249,7 +249,7 @@ var cdr3g = db.cep3g_gen.find({
                     if(site3g_map[cell].SITE_ID){
                         doc.NETWORK_TYPE = "3G";
                         doc.HO    = 0; //========================= 換手 ======//
-                        doc.HO_SECOND= 0;
+                        doc.HO_SECOND= Number(doc.term_mcz_duration);
                     }
                 } catch (e) { } //doc.SITE_ID = '3g'; }
                 try {
