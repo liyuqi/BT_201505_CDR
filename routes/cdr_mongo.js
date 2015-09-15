@@ -106,7 +106,7 @@ exports.cdr_CRUD_query = function(mongodb){
                 collection.find(query, {limit: _max_pageunit}, function (err, docs) {
                     if (docs.length) console.log('docs.length: ' + docs.length);
 
-                    res.render('cdr_CRUD_query', {
+                    res.render('cdr_CRUD_query_header45', {
                             title: 'query cdr',
                             db_count: db_count,
                             totalcount: query_count,
@@ -199,7 +199,7 @@ exports.cdr_3g_site_report = function(mongodb){
 };
 
 
-exports.cdr_3g_site_query = function(mongodb){
+exports.cdr_3g_site_query1 = function(mongodb){
     return function(req, res) {
 
         //field input
@@ -294,201 +294,146 @@ exports.cdr_3g_site_query = function(mongodb){
 //    };
 //};
 
-exports.cdr_3g_phone_report = function(mongodb){
+exports.cdr_3g_site_query = function(mongodb){
     return function(req, res) {
+        var query={};
 
-        //query
+        for (var key in req.body){
+            if(req.body[key].length==0);
+            else
+                query[''+key] = req.body[key].trim();
+        }
+        query.record_type = {$in:['1','2']};
+        console.log(util.inspect(query));
+
+        var keys = [];
+        for(var k in query) keys.push(k);
+
+        if(keys.length==0)
+            res.redirect('cdr_3g_site_query');
+
+
+        var agg_pipe_match = {$match:query};
+        var agg_pipe_1 = {$project:{
+                DATE:{ $substr: [ "$date_time", 0, 10 ] }
+                , HOUR:{ $substr: [ "$date_time", 11, 2 ] }
+                , NETWORK_TYPE : 1
+                , END_CODE : "$cause_for_termination"
+                , SIM_TYPE : "$SIM_TYPE"
+                , CARRIER : "$CARRIER"
+                ////site
+                , COUNTY : { $substr: [ "$BTS_ADDRESS", 0, 9 ] }//"$BTS_ADDRESS" //縣市3 zh
+                , DISTRICT : { $substr: [ "$BTS_ADDRESS", 9, 9 ] }//"$BTS_CODE" //地區
+                , SITE_NAME : "$SITE_NAME"
+                , SITE_ID : "$SITE_ID"
+                ////phone_type
+                //, VENDOR : "$VENDOR"
+                //, MODEL  : "$MODEL"
+
+                , HO_DISTINCT:{$cond :[{$gt:["$HO",0]},"$called_number",""]}
+                , HO : 1
+                , HO_SECOND : 1
+
+                , SUM_CALLED_COUNT_0_3  :{$cond :[{$and:[{$gte:["$HO_SECOND",0 ]},{$lte:["$HO_SECOND",3 ]} ]},"$HO",0]}
+                , SUM_CALLED_COUNT_3_5  :{$cond :[{$and:[{$gt :["$HO_SECOND",3 ]},{$lte:["$HO_SECOND",5 ]} ]},"$HO",0]}
+                , SUM_CALLED_COUNT_5_7  :{$cond :[{$and:[{$gt :["$HO_SECOND",5 ]},{$lte:["$HO_SECOND",7 ]} ]},"$HO",0]}
+                , SUM_CALLED_COUNT_7_10 :{$cond :[{$and:[{$gt :["$HO_SECOND",7 ]},{$lte:["$HO_SECOND",10]} ]},"$HO",0]}
+                , SUM_CALLED_COUNT_10UP :{$cond :[       {$gt :["$HO_SECOND",10]}                            ,"$HO",0]}
+
+                , SUM_CALLED_SECOND_0_3  :{$cond :[{$and:[{$gte:["$HO_SECOND",0 ]},{$lte:["$HO_SECOND",3 ]} ]},"$HO_SECOND",0]}
+                , SUM_CALLED_SECOND_3_5  :{$cond :[{$and:[{$gt :["$HO_SECOND",3 ]},{$lte:["$HO_SECOND",5 ]} ]},"$HO_SECOND",0]}
+                , SUM_CALLED_SECOND_5_7  :{$cond :[{$and:[{$gt :["$HO_SECOND",5 ]},{$lte:["$HO_SECOND",7 ]} ]},"$HO_SECOND",0]}
+                , SUM_CALLED_SECOND_7_10 :{$cond :[{$and:[{$gt :["$HO_SECOND",7 ]},{$lte:["$HO_SECOND",10]} ]},"$HO_SECOND",0]}
+                , SUM_CALLED_SECOND_10UP :{$cond :[       {$gt :["$HO_SECOND",10]}                            ,"$HO_SECOND",0]}
+            }};
+        var agg_pipe_2 = {$group:{
+                _id: {
+                    DATE : "$DATE"
+                    , HOUR : "$HOUR"
+                    , NETWORK_TYPE : "$NETWORK_TYPE"
+                    , END_CODE: "$END_CODE"
+                    , SIM_TYPE: "$SIM_TYPE"
+                    , CARRIER: "$CARRIER"
+                    ////site
+                    , COUNTY: "$COUNTY" //縣市
+                    , DISTRICT: "$DISTRICT" //地區
+                    , SITE_NAME: "$SITE_NAME"
+                    , SITE_ID: "$SITE_ID"
+                    ////phone_type
+                    //, VENDOR: "$VENDOR"
+                    //, MODEL: "$MODEL"
+                    }
+                , HO_DISTINCT:{$addToSet:"$HO_DISTINCT"}
+                , HO_CALLED_COUNT:{$sum:"$HO"}
+                , HO_CALLED_SECOND:{$sum:"$HO_SECOND"}
+
+                , SUM_CALLED_COUNT_0_3 : {$sum:"$SUM_CALLED_COUNT_0_3"}
+                , SUM_CALLED_COUNT_3_5 : {$sum:"$SUM_CALLED_COUNT_0_3"}
+                , SUM_CALLED_COUNT_5_7 : {$sum:"$SUM_CALLED_COUNT_3_5"}
+                , SUM_CALLED_COUNT_7_10: {$sum:"$SUM_CALLED_COUNT_5_7"}
+                , SUM_CALLED_COUNT_10UP: {$sum:"$SUM_CALLED_COUNT_7_10"}
+
+                , SUM_CALLED_SECOND_0_3 : {$sum:"$SUM_CALLED_SECOND_0_3"}
+                , SUM_CALLED_SECOND_3_5 : {$sum:"$SUM_CALLED_SECOND_0_3"}
+                , SUM_CALLED_SECOND_5_7 : {$sum:"$SUM_CALLED_SECOND_3_5"}
+                , SUM_CALLED_SECOND_7_10: {$sum:"$SUM_CALLED_SECOND_5_7"}
+                , SUM_CALLED_SECOND_10UP: {$sum:"$SUM_CALLED_SECOND_7_10"}
+                }};
+        var agg_pipe_3 = {$project:{
+                _id:0
+                , DATE          : "$_id.DATE"
+                , HOUR          : "$_id.HOUR"
+                , NETWORK_TYPE  : "$_id.NETWORK_TYPE"
+                , SIM_TYPE      : "$_id.SIM_TYPE"
+                , CARRIER       : "$_id.CARRIER"
+                , END_CODE      : "$_id.END_CODE"
+                ////site
+                , COUNTY        : "$_id.COUNTY"
+                , DISTRICT      : "$_id.DISTRICT"
+                , SITE_NAME     : "$_id.SITE_NAME"
+                , SITE_ID       : "$_id.SITE_ID"
+                ////phone_type
+                //, VENDOR        : "$_id.VENDOR"
+                //, MODEL         : "$_id.MODEL"
+
+                , HO_DISTINCT       :1
+                , HO_CALLED_COUNT   :1
+                , HO_CALLED_SECOND  :1
+                , HO_CALLED_MINUTES :{$divide:["$HO_CALLED_SECOND",60]}
+
+        , SUM_CALLED_COUNT_0_3 : 1
+        , SUM_CALLED_COUNT_3_5 : 1
+        , SUM_CALLED_COUNT_5_7 : 1
+        , SUM_CALLED_COUNT_7_10: 1
+        , SUM_CALLED_COUNT_10UP: 1
+
+        , SUM_CALLED_MINUTES_0_3 : {$divide:["$SUM_CALLED_SECOND_0_3",60]}
+    , SUM_CALLED_MINUTES_3_5 : {$divide:["$SUM_CALLED_SECOND_3_5",60]}
+    , SUM_CALLED_MINUTES_5_7 : {$divide:["$SUM_CALLED_SECOND_5_7",60]}
+    , SUM_CALLED_MINUTES_7_10: {$divide:["$SUM_CALLED_SECOND_7_10",60]}
+    , SUM_CALLED_MINUTES_10UP: {$divide:["$SUM_CALLED_SECOND_10UP",60]}
+}};
+        var agg_pipe_out = {    $out:"cep3g_stat_site"};
+
+
         var collection = mongodb.get('cep3g_join');
-        collection.count({},function(err,db_count){
-            collection.count({}, function (err, query_count) {
-                collection.find({}, {limit: _max_pageunit}, function (err, docs) {
-                    //if (docs.length) console.log('docs.length: ' + docs.length);
-
-                    res.render('cdr_3g_phone_report', {
-                        title: 'cep3g phone',
-                        db_count: db_count,
-                        totalcount: query_count,
-                        //page_count:docs.length,
-                        resp: docs
-                    });
-                    //if (err) res.redirect('cdr_CRUD_query');
-                });
-            });
+        collection.col.aggregate([
+            agg_pipe_match
+            ,agg_pipe_1
+            ,agg_pipe_2
+            ,agg_pipe_3
+            //,agg_pipe_out
+        ], function(err, result) {
+            if(err) res.redirect('cdr_3g_site_query');//console.log("err : "+err.message);
+            //if(result) console.log("result : "+util.inspect(result));
+            res.render('cdr_3g_site_show', {
+                    title: 'stat cep3g',
+                    //db_count: db_count,
+                    totalcount: result.length,
+                    //page_count:docs.length,
+                    resp: result
+                }
+            );
         });
     };
 };
-
-//exports.cdr_3g_site_report = function(mongodb){
-//    return function(req, res) {
-//
-//        var collection = mongodb.get('cep3g_join');
-//        var i =0;
-//        console.log("site2g : ");
-//        collection.col.aggregate([
-//            {$match: {
-//                /*time: interval,up_falg:1,*/
-//                record_type:{$in:["1","2"]}
-//                //,SITE_ID: '71778'
-//            }}
-//            ,{$project:{
-//                //STATISTIC_DATE : "$time"
-//                DATE:{ $substr: [ "$date_time", 0, 10 ] }
-//                , HOUR:{ $substr: [ "$date_time", 11, 2 ] }
-//
-//                //site
-//                , COUNTY : { $substr: [ "$BTS_ADDRESS", 0, 9 ] }//"$BTS_ADDRESS" //縣市3 zh zhar
-//                , DISTRICT : { $substr: [ "$BTS_ADDRESS", 9, 9 ] }//"$BTS_CODE" //地區
-//                , SITE_NAME : "$SITE_NAME"
-//                , SITE_ID : "$SITE_ID"
-//
-//                ////phone_type
-//                //, VENDOR : "$VENDOR"
-//                // , MODEL : "$MODEL"
-//
-//                , HANGOVER : 1
-//                , END_CODE : "$cause_for_termination"
-//                , SIM_TYPE : "$SIM_TYPE"
-//                , CARRIER : "$CARRIER"
-//
-//                //, HO_CALLED_1 : 1
-//                , CALLDURATION : {$add:["$orig_mcz_duration","$term_mcz_duration"]}
-//            }}
-//            ,{$group:{
-//                _id: {
-//                    STATISTIC_DATE: {
-//                        DATE : "$DATE"
-//                        , HOUR: "$HOUR"
-//                    }
-//                    //site
-//                    , COUNTY: "$COUNTY" //縣市
-//                    , DISTRICT: "$DISTRICT" //地區
-//                    , SITE_NAME: "$SITE_NAME"
-//                    , SITE_ID: "$SITE_ID"
-//
-//                    ////phone_type
-//                    //, VENDOR: "$VENDOR"
-//                    //, MODEL: "$MODEL"
-//
-//                    , END_CODE: "$END_CODE"
-//                    , SIM_TYPE: "$SIM_TYPE"
-//                    , CARRIER: "$CARRIER"
-//                    //, IMEI: "$IMEI"
-//                }
-//
-//                ,HO_CALLED_COUNT:{$sum:"$HANGOVER"}
-//                ,HO_CALLED_SECOND:{$sum:"$CALLDURATION"}
-//            }}
-//            ,{$project:{
-//                _id:1
-//                //,STATISTIC_DATE:"$_id.STATISTIC_DATE"
-//                ////site
-//                //,COUNTY : "$_id.COUNTY"
-//                //, DISTRICT: "$_id.DISTRICT"
-//                //,SITE_NAME : "$_id.SITE_NAME"
-//
-//                ////phone_type
-//                //,VENDOR : "$_id.VENDOR"
-//                //,MODEL : "$_id.MODEL"
-//
-//                //,SIM_TYPE : "$_id.SIM_TYPE"
-//                //,CARRIER : "$_id.CARRIER"
-//                //,END_CODE: "$_id.END_CODE"
-//                ,HO_CALLED_COUNT :1
-//                ,HO_CALLED_MINUTES :{$divide:["$HO_CALLED_SECOND",60]}
-//            }}
-//            //,{    $out:"cdr3g_agg"}
-//        ], function(err, result) {
-//            i++;
-//            if(err) res.redirect('cdr_CRUD_3g_show');//console.log("err : "+err.message);
-//            if(i==5) console.log("result : "+util.inspect(result));
-//            res.render('cdr_3g_site_report', {title: 'flow', resp: result });
-//        });
-//    };
-//};
-//
-//exports.cdr_3g_phone_report = function(mongodb){
-//    return function(req, res) {
-//
-//        var collection = mongodb.get('cep3g_join');
-//        var i=0;
-//        console.log("phone2g : ");
-//        collection.col.aggregate([
-//            {$match: {
-//                /*time: interval,up_falg:1,*/
-//                record_type:{$in:["1","2"]}
-//            }}
-//            ,{$project:{
-//                //STATISTIC_DATE : "$time"
-//                DATE:{ $substr: [ "$date_time", 0, 10 ] }
-//                , HOUR:{ $substr: [ "$date_time", 11, 2 ] }
-//
-//                ////site
-//                //, COUNTY : { $substr: [ "$BTS_ADDRESS", 0, 9 ] }//"$BTS_ADDRESS" //縣市3 zh zhar
-//                //, DISTRICT : { $substr: [ "$BTS_ADDRESS", 9, 9 ] }//"$BTS_CODE" //地區
-//                //, SITE_NAME : "$SITE_NAME"
-//                //, SITE_ID : "$SITE_ID"
-//
-//                //phone_type
-//                , VENDOR : "$VENDOR"
-//                , MODEL : "$MODEL"
-//
-//                , HANGOVER : 1
-//                , END_CODE : "$cause_for_termination"
-//                , SIM_TYPE : "$SIM_TYPE"
-//                , CARRIER : "$CARRIER"
-//
-//                //, HO_CALLED_1 : 1
-//                , CALLDURATION : {$add:["$orig_mcz_duration","$term_mcz_duration"]}
-//            }}
-//            ,{$group:{
-//                _id: {
-//                    STATISTIC_DATE: {
-//                        DATE : "$DATE"
-//                        , HOUR: "$HOUR"
-//                    }
-//                    ////site
-//                    //, COUNTY: "$COUNTY" //縣市
-//                    //, DISTRICT: "$DISTRICT" //地區
-//                    //, SITE_NAME: "$SITE_NAME"
-//                    //, SITE_ID: "$SITE_ID"
-//
-//                    //phone_type
-//                    , VENDOR: "$VENDOR"
-//                    , MODEL: "$MODEL"
-//
-//                    , END_CODE: "$END_CODE"
-//                    , SIM_TYPE: "$SIM_TYPE"
-//                    , CARRIER: "$CARRIER"
-//                    //, IMEI: "$IMEI"
-//                }
-//
-//                ,HO_CALLED_COUNT:{$sum:"$HANGOVER"}
-//                ,HO_CALLED_SECOND:{$sum:"$CALLDURATION"}
-//            }}
-//            ,{$project:{
-//                _id:1
-//                //,STATISTIC_DATE:"$_id.STATISTIC_DATE"
-//                ////site
-//                //,COUNTY : "$_id.COUNTY"
-//                //, DISTRICT: "$_id.DISTRICT"
-//                //,SITE_NAME : "$_id.SITE_NAME"
-//
-//                ////phone_type
-//                //,VENDOR : "$_id.VENDOR"
-//                //,MODEL : "$_id.MODEL"
-//
-//                //,SIM_TYPE : "$_id.SIM_TYPE"
-//                //,CARRIER : "$_id.CARRIER"
-//                //,END_CODE: "$_id.END_CODE"
-//                ,HO_CALLED_COUNT :1
-//                ,HO_CALLED_MINUTES :{$divide:["$HO_CALLED_SECOND",60]}
-//            }}
-//            //,{    $out:"cdr3g_agg"}
-//        ], function(err, result) {
-//            i++;
-//            if(err) res.redirect('cdr_CRUD_3g_show');//console.log("err : "+err.message);
-//            if(i==5) console.log("result : "+util.inspect(result));
-//            res.render('cdr_3g_phone_report', {title: 'flow', resp: result });
-//        });
-//    };
-//};

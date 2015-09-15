@@ -5,6 +5,7 @@ var agg_3g = db.cep3g_join.aggregate([
         {$match: {
             /*time: interval,up_falg:1,*/
             record_type:{$in:["1","2"]}
+            
         }}
         ,{$project:{
             DATE:{ $substr: [ "$date_time", 0, 10 ] }
@@ -105,7 +106,7 @@ var agg_3g = db.cep3g_join.aggregate([
             , SUM_CALLED_MINUTES_7_10: {$divide:["$SUM_CALLED_SECOND_7_10",60]}
             , SUM_CALLED_MINUTES_10UP: {$divide:["$SUM_CALLED_SECOND_10UP",60]}
         }}
-        ,{    $out:"cep3g_stat_site"}
+        //,{    $out:"cep3g_stat_site"}
     ]
     //,{    explain: true}
     ,{    allowDiskUse: true}

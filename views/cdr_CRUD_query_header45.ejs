@@ -8,6 +8,78 @@
     <script>
         $('#search_button').tooltip(options)
     </script>
+    <style>
+        .table-header-rotated th.row-header{
+            width: auto;
+        }
+
+        .table-header-rotated td{
+            width: 40px;
+            border-top: 1px solid #dddddd;
+            border-left: 1px solid #dddddd;
+            border-right: 1px solid #dddddd;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .table-header-rotated th.rotate-45{
+            height: 80px;
+            /*width: 40px;*/
+            min-width: 40px;
+            max-width: 40px;
+            position: relative;
+            vertical-align: bottom;
+            padding: 0;
+            font-size: 12px;
+            line-height: 0.8;
+        }
+
+        .table-header-rotated th.rotate-45 > div{
+            position: relative;
+            top: 0px;
+            left: 40px; /* 80 * tan(45) / 2 = 40 where 80 is the height on the cell and 45 is the transform angle*/
+            height: 100%;
+            -ms-transform:skew(-45deg,0deg);
+            -moz-transform:skew(-45deg,0deg);
+            -webkit-transform:skew(-45deg,0deg);
+            -o-transform:skew(-45deg,0deg);
+            transform:skew(-45deg,0deg);
+            overflow: hidden;
+            border-left: 1px solid #dddddd;
+            border-right: 1px solid #dddddd;
+            border-top: 1px solid #dddddd;
+        }
+
+        .table-header-rotated th.rotate-45 span {
+            -ms-transform:skew(45deg,0deg) rotate(315deg);
+            -moz-transform:skew(45deg,0deg) rotate(315deg);
+            -webkit-transform:skew(45deg,0deg) rotate(315deg);
+            -o-transform:skew(45deg,0deg) rotate(315deg);
+            transform:skew(45deg,0deg) rotate(315deg);
+            position: absolute;
+            bottom: 30px; /* 40 cos(45) = 28 with an additional 2px margin*/
+            left: -25px; /*Because it looked good, but there is probably a mathematical link here as well*/
+            display: inline-block;
+        // width: 100%;
+            width: 85px; /* 80 / cos(45) - 40 cos (45) = 85 where 80 is the height of the cell, 40 the width of the cell and 45 the transform angle*/
+            text-align: left;
+        // white-space: nowrap; /*whether to display in one line or not*/
+        }
+
+        .letterP4 {
+            -webkit-transform: rotate(-90deg);
+            -moz-transform: rotate(-90deg);
+            -ms-transform: rotate(-90deg);
+            -o-transform: rotate(-90deg);
+            transform: rotate(-90deg);
+            /*color: #000;*/
+            /*font-size: 22px;*/
+            /*height: 200px;*/
+            /*width: 200px;*/
+            /*float: left;*/
+            /*vertical-align:top;*/
+        }
+    </style>
 </head>
 <body>
 
@@ -17,7 +89,7 @@
             <legend>查詢 CDR <i class="icon-chevron-down"></i></legend>
         </div>
     </div>
-    <div id="collapseTwo" class="accordion-body collapse"> <!--"collapse in">-->
+    <div id="collapseTwo" class="accordion-body collapse">
         <div class="accordion-inner">
 
 <form class="form-horizontal" method="post">
@@ -169,10 +241,20 @@
 <% } else /*if (resp.length < 20)*/{%>
 <h4> 回傳 : <%= totalcount %>筆資料,  顯示前 <%= resp.length %> 筆</h4>
 </br></br></br>
-<table class="table table-hover table-condensed">
+<table class="table table-hover table-condensed table-header-rotated">
     <caption></caption>
     <thead>
-    <!--<tr>-->
+    <tr>
+
+        <th id="000"> <!--class="rotate-45"-->#</th>
+        <%
+            var keys = [];
+            for(var k in resp[0]) keys.push(k);
+
+            for(var k=1 ;k<keys.length;k++){
+        %>
+        <th class="rotate-45"><div><span><%= keys[k] %></span></div></th>
+        <%}%>
         <!--<th id="000" class="rotate-45">#</th>-->
         <!--<th id="k01" class="rotate-45"><div><span>date_time</span></div></th>-->
         <!--&lt;!&ndash;<th id="k02">_id</th>&ndash;&gt;-->
@@ -186,21 +268,22 @@
         <!--<th id="k10" class="rotate-45"><div><span>exchange_id</span></div></th>-->
         <!--<th id="k11" class="rotate-45"><div><span>cause_for_termination</span></div></th>-->
         <!--<th id="k12" class="rotate-45"><div><span>mcz_duration</span></div></th>-->
-    <!--</tr>-->
+    </tr>
     <tr>
-        <th id="00">#</th>
-        <th id="k01">日期時間</th>
-        <!--<th id="k02">_id</th>-->
-        <th id="k03">收發</th>
-        <th id="k04">通話開始</th>
-        <th id="k05">通話結束</th>
-        <th id="k06">被叫號碼</th>
-        <th id="k07">IMEI</th>
-        <th id="k08">IMSI</th>
-        <th id="k09">打出號碼</th>
-        <th id="k10">交換機</th>
-        <th id="k11">結束碼</th>
-        <th id="k12">通話時間(秒)</th>
+        <!--<th id="00">#</th>-->
+
+        <!--<th id="k01">日期時間</th>-->
+        <!--&lt;!&ndash;<th id="k02">_id</th>&ndash;&gt;-->
+        <!--<th id="k03">收發</th>-->
+        <!--<th id="k04">通話開始</th>-->
+        <!--<th id="k05">通話結束</th>-->
+        <!--<th id="k06">被叫號碼</th>-->
+        <!--<th id="k07">IMEI</th>-->
+        <!--<th id="k08">IMSI</th>-->
+        <!--<th id="k09">打出號碼</th>-->
+        <!--<th id="k10">交換機</th>-->
+        <!--<th id="k11">結束碼</th>-->
+        <!--<th id="k12">通話時間(秒)</th>-->
 
     </tr>
     </thead>
@@ -210,32 +293,27 @@
     <tr>
 
         <td id="#"><%= i++ %></td>
-        <td id="k-v01"  text="日期時間" ><%= (body.date_time          ) %></td>
-        <!--<td id="k-v02"  text="＿識別碼" ><%= (body._id                ) %></td>-->
-        <td id="k-v03"  text="＿＿收發" ><%= (body.record_type        ) %></td>
-        <td id="k-v04"  text="通話開始" ><%= (body.charging_start_time).substr(-9) %></td>
-        <td id="k-v05"  text="通話結束" ><%= (body.charging_end_time  ).substr(-9) %></td>
-        <td id="k-v06"  text="被叫號碼" style="color: #0055cc"><%= (body.called_number      ) %></td>
 
-        <td id="k-v07"  text="＿＿IMEI" ><%= (body.calling_imei       ) +'\n'%>
-            <p style="color: #0055cc">
-            <%=(body.called_imei       ) %>
-            </p>
-        </td>
-        <td id="k-v08"  text="＿＿IMSI" ><%= (body.calling_imsi       ) +'\n'%>
-            <p style="color: #0055cc">
-            <%=(body.called_imsi       )%>
-            </p>
-        </td>
-        <td id="k-v09"  text="打出號碼" ><%= (body.calling_number     ) %></td>
-        <td id="k-v10"  text="＿交換機" ><%= (body.exchange_id        ) %></td>
-        <td id="k-v11"  text="＿結束碼" ><%= (body.cause_for_termination) %></td>
-        <td id="k-v12"  text="通話時間" ><%= (body.orig_mcz_duration  ) +'\n'%>
-            <p style="color: #0055cc">
-            <%=(body.term_mcz_duration) %>
-            </p>
-        </td>
+        <%
+            for(var k=1 ;k<keys.length;k++){
+        %>
+        <td id="kv"><%= body[''+keys[k]] %></td>
 
+        <%}%>
+
+        <!--<td id="k-v01"  text="日期時間" ><%= (body.date_time          ) %></td>-->
+        <!--&lt;!&ndash;<td id="k-v02"  text="日期時間" ><%= (body._id                ) %></td>&ndash;&gt;-->
+        <!--<td id="k-v03"  text="日期時間" ><%= (body.record_type        ) %></td>-->
+        <!--<td id="k-v04"  text="日期時間" ><%= (body.charging_start_time).substr(-9) %></td>-->
+        <!--<td id="k-v05"  text="日期時間" ><%= (body.charging_end_time  ).substr(-9) %></td>-->
+        <!--<td id="k-v06"  text="日期時間" ><%= (body.called_number      ) %></td>-->
+
+        <!--<td id="k-v07"  text="日期時間" ><%= (body.calling_imei       ) +'\n'+(body.called_imei       )%></td>-->
+        <!--<td id="k-v08"  text="日期時間" ><%= (body.calling_imsi       ) +'\n'+(body.called_imsi       )%></td>-->
+        <!--<td id="k-v09"  text="日期時間" ><%= (body.calling_number     ) %></td>-->
+        <!--<td id="k-v10"  text="日期時間" ><%= (body.exchange_id        ) %></td>-->
+        <!--<td id="k-v11"  text="日期時間" ><%= (body.cause_for_termination) %></td>-->
+        <!--<td id="k-v12"  text="日期時間" ><%= (body.orig_mcz_duration  ) +'\n'+(body.term_mcz_duration) %></td>-->
     </tr>
     <% }); %>
     </tbody>
