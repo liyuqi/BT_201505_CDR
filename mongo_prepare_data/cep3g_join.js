@@ -29,11 +29,12 @@ function buildSite2gMap(){
             //id          :site._id,
             BTS_CODE    : site.BTS_CODE,
             SITE_ID     : site.SITE_ID,     //return
-            SITE_NAME   : site.SITE_NAME,
+
             BELONG_TO   : site.BELONG_TO,
             CELL_NO     : site.CELL_NO,     //cell
             LAC_OD      : site.LAC_OD,       //lac
-            BTS_ADDRESS : site.BTS_ADDRESS
+            BTS_ADDRESS : site.BTS_ADDRESS,
+            SITE_NAME   : site.SITE_NAME
         };
         site2g_map[site.LAC_OD +'-'+ site.CELL_NO] = obj;
     });
@@ -159,11 +160,12 @@ var cdr3g = db.cep3g_gen.find({
                 var cell = doc.calling_subs_last_lac + '-' + doc.calling_subs_last_ci;
                 try {
                     doc.SITE_ID     = site3g_map[cell].SITE_ID;
-                    doc.SITE_NAME   = site3g_map[cell].SITE_NAME;
+
                     doc.BELONG_TO   = site3g_map[cell].BELONG_TO;
                     doc.CELL_NO     = site3g_map[cell].CELL_NO;  //#
                     doc.LAC_OD      = site3g_map[cell].LAC_OD;   //#
                     doc.BTS_ADDRESS = site3g_map[cell].BTS_ADDRESS;
+                    doc.SITE_NAME   = site3g_map[cell].SITE_NAME;
                     if(site3g_map[cell].SITE_ID){
                         doc.NETWORK_TYPE = "3G";
                         doc.HO    = 0; //========================= 換手 ======//
@@ -172,11 +174,12 @@ var cdr3g = db.cep3g_gen.find({
                 } catch(e){ }   //doc.SITE_ID = '3g'; }
                 try {
                     doc.SITE_ID     = site2g_map[cell].SITE_ID;
-                    doc.SITE_NAME   = site2g_map[cell].SITE_NAME;
+
                     doc.BELONG_TO   = site2g_map[cell].BELONG_TO;
                     doc.CELL_NO     = site2g_map[cell].CELL_NO;  //#
                     doc.LAC_OD      = site2g_map[cell].LAC_OD;   //#
                     doc.BTS_ADDRESS = site2g_map[cell].BTS_ADDRESS;
+                    doc.SITE_NAME   = site2g_map[cell].SITE_NAME;
                     if(site2g_map[cell].SITE_ID){
                         doc.NETWORK_TYPE = "3G";
                         doc.HO    = 1; //========================= 換手 ======//
@@ -240,11 +243,12 @@ var cdr3g = db.cep3g_gen.find({
                 //var called_imei = doc.called_imei.substr(0, 8);
                 try {
                     doc.SITE_ID     = site3g_map[cell].SITE_ID;
-                    doc.SITE_NAME   = site3g_map[cell].SITE_NAME;
+
                     doc.BELONG_TO   = site3g_map[cell].BELONG_TO;
                     doc.CELL_NO     = site3g_map[cell].CELL_NO; //#
                     doc.LAC_OD      = site3g_map[cell].LAC_OD;   //#
                     doc.BTS_ADDRESS = site3g_map[cell].BTS_ADDRESS;
+                    doc.SITE_NAME   = site3g_map[cell].SITE_NAME;
                     if(site3g_map[cell].SITE_ID){
                         doc.NETWORK_TYPE = "3G";
                         doc.HO    = 0; //========================= 換手 ======//
@@ -253,11 +257,12 @@ var cdr3g = db.cep3g_gen.find({
                 } catch (e) { } //doc.SITE_ID = '3g'; }
                 try {
                     doc.SITE_ID     = site2g_map[cell].SITE_ID;
-                    doc.SITE_NAME   = site2g_map[cell].SITE_NAME;
+
                     doc.BELONG_TO   = site2g_map[cell].BELONG_TO;
                     doc.CELL_NO     = site2g_map[cell].CELL_NO;  //#
                     doc.LAC_OD      = site2g_map[cell].LAC_OD;   //#
                     doc.BTS_ADDRESS = site2g_map[cell].BTS_ADDRESS;
+                    doc.SITE_NAME   = site2g_map[cell].SITE_NAME;
                     if(site2g_map[cell].SITE_ID){
                         doc.NETWORK_TYPE = "3G";
                         doc.HO    = 1; //========================= 換手 ======//

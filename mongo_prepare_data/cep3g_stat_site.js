@@ -1,12 +1,14 @@
 // mongo cdr cep3g_stat_site.js  > ./log/agg_$(date +"%Y%m%d")_$(date +"%H%M%S").txt
-
+// mongo cdr cep3g_stat_site.js --eval "query_string={}"
 print(new Date().toLocaleTimeString());
 var agg_3g = db.cep3g_join.aggregate([
-        {$match: {
-            /*time: interval,up_falg:1,*/
-            record_type:{$in:["1","2"]}
-            , COUNTY:"台北市"
-        }}
+        {$match: query_string
+
+        //{
+            //*time: interval,up_falg:1,*/
+            //record_type:{$in:["1","2"]}
+        //}
+        }
         ,{$project:{
               DATE:{ $substr: [ "$date_time", 0, 10 ] }
             , HOUR:{ $substr: [ "$date_time", 11, 2 ] }
