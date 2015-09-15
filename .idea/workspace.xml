@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ff5f60e6-e6f7-43d7-8834-5a5ddc08f48e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mongo_prepare_data/cep3g_join.js" afterPath="$PROJECT_DIR$/mongo_prepare_data/cep3g_join.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mongo_prepare_data/cep3g_stat_site.js" afterPath="$PROJECT_DIR$/mongo_prepare_data/cep3g_stat_site.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="CDR0324.iws" />
@@ -118,8 +118,8 @@
             <file leaf-file-name="cep3g_stat_site.js" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/mongo_prepare_data/cep3g_stat_site.js">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.218509" vertical-offset="17" max-vertical-offset="2533">
-                    <caret line="11" column="55" selection-start-line="11" selection-start-column="55" selection-end-line="11" selection-end-column="55" />
+                  <state vertical-scroll-proportion="0.15295629" vertical-offset="0" max-vertical-offset="2533">
+                    <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
                     <folding />
                   </state>
                 </provider>
@@ -253,8 +253,8 @@
         <option value="$PROJECT_DIR$/routes/cdr_mongo.js" />
         <option value="$PROJECT_DIR$/views/cdr_CRUD_query_header45.ejs" />
         <option value="$PROJECT_DIR$/mongo_prepare_data/cep3g_join_cron.js" />
-        <option value="$PROJECT_DIR$/mongo_prepare_data/cep3g_stat_site.js" />
         <option value="$PROJECT_DIR$/mongo_prepare_data/cep3g_join.js" />
+        <option value="$PROJECT_DIR$/mongo_prepare_data/cep3g_stat_site.js" />
       </list>
     </option>
   </component>
@@ -461,12 +461,6 @@
       <created>1427168524473</created>
       <option name="number" value="Default" />
       <updated>1427168524473</updated>
-    </task>
-    <task id="LOCAL-00050" summary="sum">
-      <created>1441796168980</created>
-      <option name="number" value="00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1441796168982</updated>
     </task>
     <task id="LOCAL-00051" summary="cond">
       <created>1441849641140</created>
@@ -756,7 +750,13 @@
       <option name="project" value="LOCAL" />
       <updated>1442291828436</updated>
     </task>
-    <option name="localTasksCounter" value="99" />
+    <task id="LOCAL-00099" summary="join schema">
+      <created>1442298880516</created>
+      <option name="number" value="00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1442298880517</updated>
+    </task>
+    <option name="localTasksCounter" value="100" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -783,6 +783,7 @@
     <frame x="124" y="0" width="1395" height="907" extended-state="1" />
     <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.59774435" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879582" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32903227" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -800,7 +801,6 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.03692762" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.06031746" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.59774435" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32955715" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
@@ -822,7 +822,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="cep3g_stat_035710" />
     <MESSAGE value="cep3g_stat_035710 cond" />
     <MESSAGE value="cep3g_stat_035710 HO_MIN" />
     <MESSAGE value="cep3g_stat_035710 HO_MINute" />
@@ -847,7 +846,8 @@
     <MESSAGE value="distinct" />
     <MESSAGE value="calling_number" />
     <MESSAGE value="time interval" />
-    <option name="LAST_COMMIT_MESSAGE" value="time interval" />
+    <MESSAGE value="join schema" />
+    <option name="LAST_COMMIT_MESSAGE" value="join schema" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1022,6 +1022,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5762712" vertical-offset="0" max-vertical-offset="1700">
           <caret line="24" column="33" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1066,6 +1067,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.9722589" vertical-offset="947" max-vertical-offset="1785">
           <caret line="99" column="0" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1279,8 +1281,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mongo_prepare_data/cep3g_stat_site.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.218509" vertical-offset="17" max-vertical-offset="2533">
-          <caret line="11" column="55" selection-start-line="11" selection-start-column="55" selection-end-line="11" selection-end-column="55" />
+        <state vertical-scroll-proportion="0.15295629" vertical-offset="0" max-vertical-offset="2533">
+          <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
           <folding />
         </state>
       </provider>

@@ -5,7 +5,7 @@ var agg_3g = db.cep3g_join.aggregate([
         {$match: {
             /*time: interval,up_falg:1,*/
             record_type:{$in:["1","2"]}
-
+            , COUNTY:"台北市"
         }}
         ,{$project:{
               DATE:{ $substr: [ "$date_time", 0, 10 ] }
