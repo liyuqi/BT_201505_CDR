@@ -106,7 +106,7 @@ exports.cdr_CRUD_query = function(mongodb){
                 collection.find(query, {limit: _max_pageunit}, function (err, docs) {
                     if (docs.length) console.log('docs.length: ' + docs.length);
 
-                    res.render('cdr_CRUD_query_header45', {
+                    res.render('cdr_CRUD_query', {
                             title: 'query cdr',
                             db_count: db_count,
                             totalcount: query_count,
