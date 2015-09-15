@@ -138,7 +138,7 @@ var cdr3g = db.cep3g_gen.find({
 
     ,"calling_imei" : 1             //#index phone MOC
     ,"calling_imsi" : 1             //substr(IMSI,0,6)['SIM_2G','USIM_3G','ISIM_4G','roaming']
-//    ,"calling_number" : 1           //^[]
+    ,"calling_number" : 1           //^[]
     ,"calling_subs_last_ci" : 1     //#index site MOC
     ,"calling_subs_last_lac" : 1    //#index site MOC
 
