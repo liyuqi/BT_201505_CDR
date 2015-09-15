@@ -105,8 +105,8 @@
             <file leaf-file-name="cep3g_stat_site.js" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/mongo_prepare_data/cep3g_stat_site.js">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.7647815" vertical-offset="0" max-vertical-offset="2533">
-                    <caret line="35" column="119" selection-start-line="35" selection-start-column="119" selection-end-line="35" selection-end-column="119" />
+                  <state vertical-scroll-proportion="0.5899743" vertical-offset="1700" max-vertical-offset="2533">
+                    <caret line="127" column="5" selection-start-line="127" selection-start-column="5" selection-end-line="127" selection-end-column="5" />
                     <folding />
                   </state>
                 </provider>
@@ -450,12 +450,6 @@
       <option name="number" value="Default" />
       <updated>1427168524473</updated>
     </task>
-    <task id="LOCAL-00046" summary="cep3g_stat_035710 HO_MINUTES">
-      <created>1441794091197</created>
-      <option name="number" value="00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1441794091197</updated>
-    </task>
     <task id="LOCAL-00047" summary="stat">
       <created>1441795325622</created>
       <option name="number" value="00047" />
@@ -744,7 +738,13 @@
       <option name="project" value="LOCAL" />
       <updated>1442289178303</updated>
     </task>
-    <option name="localTasksCounter" value="95" />
+    <task id="LOCAL-00095" summary="distinct">
+      <created>1442290104205</created>
+      <option name="number" value="00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1442290104205</updated>
+    </task>
+    <option name="localTasksCounter" value="96" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -825,7 +825,6 @@
     <MESSAGE value="distinct record type" />
     <MESSAGE value="HO distinct" />
     <MESSAGE value="agg _id:0" />
-    <MESSAGE value="distinct" />
     <MESSAGE value="all agg" />
     <MESSAGE value="var i" />
     <MESSAGE value="merge" />
@@ -835,7 +834,8 @@
     <MESSAGE value="single number query" />
     <MESSAGE value="callnumber enrich" />
     <MESSAGE value="duration enrich" />
-    <option name="LAST_COMMIT_MESSAGE" value="duration enrich" />
+    <MESSAGE value="distinct" />
+    <option name="LAST_COMMIT_MESSAGE" value="distinct" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1295,8 +1295,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mongo_prepare_data/cep3g_stat_site.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7647815" vertical-offset="0" max-vertical-offset="2533">
-          <caret line="35" column="119" selection-start-line="35" selection-start-column="119" selection-end-line="35" selection-end-column="119" />
+        <state vertical-scroll-proportion="0.5899743" vertical-offset="1700" max-vertical-offset="2533">
+          <caret line="127" column="5" selection-start-line="127" selection-start-column="5" selection-end-line="127" selection-end-column="5" />
           <folding />
         </state>
       </provider>

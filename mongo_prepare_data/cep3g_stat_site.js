@@ -124,7 +124,7 @@ var agg_3g = db.cep3g_join.aggregate([
             , SUM_CALLED_MINUTES_7_10: {$divide:["$SUM_CALLED_SECOND_7_10",60]}
             , SUM_CALLED_MINUTES_10UP: {$divide:["$SUM_CALLED_SECOND_10UP",60]}
         }}
-        //,{    $out:"cep3g_stat_site"}
+        ,{    $out:"cep3g_stat_site"}
     ]
     //,{    explain: true}
     ,{    allowDiskUse: true}
