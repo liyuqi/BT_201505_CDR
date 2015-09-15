@@ -159,6 +159,7 @@ var cdr3g = db.cep3g_gen.find({
     if(doc.up_flag!=2) {  //======================================== update done, erich up_flag:1
         if(doc.record_type=="1") {
             doc.CALL_NUMBER = doc.calling_number;
+            doc.CALL_DURATION = Number(doc.orig_mcz_duration);
             try{
                 var cell = doc.calling_subs_last_lac + '-' + doc.calling_subs_last_ci;
                 try {
@@ -238,6 +239,7 @@ var cdr3g = db.cep3g_gen.find({
 //            '\tCARRIER:'+ doc.CARRIER + '\ted_num:'+ doc.called_number.substr(0,4));
         }else if(doc.record_type=="2") {
             doc.CALL_NUMBER = doc.called_number;
+            doc.CALL_DURATION = Number(doc.term_mcz_duration);
             try {
                 var cell = doc.called_subs_last_lac +'-'+ doc.called_subs_last_ci;
                 //var called_imei = doc.called_imei.substr(0, 8);

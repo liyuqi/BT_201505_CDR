@@ -4,6 +4,7 @@
 
 //var max_id=ObjectId("552cca5a0cf2e0d926e64d38"), pick=100000, n=1
 
+var T0,T1;
 var /*cdr3g,*/ phone_map = {}, site2g_map = {}, site3g_map = {}, SIM_map = {}, CARRIER_map = {};
 
 function buildPhoneMap(){
@@ -107,7 +108,7 @@ function buildCARRIERmap(){
 } buildCARRIERmap();
 //for(var key in site3g_map){print(key)}
 var i=0;
-print(new Date().toLocaleTimeString()+'\tprocess:'+i);
+T0 = new Date();
 //var d = new Date();
 //var t1 = new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours(),30,0,0);
 //var t0 = new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours()-1,30,0,0);
@@ -314,6 +315,9 @@ var cdr3g = db.cep3g_gen.find({
     }else{}
     i++;
 });
-print(new Date().toLocaleTimeString()+'\tprocess:'+i);
+print(T0.toLocaleTimeString());
+print(T1.toLocaleTimeString());
+print((T1-T0)/1000+'\t sec.');
+print(''+'\tprocess:'+i);
 //db.cep3g_sample.findOne({up_flag:1},{time:1,up_flag:1});
 //mongo cdr cep3g_join.js > ./cep3g_join_result_$(date +"%Y%m%d")_$(date +"%H%M%S").txt
