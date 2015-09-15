@@ -21,7 +21,6 @@ function buildPhoneMap(){
     });
 }buildPhoneMap();
 
-
 function buildSite2gMap(){
     var obj = {};
     var site2g = db.siteview2g_sample.find({});
@@ -39,7 +38,6 @@ function buildSite2gMap(){
         site2g_map[site.LAC_OD +'-'+ site.CELL_NO] = obj;
     });
 } buildSite2gMap();
-
 
 function buildSite3gMap(){
     var obj = {};
@@ -59,7 +57,6 @@ function buildSite3gMap(){
     });
 }buildSite3gMap();
 
-
 function buildSIMmap(){
     SIM_map['46693']  = {SIM_TYPE:'SIM' ,GENERATION:'2G',IMSI_STARTOF:/^46693/};
     SIM_map['466970'] = {SIM_TYPE:'SIM' ,GENERATION:'2G',IMSI_STARTOF:/^466970/};
@@ -77,7 +74,6 @@ function buildSIMmap(){
 } buildSIMmap();
 // for(var key in SIM_map){print(key)}
 // for(var key in SIM_map){printjson(SIM_map[key])}
-
 
 function buildCARRIERmap(){
     CARRIER_map['9']={CARRIER:'台灣大哥大',NPRN:/^9/};
@@ -115,9 +111,6 @@ function buildCARRIERmap(){
 
 print(new Date().toLocaleTimeString()+'\tbuildMapsEnd:');
 
-
-
-
 var i=0;
 T0 = new Date();
 
@@ -145,9 +138,9 @@ var cdr3g = db.cep3g_gen.find({
     ,"cause_for_termination" : 1    //c = 100
     ,"charging_end_time" : 1
     ,"charging_start_time" : 1
-    ,"exchange_id" : 1
+    //,"exchange_id" : 1
     ,"orig_mcz_duration" : 1        //$sum
-    ,"radio_network_type" : 1
+    //,"radio_network_type" : 1
     ,"record_type" : 1
     ,"term_mcz_duration" : 1        //$sum
     ,"date_time" : 1                //#index date, time
@@ -160,6 +153,8 @@ var cdr3g = db.cep3g_gen.find({
         if(doc.record_type=="1") {
             doc.CALL_NUMBER = doc.calling_number;
             doc.CALL_DURATION = Number(doc.orig_mcz_duration);
+            doc.DATE = doc.date_time.substr(0,10);
+            doc.HOUR = doc.date_time.substr(11,2);
             try{
                 var cell = doc.calling_subs_last_lac + '-' + doc.calling_subs_last_ci;
                 try {
@@ -174,7 +169,7 @@ var cdr3g = db.cep3g_gen.find({
                         doc.HO    = 0; //========================= 換手 ======//
                         doc.HO_SECOND= Number(doc.orig_mcz_duration);
                     }
-                } catch(e){ } //doc.SITE_ID = '3g'; }
+                } catch(e){ }   //doc.SITE_ID = '3g'; }
                 try {
                     doc.SITE_ID     = site2g_map[cell].SITE_ID;
                     doc.SITE_NAME   = site2g_map[cell].SITE_NAME;
@@ -187,7 +182,7 @@ var cdr3g = db.cep3g_gen.find({
                         doc.HO    = 1; //========================= 換手 ======//
                         doc.HO_SECOND= Number(doc.orig_mcz_duration);
                     }
-                } catch(e){ } //doc.SITE_ID = '2g'; doc.HANGOVER    = 1;}
+                } catch(e){ }   //doc.SITE_ID = '2g'; doc.HO = 1;}
                 try {
                     //var calling_imei = doc.calling_imei.substr(0,8);
                     if(phone_map[doc.calling_imei.substr(0,8)].IMEI_VALUE==doc.calling_imei.substr(0,8)){}
@@ -212,7 +207,7 @@ var cdr3g = db.cep3g_gen.find({
                         doc.SIM_TYPE = SIM_map[doc.calling_imsi.substr(0,5)].SIM_TYPE;
                     else
                         doc.SIM_TYPE = SIM_map[''].SIM_TYPE;
-                }catch (e) {} //doc.SIM_TYPE
+                }catch (e) {}    //doc.SIM_TYPE
                 try{
                     if(doc.called_number.substr(0,1)=='9')
                         doc.CARRIER = CARRIER_map[doc.called_number.substr(0,1)].CARRIER;
@@ -222,10 +217,10 @@ var cdr3g = db.cep3g_gen.find({
                         doc.CARRIER = CARRIER_map[doc.called_number.substr(0,4)].CARRIER;
                     else
                         doc.CARRIER = CARRIER_map[''].CARRIER;
-                }catch (e) {} //doc.CARRIER
+                }catch (e) {}    //doc.CARRIER
                 try{
                     doc.cause_for_termination = doc.cause_for_termination.substr(-4,4);
-                }catch(e){} //doc.cause_for_termination
+                }catch(e){}      //doc.cause_for_termination
             }catch(e){}
             if  (doc.orig_mcz_duration == null||""){doc.orig_mcz_duration=0;}
             else{doc.orig_mcz_duration = Number(doc.orig_mcz_duration);}
@@ -268,7 +263,7 @@ var cdr3g = db.cep3g_gen.find({
                         doc.HO    = 1; //========================= 換手 ======//
                         doc.HO_SECOND= Number(doc.term_mcz_duration);
                     }
-                } catch(e){ } //doc.SITE_ID = '2g'; doc.HANGOVER    = 1;}
+                    } catch(e){ }   //doc.SITE_ID = '2g'; doc.HO = 1;}
                 try {
                     if(phone_map[doc.called_imei.substr(0,8)].IMEI_VALUE==doc.called_imei.substr(0,8)){}
                     else {
@@ -292,7 +287,7 @@ var cdr3g = db.cep3g_gen.find({
                         doc.SIM_TYPE = SIM_map[doc.called_imsi.substr(0,5)].SIM_TYPE;
                     else
                         doc.SIM_TYPE = SIM_map[''].SIM_TYPE;
-                }catch (e) {} //doc.SIM_TYPE
+                }catch (e) {}    //doc.SIM_TYPE
                 try{
                     //if(doc.called_number.substr(0,1)=='9')
                     //    doc.CARRIER = CARRIER_map[doc.called_number.substr(0,1)].CARRIER;
@@ -302,10 +297,10 @@ var cdr3g = db.cep3g_gen.find({
                     //    doc.CARRIER = CARRIER_map[doc.called_number.substr(0,4)].CARRIER;
                     //else
                     doc.CARRIER = CARRIER_map['MTC'].CARRIER;
-                }catch (e) {} //doc.CARRIER
+                }catch (e) {}    //doc.CARRIER
                 try{
                     doc.cause_for_termination = doc.cause_for_termination.substr(-4,4);
-                }catch(e){} //doc.cause_for_termination
+                }catch(e){}      //doc.cause_for_termination
             }catch(e){}
 
             if  (doc.orig_mcz_duration == null||""){doc.orig_mcz_duration=0;}
