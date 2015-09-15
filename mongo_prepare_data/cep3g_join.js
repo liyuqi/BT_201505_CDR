@@ -2,7 +2,7 @@
 
 
 print(new Date().toLocaleTimeString()+'\tbuildMapsStart:');
-
+var T0,T1;
 var phone_map = {}, site2g_map = {}, site3g_map = {}, SIM_map = {}, CARRIER_map = {};
 
 function buildPhoneMap(){
@@ -119,7 +119,7 @@ print(new Date().toLocaleTimeString()+'\tbuildMapsEnd:');
 
 
 var i=0;
-print(new Date().toLocaleTimeString()+'\tprocess:'+i);
+T0 = new Date();
 
 //var d = new Date();
 //var t1 = new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours(),0,0,0);
@@ -327,7 +327,8 @@ var cdr3g = db.cep3g_gen.find({
     }else{}
     i++;
 });
-print(new Date().toLocaleTimeString()+'\tprocess:'+i);
-
-
+print(T0.toLocaleTimeString());
+print(T1.toLocaleTimeString());
+print((T1-T0)/1000+'\t sec.');
+print(''+'\tprocess:'+i);
 // db.cep3g_gen.findOne({up_flag:1},{time:1,up_flag:1});
