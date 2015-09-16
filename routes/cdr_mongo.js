@@ -320,13 +320,13 @@ exports.cdr_3g_site_query = function(mongodb){
             , SUM_CALLED_COUNT_3_5  :{$cond :[{$and:[{$gt :["$CALL_DURATION",3 ]},{$lte:["$CALL_DURATION",5 ]} ]},1,0]}
             , SUM_CALLED_COUNT_5_7  :{$cond :[{$and:[{$gt :["$CALL_DURATION",5 ]},{$lte:["$CALL_DURATION",7 ]} ]},1,0]}
             , SUM_CALLED_COUNT_7_10 :{$cond :[{$and:[{$gt :["$CALL_DURATION",7 ]},{$lte:["$CALL_DURATION",10]} ]},1,0]}
-            , SUM_CALLED_COUNT_10UP :{$cond :[       {$gt :["$CALL_DURATION",10]}                                ,1,0]}
+            //, SUM_CALLED_COUNT_10UP :{$cond :[       {$gt :["$CALL_DURATION",10]}                                ,1,0]}
 
             , SUM_CALLED_SECOND_0_3  :{$cond :[{$and:[{$gte:["$CALL_DURATION",0 ]},{$lte:["$CALL_DURATION",3 ]} ]},"$CALL_DURATION",0]}
             , SUM_CALLED_SECOND_3_5  :{$cond :[{$and:[{$gt :["$CALL_DURATION",3 ]},{$lte:["$CALL_DURATION",5 ]} ]},"$CALL_DURATION",0]}
             , SUM_CALLED_SECOND_5_7  :{$cond :[{$and:[{$gt :["$CALL_DURATION",5 ]},{$lte:["$CALL_DURATION",7 ]} ]},"$CALL_DURATION",0]}
             , SUM_CALLED_SECOND_7_10 :{$cond :[{$and:[{$gt :["$CALL_DURATION",7 ]},{$lte:["$CALL_DURATION",10]} ]},"$CALL_DURATION",0]}
-            , SUM_CALLED_SECOND_10UP :{$cond :[       {$gt :["$CALL_DURATION",10]}                                ,"$CALL_DURATION",0]}
+            //, SUM_CALLED_SECOND_10UP :{$cond :[       {$gt :["$CALL_DURATION",10]}                                ,"$CALL_DURATION",0]}
         }};
         var agg_pipe_group = {$group:{
             _id: {
@@ -355,13 +355,13 @@ exports.cdr_3g_site_query = function(mongodb){
             , SUM_CALLED_COUNT_3_5 : {$sum:"$SUM_CALLED_COUNT_0_3"}
             , SUM_CALLED_COUNT_5_7 : {$sum:"$SUM_CALLED_COUNT_3_5"}
             , SUM_CALLED_COUNT_7_10: {$sum:"$SUM_CALLED_COUNT_5_7"}
-            , SUM_CALLED_COUNT_10UP: {$sum:"$SUM_CALLED_COUNT_7_10"}
+            //, SUM_CALLED_COUNT_10UP: {$sum:"$SUM_CALLED_COUNT_7_10"}
 
             , SUM_CALLED_SECOND_0_3 : {$sum:"$SUM_CALLED_SECOND_0_3"}
             , SUM_CALLED_SECOND_3_5 : {$sum:"$SUM_CALLED_SECOND_0_3"}
             , SUM_CALLED_SECOND_5_7 : {$sum:"$SUM_CALLED_SECOND_3_5"}
             , SUM_CALLED_SECOND_7_10: {$sum:"$SUM_CALLED_SECOND_5_7"}
-            , SUM_CALLED_SECOND_10UP: {$sum:"$SUM_CALLED_SECOND_7_10"}
+            //, SUM_CALLED_SECOND_10UP: {$sum:"$SUM_CALLED_SECOND_7_10"}
         }};
         var agg_pipe_match2 = {$match:{
             $nor:[
@@ -369,7 +369,7 @@ exports.cdr_3g_site_query = function(mongodb){
                 ,{SUM_CALLED_COUNT_3_5 :0}
                 ,{SUM_CALLED_COUNT_5_7 :0}
                 ,{SUM_CALLED_COUNT_7_10:0}
-                ,{SUM_CALLED_COUNT_10UP:0}
+                //,{SUM_CALLED_COUNT_10UP:0}
             ]
         }};
         var agg_pipe_pro_en = {$project:{
@@ -404,13 +404,13 @@ exports.cdr_3g_site_query = function(mongodb){
             , SUM_CALLED_COUNT_3_5 : 1
             , SUM_CALLED_COUNT_5_7 : 1
             , SUM_CALLED_COUNT_7_10: 1
-            , SUM_CALLED_COUNT_10UP: 1
+            //, SUM_CALLED_COUNT_10UP: 1
 
             , SUM_CALLED_MINUTES_0_3 : {$divide:["$SUM_CALLED_SECOND_0_3",60]}
             , SUM_CALLED_MINUTES_3_5 : {$divide:["$SUM_CALLED_SECOND_3_5",60]}
             , SUM_CALLED_MINUTES_5_7 : {$divide:["$SUM_CALLED_SECOND_5_7",60]}
             , SUM_CALLED_MINUTES_7_10: {$divide:["$SUM_CALLED_SECOND_7_10",60]}
-            , SUM_CALLED_MINUTES_10UP: {$divide:["$SUM_CALLED_SECOND_10UP",60]}
+            //, SUM_CALLED_MINUTES_10UP: {$divide:["$SUM_CALLED_SECOND_10UP",60]}
         }};
         var agg_pipe_pro_zh = {$project:{
             _id:0
@@ -444,13 +444,13 @@ exports.cdr_3g_site_query = function(mongodb){
             , 通話次數3_5 : "$SUM_CALLED_COUNT_3_5"
             , 通話次數5_7 : "$SUM_CALLED_COUNT_5_7"
             , 通話次數7_10: "$SUM_CALLED_COUNT_7_10"
-            , 通話次數10UP: "$SUM_CALLED_COUNT_10UP"
+            //, 通話次數10UP: "$SUM_CALLED_COUNT_10UP"
 
             , 通話分鐘數0_3 : {$divide:["$SUM_CALLED_SECOND_0_3",60]}
             , 通話分鐘數3_5 : {$divide:["$SUM_CALLED_SECOND_3_5",60]}
             , 通話分鐘數5_7 : {$divide:["$SUM_CALLED_SECOND_5_7",60]}
             , 通話分鐘數7_10: {$divide:["$SUM_CALLED_SECOND_7_10",60]}
-            , 通話分鐘數10UP: {$divide:["$SUM_CALLED_SECOND_10UP",60]}
+            //, 通話分鐘數10UP: {$divide:["$SUM_CALLED_SECOND_10UP",60]}
         }};
         var agg_pipe_out = {$out:"cep3g_stat_site"};
 
@@ -458,7 +458,7 @@ exports.cdr_3g_site_query = function(mongodb){
             agg_pipe_match
             ,agg_pipe_pro1
             ,agg_pipe_group
-            //,agg_pipe_match2
+            ,agg_pipe_match2
             //,agg_pipe_pro_en
             ,agg_pipe_pro_zh
             //,agg_pipe_out

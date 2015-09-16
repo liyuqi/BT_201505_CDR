@@ -43,8 +43,13 @@
         <%
         for(var k in keys){
         %>
-        <td id="kv"><%= body[''+keys[k]] %></td>
-
+        <td id="kv">
+            <%  if(typeof(body[''+keys[k]])=='number'&&((body[''+keys[k]])>0)){ //%>
+                <%= (body[''+keys[k]]).toFixed(2) %>
+            <% }else{ %>
+                <%= body[''+keys[k]] %>
+            <% } %>
+        </td>
         <%}%>
 
     </tr>

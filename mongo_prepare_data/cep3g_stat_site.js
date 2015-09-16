@@ -2,13 +2,10 @@
 // mongo cdr cep3g_stat_site.js --eval "query_string={record_type:{$in:["1","2"]}}"
 print(new Date().toLocaleTimeString());
 var agg_3g = db.cep3g_join.aggregate([
-        {$match: query_string
-
-        //{
-            //*time: interval,up_falg:1,*/
-            //record_type:{$in:["1","2"]}
-        //}
-        }
+        {$match: {
+            /*time: interval,up_falg:1,*/
+            record_type:{$in:["1","2"]}
+        }}
         ,{$project:{
               DATE:{ $substr: [ "$date_time", 0, 10 ] }
             , HOUR:{ $substr: [ "$date_time", 11, 2 ] }
@@ -33,19 +30,19 @@ var agg_3g = db.cep3g_join.aggregate([
             , DISTINCT_CALLED_COUNT_3_5  :{$cond :[{$and:[{$gt :["$CALL_DURATION",3 ]},{$lte:["$CALL_DURATION",5 ]} ]},"$CALL_NUMBER",null]}
             , DISTINCT_CALLED_COUNT_5_7  :{$cond :[{$and:[{$gt :["$CALL_DURATION",5 ]},{$lte:["$CALL_DURATION",7 ]} ]},"$CALL_NUMBER",null]}
             , DISTINCT_CALLED_COUNT_7_10 :{$cond :[{$and:[{$gt :["$CALL_DURATION",7 ]},{$lte:["$CALL_DURATION",10]} ]},"$CALL_NUMBER",null]}
-            , DISTINCT_CALLED_COUNT_10UP :{$cond :[       {$gt :["$CALL_DURATION",10]}                                ,"$CALL_NUMBER",null]}
+            //, DISTINCT_CALLED_COUNT_10UP :{$cond :[       {$gt :["$CALL_DURATION",10]}                                ,"$CALL_NUMBER",null]}
 
             , SUM_CALLED_COUNT_0_3  :{$cond :[{$and:[{$gte:["$CALL_DURATION",0 ]},{$lte:["$CALL_DURATION",3 ]} ]},1,0]}
             , SUM_CALLED_COUNT_3_5  :{$cond :[{$and:[{$gt :["$CALL_DURATION",3 ]},{$lte:["$CALL_DURATION",5 ]} ]},1,0]}
             , SUM_CALLED_COUNT_5_7  :{$cond :[{$and:[{$gt :["$CALL_DURATION",5 ]},{$lte:["$CALL_DURATION",7 ]} ]},1,0]}
             , SUM_CALLED_COUNT_7_10 :{$cond :[{$and:[{$gt :["$CALL_DURATION",7 ]},{$lte:["$CALL_DURATION",10]} ]},1,0]}
-            , SUM_CALLED_COUNT_10UP :{$cond :[       {$gt :["$CALL_DURATION",10]}                                ,1,0]}
+            //, SUM_CALLED_COUNT_10UP :{$cond :[       {$gt :["$CALL_DURATION",10]}                                ,1,0]}
 
             , SUM_CALLED_SECOND_0_3  :{$cond :[{$and:[{$gte:["$CALL_DURATION",0 ]},{$lte:["$CALL_DURATION",3 ]} ]},"$CALL_DURATION",0]}
             , SUM_CALLED_SECOND_3_5  :{$cond :[{$and:[{$gt :["$CALL_DURATION",3 ]},{$lte:["$CALL_DURATION",5 ]} ]},"$CALL_DURATION",0]}
             , SUM_CALLED_SECOND_5_7  :{$cond :[{$and:[{$gt :["$CALL_DURATION",5 ]},{$lte:["$CALL_DURATION",7 ]} ]},"$CALL_DURATION",0]}
             , SUM_CALLED_SECOND_7_10 :{$cond :[{$and:[{$gt :["$CALL_DURATION",7 ]},{$lte:["$CALL_DURATION",10]} ]},"$CALL_DURATION",0]}
-            , SUM_CALLED_SECOND_10UP :{$cond :[       {$gt :["$CALL_DURATION",10]}                                ,"$CALL_DURATION",0]}
+            //, SUM_CALLED_SECOND_10UP :{$cond :[       {$gt :["$CALL_DURATION",10]}                                ,"$CALL_DURATION",0]}
         }}
         ,{$group:{
             _id: {
@@ -72,19 +69,19 @@ var agg_3g = db.cep3g_join.aggregate([
             , DISTINCT_CALLED_COUNT_3_5  :{$addToSet:"$DISTINCT_CALLED_COUNT_3_5"}
             , DISTINCT_CALLED_COUNT_5_7  :{$addToSet:"$DISTINCT_CALLED_COUNT_5_7"}
             , DISTINCT_CALLED_COUNT_7_10 :{$addToSet:"$DISTINCT_CALLED_COUNT_7_10"}
-            , DISTINCT_CALLED_COUNT_10UP :{$addToSet:"$DISTINCT_CALLED_COUNT_10UP"}
+            //, DISTINCT_CALLED_COUNT_10UP :{$addToSet:"$DISTINCT_CALLED_COUNT_10UP"}
 
             , SUM_CALLED_COUNT_0_3 : {$sum:"$SUM_CALLED_COUNT_0_3"}
             , SUM_CALLED_COUNT_3_5 : {$sum:"$SUM_CALLED_COUNT_0_3"}
             , SUM_CALLED_COUNT_5_7 : {$sum:"$SUM_CALLED_COUNT_3_5"}
             , SUM_CALLED_COUNT_7_10: {$sum:"$SUM_CALLED_COUNT_5_7"}
-            , SUM_CALLED_COUNT_10UP: {$sum:"$SUM_CALLED_COUNT_7_10"}
+            //, SUM_CALLED_COUNT_10UP: {$sum:"$SUM_CALLED_COUNT_7_10"}
 
             , SUM_CALLED_SECOND_0_3 : {$sum:"$SUM_CALLED_SECOND_0_3"}
             , SUM_CALLED_SECOND_3_5 : {$sum:"$SUM_CALLED_SECOND_0_3"}
             , SUM_CALLED_SECOND_5_7 : {$sum:"$SUM_CALLED_SECOND_3_5"}
             , SUM_CALLED_SECOND_7_10: {$sum:"$SUM_CALLED_SECOND_5_7"}
-            , SUM_CALLED_SECOND_10UP: {$sum:"$SUM_CALLED_SECOND_7_10"}
+            //, SUM_CALLED_SECOND_10UP: {$sum:"$SUM_CALLED_SECOND_7_10"}
         }}
         ,{$project:{
             _id:0
@@ -112,21 +109,30 @@ var agg_3g = db.cep3g_join.aggregate([
             , DISTINCT_CALLED_COUNT_3_5 :1
             , DISTINCT_CALLED_COUNT_5_7 :1
             , DISTINCT_CALLED_COUNT_7_10:1
-            , DISTINCT_CALLED_COUNT_10UP:1
+            //, DISTINCT_CALLED_COUNT_10UP:1
 
             , SUM_CALLED_COUNT_0_3 : 1
             , SUM_CALLED_COUNT_3_5 : 1
             , SUM_CALLED_COUNT_5_7 : 1
             , SUM_CALLED_COUNT_7_10: 1
-            , SUM_CALLED_COUNT_10UP: 1
+            //, SUM_CALLED_COUNT_10UP: 1
 
             , SUM_CALLED_MINUTES_0_3 : {$divide:["$SUM_CALLED_SECOND_0_3",60]}
             , SUM_CALLED_MINUTES_3_5 : {$divide:["$SUM_CALLED_SECOND_3_5",60]}
             , SUM_CALLED_MINUTES_5_7 : {$divide:["$SUM_CALLED_SECOND_5_7",60]}
             , SUM_CALLED_MINUTES_7_10: {$divide:["$SUM_CALLED_SECOND_7_10",60]}
-            , SUM_CALLED_MINUTES_10UP: {$divide:["$SUM_CALLED_SECOND_10UP",60]}
+            //, SUM_CALLED_MINUTES_10UP: {$divide:["$SUM_CALLED_SECOND_10UP",60]}
         }}
-        ,{    $out:"cep3g_stat_site"}
+        ,{$match:{
+            $nor:[
+                {SUM_CALLED_COUNT_0_3 :0}
+                ,{SUM_CALLED_COUNT_3_5 :0}
+                ,{SUM_CALLED_COUNT_5_7 :0}
+                ,{SUM_CALLED_COUNT_7_10:0}
+                //,{SUM_CALLED_COUNT_10UP:0}
+            ]
+        }}
+        ,{    $out:"cep3g_stat_site0_10"}
     ]
     //,{    explain: true}
     ,{    allowDiskUse: true}
