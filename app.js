@@ -32,7 +32,7 @@ var monk = require('monk');
 //var dbfluentd = monk('192.168.0.196/fluentd');
 //var dbCDR = monk('172.17.24.196:27017/cdr');
 //var dbCDR = monk('192.168.0.196:40000/cdr');
-var dbCDR = monk('192.168.30.131:27017/cdr');
+var dbCDR = monk('192.168.210.207:27017/cdr');
 
 
 var partials = require('express-partials');

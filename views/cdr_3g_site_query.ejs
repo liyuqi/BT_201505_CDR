@@ -90,7 +90,7 @@
                 <td id="name15">業者別</td>
                 <td id="field15"><label for="CARRIER">CARRIER</label></td>
                 <td id="input15"><input type="text" class="input-large" id="CARRIER" name="CARRIER"/></td>
-                <td id="sample15">中華電信</td>
+                <td id="sample15">台灣大哥大</td>
             </tr>
             </tbody>
         </table>
@@ -112,7 +112,7 @@
 <h4> 查無資料!</h4>
 <% } else /*if (resp.length < 20)*/{%>
 <!--<h4> 回傳 <#= resp.length %> 筆</h4>-->
-<h3> 總量 : <%= db_count %>筆資料, 符合<%= totalcount %> 筆, 顯示前 <%= resp.length %> 筆</h3>
+<!--<h3> 總量 : <%= db_count %>筆資料, 符合<%= totalcount %> 筆, 顯示前 <%= resp.length %> 筆</h3>-->
 
 <table class="table table-hover table-condensed">
     <caption></caption>
@@ -161,7 +161,7 @@
 </table>
 <% } %>
 <% } else { %>
-<h3>總量 : <%= totalcount %>筆資料</h3>
+<!--<h3>總量 : <%= totalcount %>筆資料</h3>-->
 <% }%>
 
 </body>

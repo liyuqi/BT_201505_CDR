@@ -2,6 +2,9 @@
 <html>
 <head>
     <title><%= title %></title>
+    <script>
+        $('.a').tooltip('toggle')
+    </script>
 </head>
 <body>
 
@@ -18,70 +21,79 @@
 
 
 
-    <table class="table table-hover table-condensed">
-        <caption></caption>
-        <thead>
-        <tr>
-            <td id="#"></td>
-            <th id="th_date_time"               >日期時間</th>
-            <th id="th_charging_start_time"     >通話開始時間</th>
-            <th id="th_charging_end_time"       >通話結束時間</th>
-            <script>//依基站</script>
-            <th id="th_exchange_id"             >交換機</th>
-            <script>//依手機</script>
-            <th id="th_record_type"             >Record Type</th>
-            <!--<th th_id="cell_brand"             >手機廠牌</th>-->
-            <!--<th th_id="cell_serial"            >手機型號</th>-->
+<table class="table table-striped table-hover table-condensed">
+    <caption></caption>
+    <thead>
+    <tr>
+    <tr>
+        <!--<th>Timestamp</th>-->
 
-            <th id="th_radio_network_type"      >網路</th>
-            <th id="th_cause_for_termination"   >結束碼</th>
-            <th id="th_orig_mcz_duration"       >通話時間</th>
+        <td id="#"></td>
+        <th>_id</th>
+        <th id="th_date_time"               >日期時間</th>
+        <th id="th_charging_start_time"     >通話開始時間</th>
+        <th id="th_charging_end_time"       >通話結束時間</th>
+        <script>//依基站</script>
+        <th id="th_exchange_id"             >交換機</th>
+        <script>//依手機</script>
+        <th id="th_record_type"             >收發</th>
+        <!--<th th_id="cell_brand"             >手機廠牌</th>-->
+        <!--<th th_id="cell_serial"            >手機型號</th>-->
 
-            <th id="th_called_number"          >被叫號碼</th>
-            <!--<th id="th_calling_imei"           >IMEI</th>-->
-            <!--<th id="th_calling_imsi"           >IMSI</th>-->
-            <!--<th id="th_calling_number"         >主叫號碼</th>-->
+        <th id="th_radio_network_type"      >頻率</th>
+        <th id="th_cause_for_termination"   >結束碼</th>
+        <th id="th_orig_mcz_duration"       >通話時間</th>
 
-            <!--<th id="th_calling_subs_last_ci"   >Last CellID</th>-->
-            <!--<th id="th_calling_subs_last_lac"  >Last LAC</th>-->
-            <!--<th id="th_calling_subs_last_mcc"  >Last MCC</th>-->
-            <!--<th id="th_calling_subs_last_mnc"  >Last MNC</th>-->
-        </tr>
-        </thead>
-        <tbody>
-        <% var i = 1; %>
-        <% resp.forEach( function(body){ %>
-        <tr>
-            <!--<td><%# body.date_time %></td>-->
-            <!--<td><%# body._id %></td>-->
-            <td id="#"><%= i++ %></td>
-            <td id="date_time"          text="日期時間" ><%= body.date_time %></td>
-            <td id="charging_start_time"text="通話開始" ><%= body.charging_start_time %></td>
-            <td id="charging_end_time"  text="通話結束" ><%= body.charging_end_time %></td>
-            <script>//依基站</script>
-            <td id="exchange_id"        text="＿交換機" ><%= body.exchange_id %></td>
-            <script>//依手機</script>
-            <td id="record_type"        text="收發類型" ><%= body.record_type %></td>
-            <!--<th id="cell_brand"             text="手機廠牌" >手機廠牌</th>-->
-            <!--<th id="cell_serial"            text="手機型號" >手機型號</th>-->
+        <th id="th_called_number"           >被叫號碼</th>
+        <!--<th id="th_calling_imei"           >IMEI</th>-->
+        <!--<th id="th_calling_imsi"           >IMSI</th>-->
+        <!--<th id="th_calling_number"         >主叫號碼</th>-->
 
-            <td id="radio_network_type" text="＿＿網路" ><%= body.radio_network_type %></td>
-            <td id="cause_for_termination" text="＿結束碼"><%= body.cause_for_termination %></td>
-            <td id="orig_mcz_duration"  text="通話時間" ><%= body.orig_mcz_duration||body.term_mcz_duration %></td>
+        <!--<th id="th_calling_subs_last_ci"   >Last CellID</th>-->
+        <!--<th id="th_calling_subs_last_lac"  >Last LAC</th>-->
+        <!--<th id="th_calling_subs_last_mcc"  >Last MCC</th>-->
+        <!--<th id="th_calling_subs_last_mnc"  >Last MNC</th>-->
+    </tr>
+    </thead>
+    <tbody>
+    <% var i = 1; %>
+    <% resp.forEach( function(body){ %>
+    <tr>
+        <!--<td><%# body.date_time %></td>-->
 
-            <td id="called_number"      text="被叫號碼" ><%= body.called_number %></td>
-            <!--<td id="calling_imei"       text="IMEI"     ><%= body.calling_imei %></td>-->
-            <!--<td id="calling_imsi"       text="IMSI"     ><%= body.calling_imsi %></td>-->
-            <!--<td id="calling_number"     text="主叫號碼" ><%= body.calling_number %></td>-->
+        <td id="#"><%= i++ %></td>
 
-            <!--<td id="calling_subs_last_ci"  ><%= body.calling_subs_last_ci %></td>-->
-            <!--<td id="calling_subs_last_lac" ><%= body.calling_subs_last_lac %></td>-->
-            <!--<td id="calling_subs_last_mcc" ><%= body.calling_subs_last_mcc %></td>-->
-            <!--<td id="calling_subs_last_mnc" ><%= body.calling_subs_last_mnc %></td>-->
-        </tr>
-        <% }); %>
-        </tbody>
-    </table>
+        <td><a href="#" data-toggle="tooltip" title="first tooltip">_id</a></td><%# body._id %>
+        <td id="date_time"              text="日期時間"><%= body.date_time/*.toUTCString()*//*.toString()*/ %></td>
+        <td id="charging_start_time"    text="通話開始"><%= (body.charging_start_time).substr(-9)/*.toUTCString()*//*.toString()*/ %></td>
+        <td id="charging_end_time"      text="通話結束"><%= (body.charging_end_time).substr(-9)/*.toUTCString()*//*.toString()*/ %></td>
+        <script>//依基站</script>
+        <td id="exchange_id"            text="＿＿基站"><%= body.exchange_id %></td>
+        <script>//依手機</script>
+        <td id="record_type"            text="＿業者別"><%= body.record_type %></td>
+        <!--<th id="cell_brand"             text="手機廠牌" >手機廠牌</th>-->
+        <!--<th id="cell_serial"            text="手機型號" >手機型號</th>-->
+
+        <td id="radio_network_type"     text="＿＿頻率"><%= body.radio_network_type %></td>
+        <td id="cause_for_termination"  text="＿結束碼"><%= body.cause_for_termination %></td>
+        <% if(body.record_type=='1'){ %>
+        <td id="d_or_mcz_duration"      text="通話時間"><%= body.orig_mcz_duration %></td>
+        <%}else{%>
+        <td id="d_te_mcz_duration"      text="通話時間"><%= body.term_mcz_duration %></td>
+        <%}%>
+        <td id="called_number"          text="被叫號碼" ><%= body.called_number %></td>
+        <!--<td id="calling_imei"           text="IMEI"     ><%= body.calling_imei %></td>-->
+        <!--<td id="calling_imsi"           text="IMSI"     ><%= body.calling_imsi %></td>-->
+        <!--<td id="calling_number"         text="主叫號碼" ><%= body.calling_number %></td>-->
+
+        <!--<td id="calling_subs_last_ci"  ><%= body.calling_subs_last_ci %></td>-->
+        <!--<td id="calling_subs_last_lac" ><%= body.calling_subs_last_lac %></td>-->
+        <!--<td id="calling_subs_last_mcc" ><%= body.calling_subs_last_mcc %></td>-->
+        <!--<td id="calling_subs_last_mnc" ><%= body.calling_subs_last_mnc %></td>-->
+    </tr>
+    <% }); %>
+    </tbody>
+</table>
     <% } %>
 <% } else {} %>
 </body>

@@ -270,30 +270,6 @@ exports.cdr_3g_site_query1 = function(mongodb){
     };
 };
 
-//exports.cdr_3g_site_report = function(mongodb){
-//    return function(req, res) {
-//
-//        //query
-//        var collection = mongodb.get('cep3g_agg');
-//        collection.count({},function(err,db_count){
-//            collection.count({}, function (err, query_count) {
-//                collection.find({}, {limit: _max_pageunit}, function (err, docs) {
-//                    if (docs.length) console.log('docs.length: ' + docs.length);
-//
-//                    res.render('cdr_3g_site_report', {
-//                        title: 'cep3g site',
-//                        db_count: db_count,
-//                        totalcount: query_count,
-//                        //page_count:docs.length,
-//                        resp: docs
-//                    });
-//                    //if (err) res.redirect('cdr_CRUD_query');
-//                });
-//            });
-//        });
-//    };
-//};
-
 exports.cdr_3g_site_query = function(mongodb){
     return function(req, res) {
         var query={};
@@ -314,7 +290,7 @@ exports.cdr_3g_site_query = function(mongodb){
 
 
         var agg_pipe_match = {$match:query};
-        var agg_pipe_1 = {$project:{
+        var agg_pipe_pro1 = {$project:{
             DATE:{ $substr: [ "$date_time", 0, 10 ] }
             , HOUR:{ $substr: [ "$date_time", 11, 2 ] }
             , NETWORK_TYPE : 1
@@ -325,7 +301,7 @@ exports.cdr_3g_site_query = function(mongodb){
             , COUNTY : { $substr: [ "$BTS_ADDRESS", 0, 9 ] }//"$BTS_ADDRESS" //縣市3 zh
             , DISTRICT : { $substr: [ "$BTS_ADDRESS", 9, 9 ] }//"$BTS_CODE" //地區
             , SITE_NAME : "$SITE_NAME"
-            , SITE_ID : "$SITE_ID"
+            //, SITE_ID : "$SITE_ID"
             ////phone_type
             //, VENDOR : "$VENDOR"
             //, MODEL  : "$MODEL"
@@ -352,7 +328,7 @@ exports.cdr_3g_site_query = function(mongodb){
             , SUM_CALLED_SECOND_7_10 :{$cond :[{$and:[{$gt :["$CALL_DURATION",7 ]},{$lte:["$CALL_DURATION",10]} ]},"$CALL_DURATION",0]}
             , SUM_CALLED_SECOND_10UP :{$cond :[       {$gt :["$CALL_DURATION",10]}                                ,"$CALL_DURATION",0]}
         }};
-        var agg_pipe_2 = {$group:{
+        var agg_pipe_group = {$group:{
             _id: {
                   DATE : "$DATE"
                 , HOUR : "$HOUR"
@@ -364,7 +340,7 @@ exports.cdr_3g_site_query = function(mongodb){
                 , COUNTY: "$COUNTY" //縣市
                 , DISTRICT: "$DISTRICT" //地區
                 , SITE_NAME: "$SITE_NAME"
-                , SITE_ID: "$SITE_ID"
+                //, SITE_ID: "$SITE_ID"
                 ////phone_type
                 //, VENDOR: "$VENDOR"
                 //, MODEL: "$MODEL"
@@ -387,7 +363,16 @@ exports.cdr_3g_site_query = function(mongodb){
             , SUM_CALLED_SECOND_7_10: {$sum:"$SUM_CALLED_SECOND_5_7"}
             , SUM_CALLED_SECOND_10UP: {$sum:"$SUM_CALLED_SECOND_7_10"}
         }};
-        var agg_pipe_3 = {$project:{
+        var agg_pipe_match2 = {$match:{
+            $nor:[
+                 {SUM_CALLED_COUNT_0_3 :0}
+                ,{SUM_CALLED_COUNT_3_5 :0}
+                ,{SUM_CALLED_COUNT_5_7 :0}
+                ,{SUM_CALLED_COUNT_7_10:0}
+                ,{SUM_CALLED_COUNT_10UP:0}
+            ]
+        }};
+        var agg_pipe_pro_en = {$project:{
             _id:0
             , DATE          : "$_id.DATE"
             , HOUR          : "$_id.HOUR"
@@ -399,7 +384,7 @@ exports.cdr_3g_site_query = function(mongodb){
             , COUNTY        : "$_id.COUNTY"
             , DISTRICT      : "$_id.DISTRICT"
             , SITE_NAME     : "$_id.SITE_NAME"
-            , SITE_ID       : "$_id.SITE_ID"
+            //, SITE_ID       : "$_id.SITE_ID"
             ////phone_type
             //, VENDOR        : "$_id.VENDOR"
             //, MODEL         : "$_id.MODEL"
@@ -427,17 +412,62 @@ exports.cdr_3g_site_query = function(mongodb){
             , SUM_CALLED_MINUTES_7_10: {$divide:["$SUM_CALLED_SECOND_7_10",60]}
             , SUM_CALLED_MINUTES_10UP: {$divide:["$SUM_CALLED_SECOND_10UP",60]}
         }};
-        var agg_pipe_out = {    $out:"cep3g_stat_site"};
+        var agg_pipe_pro_zh = {$project:{
+            _id:0
+            , 日期        : "$_id.DATE"
+            , 時間        : "$_id.HOUR"
+            , 網路        : "$_id.NETWORK_TYPE"
+            , 卡別        : "$_id.SIM_TYPE"
+            , 業者別      : "$_id.CARRIER"
+            , 結束碼      : "$_id.END_CODE"
+            ////site
+            , 縣市        : "$_id.COUNTY"
+            , 區域        : "$_id.DISTRICT"
+            , 基站        : "$_id.SITE_NAME"
+            //, SITE_ID       : "$_id.SITE_ID"
+            ////phone_type
+            //, VENDOR        : "$_id.VENDOR"
+            //, MODEL         : "$_id.MODEL"
 
+            //, HO_DISTINCT       :1
+            //, HO_CALLED_COUNT   :1
+            //, HO_CALLED_SECOND  :1
+            //, HO_CALLED_MINUTES :{$divide:["$HO_CALLED_SECOND",60]}
+
+            //, 不重複0_3 :"$DISTINCT_CALLED_COUNT_0_3"
+            //, 不重複3_5 :"$DISTINCT_CALLED_COUNT_3_5"
+            //, 不重複5_7 :"$DISTINCT_CALLED_COUNT_5_7"
+            //, 不重複7_10:"$DISTINCT_CALLED_COUNT_7_10"
+            //, 不重複10UP:"$DISTINCT_CALLED_COUNT_10UP"
+
+            , 通話次數0_3 : "$SUM_CALLED_COUNT_0_3"
+            , 通話次數3_5 : "$SUM_CALLED_COUNT_3_5"
+            , 通話次數5_7 : "$SUM_CALLED_COUNT_5_7"
+            , 通話次數7_10: "$SUM_CALLED_COUNT_7_10"
+            , 通話次數10UP: "$SUM_CALLED_COUNT_10UP"
+
+            , 通話分鐘數0_3 : {$divide:["$SUM_CALLED_SECOND_0_3",60]}
+            , 通話分鐘數3_5 : {$divide:["$SUM_CALLED_SECOND_3_5",60]}
+            , 通話分鐘數5_7 : {$divide:["$SUM_CALLED_SECOND_5_7",60]}
+            , 通話分鐘數7_10: {$divide:["$SUM_CALLED_SECOND_7_10",60]}
+            , 通話分鐘數10UP: {$divide:["$SUM_CALLED_SECOND_10UP",60]}
+        }};
+        var agg_pipe_out = {$out:"cep3g_stat_site"};
+
+        var agg_pipes = [
+            agg_pipe_match
+            ,agg_pipe_pro1
+            ,agg_pipe_group
+            //,agg_pipe_match2
+            //,agg_pipe_pro_en
+            ,agg_pipe_pro_zh
+            //,agg_pipe_out
+        ];
+
+        console.log(util.inspect(agg_pipes));
 
         var collection = mongodb.get('cep3g_join');
-        collection.col.aggregate([
-            agg_pipe_match
-            ,agg_pipe_1
-            ,agg_pipe_2
-            ,agg_pipe_3
-            //,agg_pipe_out
-        ], function(err, result) {
+        collection.col.aggregate(agg_pipes, function(err, result) {
             if(err) res.redirect('cdr_3g_site_query');//console.log("err : "+err.message);
             //if(result) console.log("result : "+util.inspect(result));
             res.render('cdr_3g_site_show', {
@@ -451,3 +481,27 @@ exports.cdr_3g_site_query = function(mongodb){
         });
     };
 };
+
+//exports.cdr_3g_site_report = function(mongodb){
+//    return function(req, res) {
+//
+//        //query
+//        var collection = mongodb.get('cep3g_agg');
+//        collection.count({},function(err,db_count){
+//            collection.count({}, function (err, query_count) {
+//                collection.find({}, {limit: _max_pageunit}, function (err, docs) {
+//                    if (docs.length) console.log('docs.length: ' + docs.length);
+//
+//                    res.render('cdr_3g_site_report', {
+//                        title: 'cep3g site',
+//                        db_count: db_count,
+//                        totalcount: query_count,
+//                        //page_count:docs.length,
+//                        resp: docs
+//                    });
+//                    //if (err) res.redirect('cdr_CRUD_query');
+//                });
+//            });
+//        });
+//    };
+//};

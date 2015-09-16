@@ -20,7 +20,7 @@ var agg_3g = db.cep3g_join.aggregate([
             , COUNTY : { $substr: [ "$BTS_ADDRESS", 0, 9 ] }//"$BTS_ADDRESS" //縣市3 zh
             , DISTRICT : { $substr: [ "$BTS_ADDRESS", 9, 9 ] }//"$BTS_CODE" //地區
             , SITE_NAME : "$SITE_NAME"
-            , SITE_ID : "$SITE_ID"
+            //, SITE_ID : "$SITE_ID"
             ////phone_type
             //, VENDOR : "$VENDOR"
             //, MODEL  : "$MODEL"
@@ -59,7 +59,7 @@ var agg_3g = db.cep3g_join.aggregate([
                 , COUNTY: "$COUNTY" //縣市
                 , DISTRICT: "$DISTRICT" //地區
                 , SITE_NAME: "$SITE_NAME"
-                , SITE_ID: "$SITE_ID"
+                //, SITE_ID: "$SITE_ID"
                 ////phone_type
                 //, VENDOR: "$VENDOR"
                 //, MODEL: "$MODEL"
@@ -98,7 +98,7 @@ var agg_3g = db.cep3g_join.aggregate([
             , COUNTY        : "$_id.COUNTY"
             , DISTRICT      : "$_id.DISTRICT"
             , SITE_NAME     : "$_id.SITE_NAME"
-            , SITE_ID       : "$_id.SITE_ID"
+            //, SITE_ID       : "$_id.SITE_ID"
             ////phone_type
             //, VENDOR        : "$_id.VENDOR"
             //, MODEL         : "$_id.MODEL"
