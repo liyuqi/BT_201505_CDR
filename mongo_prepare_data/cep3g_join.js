@@ -159,6 +159,29 @@ var cdr3g = db.cep3g_gen.find({
             try{
                 var cell = doc.calling_subs_last_lac + '-' + doc.calling_subs_last_ci;
                 try {
+                    if(doc.calling_imsi.substr(0,5)=='46693')
+                        doc.SIM_TYPE = SIM_map[doc.calling_imsi.substr(0,5)].SIM_TYPE;
+                    else if(doc.calling_imsi.substr(0,5)=='46697')
+                        doc.SIM_TYPE = SIM_map[doc.calling_imsi.substr(0,6)].SIM_TYPE;
+                    else if(doc.calling_imsi.substr(0,5)=='46699')
+                        doc.SIM_TYPE = SIM_map[doc.calling_imsi.substr(0,5)].SIM_TYPE;
+                    else
+                        doc.SIM_TYPE = SIM_map[''].SIM_TYPE;
+                } catch (e) {}   //doc.SIM_TYPE
+                try {
+                    if(doc.called_number.substr(0,1)=='9')
+                        doc.CARRIER = CARRIER_map[doc.called_number.substr(0,1)].CARRIER;
+                    else if(doc.called_number.substr(0,4)=='8869')
+                        doc.CARRIER = CARRIER_map[doc.called_number.substr(0,4)].CARRIER;
+                    else if(doc.called_number.substr(0,2)=='14')
+                        doc.CARRIER = CARRIER_map[doc.called_number.substr(0,4)].CARRIER;
+                    else
+                        doc.CARRIER = CARRIER_map[''].CARRIER;
+                } catch (e) {}   //doc.CARRIER
+                try {
+                    doc.END_CODE = doc.cause_for_termination.substr(-4,4);
+                } catch (e) {}   //doc.cause_for_termination
+                try {
                     doc.SITE_ID     = site3g_map[cell].SITE_ID;
 
                     doc.BELONG_TO   = site3g_map[cell].BELONG_TO;
@@ -175,7 +198,7 @@ var cdr3g = db.cep3g_gen.find({
                         doc.HO    = 0; //========================= 換手 ======//
                         doc.HO_SECOND= Number(doc.orig_mcz_duration);
                     }
-                } catch(e){ }   //doc.SITE_ID = '3g'; }
+                } catch (e) {}   //doc.SITE_ID = '3g'; }
                 try {
                     doc.SITE_ID     = site2g_map[cell].SITE_ID;
 
@@ -193,7 +216,7 @@ var cdr3g = db.cep3g_gen.find({
                         doc.HO    = 1; //========================= 換手 ======//
                         doc.HO_SECOND= Number(doc.orig_mcz_duration);
                     }
-                } catch(e){ }   //doc.SITE_ID = '2g'; doc.HO = 1;}
+                } catch (e) {}   //doc.SITE_ID = '2g'; doc.HO = 1;}
                 try {
                     //var calling_imei = doc.calling_imei.substr(0,8);
                     if(phone_map[doc.calling_imei.substr(0,8)].IMEI_VALUE==doc.calling_imei.substr(0,8)){}
@@ -208,35 +231,13 @@ var cdr3g = db.cep3g_gen.find({
                     doc.DMS_ID      = phone_map[doc.calling_imei.substr(0,8)].DMS_ID;
                     doc.VENDOR      = phone_map[doc.calling_imei.substr(0,8)].VENDOR;
                     doc.MODEL       = phone_map[doc.calling_imei.substr(0,8)].MODEL;
-                } catch (e) { } // doc.PT_OID
-                try{
-                    if(doc.calling_imsi.substr(0,5)=='46693')
-                        doc.SIM_TYPE = SIM_map[doc.calling_imsi.substr(0,5)].SIM_TYPE;
-                    else if(doc.calling_imsi.substr(0,5)=='46697')
-                        doc.SIM_TYPE = SIM_map[doc.calling_imsi.substr(0,6)].SIM_TYPE;
-                    else if(doc.calling_imsi.substr(0,5)=='46699')
-                        doc.SIM_TYPE = SIM_map[doc.calling_imsi.substr(0,5)].SIM_TYPE;
-                    else
-                        doc.SIM_TYPE = SIM_map[''].SIM_TYPE;
-                }catch (e) {}    //doc.SIM_TYPE
-                try{
-                    if(doc.called_number.substr(0,1)=='9')
-                        doc.CARRIER = CARRIER_map[doc.called_number.substr(0,1)].CARRIER;
-                    else if(doc.called_number.substr(0,4)=='8869')
-                        doc.CARRIER = CARRIER_map[doc.called_number.substr(0,4)].CARRIER;
-                    else if(doc.called_number.substr(0,2)=='14')
-                        doc.CARRIER = CARRIER_map[doc.called_number.substr(0,4)].CARRIER;
-                    else
-                        doc.CARRIER = CARRIER_map[''].CARRIER;
-                }catch (e) {}    //doc.CARRIER
-                try{
-                    doc.cause_for_termination = doc.cause_for_termination.substr(-4,4);
-                }catch(e){}      //doc.cause_for_termination
+                } catch (e) {}   //doc.PT_OID
+
             }catch(e){}
-            if  (doc.orig_mcz_duration == null||""){doc.orig_mcz_duration=0;}
-            else{doc.orig_mcz_duration = Number(doc.orig_mcz_duration);}
-            if  (doc.term_mcz_duration == null||""){doc.term_mcz_duration=0;}
-            else{doc.term_mcz_duration = Number(doc.term_mcz_duration);}
+            //if  (doc.orig_mcz_duration == null||""){doc.orig_mcz_duration=0;}
+            //else{doc.orig_mcz_duration = Number(doc.orig_mcz_duration);}
+            //if  (doc.term_mcz_duration == null||""){doc.term_mcz_duration=0;}
+            //else{doc.term_mcz_duration = Number(doc.term_mcz_duration);}
 
 //            print(new Date().toLocaleTimeString() + '\tMOC rt:' + doc.record_type +
 //            '\t發cell:' + doc.calling_subs_last_lac +'-'+ doc.calling_subs_last_ci+ '  \tsite:' + doc.SITE_ID +
@@ -247,8 +248,32 @@ var cdr3g = db.cep3g_gen.find({
             doc.CALL_NUMBER = doc.called_number;
             doc.CALL_DURATION = Number(doc.term_mcz_duration);
             try {
+
                 var cell = doc.called_subs_last_lac +'-'+ doc.called_subs_last_ci;
                 //var called_imei = doc.called_imei.substr(0, 8);
+                try {
+                    if(doc.called_imsi.substr(0,5)=='46693')
+                        doc.SIM_TYPE = SIM_map[doc.called_imsi.substr(0,5)].SIM_TYPE;
+                    else if(doc.called_imsi.substr(0,5)=='46697')
+                        doc.SIM_TYPE = SIM_map[doc.called_imsi.substr(0,6)].SIM_TYPE;
+                    else if(doc.called_imsi.substr(0,5)=='46699')
+                        doc.SIM_TYPE = SIM_map[doc.called_imsi.substr(0,5)].SIM_TYPE;
+                    else
+                        doc.SIM_TYPE = SIM_map[''].SIM_TYPE;
+                } catch (e) {}   //doc.SIM_TYPE
+                try {
+                    //if(doc.called_number.substr(0,1)=='9')
+                    //    doc.CARRIER = CARRIER_map[doc.called_number.substr(0,1)].CARRIER;
+                    //else if(doc.called_number.substr(0,4)=='8869')
+                    //    doc.CARRIER = CARRIER_map[doc.called_number.substr(0,4)].CARRIER;
+                    //else if(doc.called_number.substr(0,2)=='14')
+                    //    doc.CARRIER = CARRIER_map[doc.called_number.substr(0,4)].CARRIER;
+                    //else
+                    doc.CARRIER = CARRIER_map['MTC'].CARRIER;
+                } catch (e) {}   //doc.CARRIER
+                try {
+                    doc.END_CODE = doc.cause_for_termination.substr(-4,4);
+                } catch (e) {}   //doc.cause_for_termination
                 try {
                     doc.SITE_ID     = site3g_map[cell].SITE_ID;
 
@@ -266,7 +291,7 @@ var cdr3g = db.cep3g_gen.find({
                         doc.HO    = 0; //========================= 換手 ======//
                         doc.HO_SECOND= Number(doc.term_mcz_duration);
                     }
-                } catch (e) { } //doc.SITE_ID = '3g'; }
+                } catch (e) {}   //doc.SITE_ID = '3g'; }
                 try {
                     doc.SITE_ID     = site2g_map[cell].SITE_ID;
 
@@ -284,7 +309,7 @@ var cdr3g = db.cep3g_gen.find({
                         doc.HO    = 1; //========================= 換手 ======//
                         doc.HO_SECOND= Number(doc.term_mcz_duration);
                     }
-                    } catch(e){ }   //doc.SITE_ID = '2g'; doc.HO = 1;}
+                    } catch (e) {}   //doc.SITE_ID = '2g'; doc.HO = 1;}
                 try {
                     if(phone_map[doc.called_imei.substr(0,8)].IMEI_VALUE==doc.called_imei.substr(0,8)){}
                     else {
@@ -298,36 +323,14 @@ var cdr3g = db.cep3g_gen.find({
                     doc.DMS_ID      = phone_map[doc.called_imei.substr(0,8)].DMS_ID;
                     doc.VENDOR      = phone_map[doc.called_imei.substr(0,8)].VENDOR;
                     doc.MODEL       = phone_map[doc.called_imei.substr(0,8)].MODEL;
-                } catch (e) { } // doc.PT_OID
-                try{
-                    if(doc.called_imsi.substr(0,5)=='46693')
-                        doc.SIM_TYPE = SIM_map[doc.called_imsi.substr(0,5)].SIM_TYPE;
-                    else if(doc.called_imsi.substr(0,5)=='46697')
-                        doc.SIM_TYPE = SIM_map[doc.called_imsi.substr(0,6)].SIM_TYPE;
-                    else if(doc.called_imsi.substr(0,5)=='46699')
-                        doc.SIM_TYPE = SIM_map[doc.called_imsi.substr(0,5)].SIM_TYPE;
-                    else
-                        doc.SIM_TYPE = SIM_map[''].SIM_TYPE;
-                }catch (e) {}    //doc.SIM_TYPE
-                try{
-                    //if(doc.called_number.substr(0,1)=='9')
-                    //    doc.CARRIER = CARRIER_map[doc.called_number.substr(0,1)].CARRIER;
-                    //else if(doc.called_number.substr(0,4)=='8869')
-                    //    doc.CARRIER = CARRIER_map[doc.called_number.substr(0,4)].CARRIER;
-                    //else if(doc.called_number.substr(0,2)=='14')
-                    //    doc.CARRIER = CARRIER_map[doc.called_number.substr(0,4)].CARRIER;
-                    //else
-                    doc.CARRIER = CARRIER_map['MTC'].CARRIER;
-                }catch (e) {}    //doc.CARRIER
-                try{
-                    doc.cause_for_termination = doc.cause_for_termination.substr(-4,4);
-                }catch(e){}      //doc.cause_for_termination
+                } catch (e) {}   //doc.PT_OID
+
             }catch(e){}
 
-            if  (doc.orig_mcz_duration == null||""){doc.orig_mcz_duration=0;}
-            else{doc.orig_mcz_duration = Number(doc.orig_mcz_duration);}
-            if  (doc.term_mcz_duration == null||""){doc.term_mcz_duration=0;}
-            else{doc.term_mcz_duration = Number(doc.term_mcz_duration);}
+            //if  (doc.orig_mcz_duration == null||""){doc.orig_mcz_duration=0;}
+            //else{doc.orig_mcz_duration = Number(doc.orig_mcz_duration);}
+            //if  (doc.term_mcz_duration == null||""){doc.term_mcz_duration=0;}
+            //else{doc.term_mcz_duration = Number(doc.term_mcz_duration);}
 
 //            print(new Date().toLocaleTimeString() + '\tMTC rt:' + doc.record_type +
 //            '\t  cell:' + doc.called_subs_last_lac +'-'+ doc.called_subs_last_ci + '\tsite:' + doc.SITE_ID +
@@ -343,8 +346,10 @@ var cdr3g = db.cep3g_gen.find({
     }else{}
     i++;
 });
-print(T0.toLocaleTimeString());
-print(T1.toLocaleTimeString());
+
+T1 = new Date();
+print(T0.toJSON());
+print(T1.toJSON());
 print((T1-T0)/1000+'\t sec.');
 print(''+'\tprocess:'+i);
 // db.cep3g_gen.findOne({up_flag:1},{time:1,up_flag:1});

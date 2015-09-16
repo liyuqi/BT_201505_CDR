@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ff5f60e6-e6f7-43d7-8834-5a5ddc08f48e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/cdr_mongo.js" afterPath="$PROJECT_DIR$/routes/cdr_mongo.js" />
+    <list default="true" id="ff5f60e6-e6f7-43d7-8834-5a5ddc08f48e" name="Default" comment="join organize">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/cdr_3g_site_show_header45.ejs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/cdr_3g_site_show.ejs" afterPath="$PROJECT_DIR$/views/cdr_3g_site_show.ejs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mongo_prepare_data/cep3g_join.js" afterPath="$PROJECT_DIR$/mongo_prepare_data/cep3g_join.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mongo_prepare_data/cep3g_stat_site.js" afterPath="$PROJECT_DIR$/mongo_prepare_data/cep3g_stat_site.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="CDR0324.iws" />
@@ -83,21 +83,26 @@
             <file leaf-file-name="cep3g_join.js" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/mongo_prepare_data/cep3g_join.js">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="2.0321336" vertical-offset="595" max-vertical-offset="3400">
-                    <caret line="251" column="21" selection-start-line="251" selection-start-column="21" selection-end-line="251" selection-end-column="21" />
+                  <state vertical-scroll-proportion="0.7596401" vertical-offset="1517" max-vertical-offset="2295">
+                    <caret line="350" column="19" selection-start-line="350" selection-start-column="19" selection-end-line="350" selection-end-column="19" />
                     <folding>
                       <element signature="n#!!block;n#buildPhoneMap#0" expanded="false" />
                       <element signature="n#!!block;n#buildSite2gMap#0" expanded="false" />
                       <element signature="n#!!block;n#buildSite3gMap#0" expanded="false" />
                       <element signature="n#!!block;n#buildSIMmap#0" expanded="false" />
                       <element signature="n#!!block;n#buildCARRIERmap#0" expanded="false" />
-                      <element signature="e#8716#9587#0" expanded="false" />
-                      <element signature="e#9635#10197#0" expanded="false" />
-                      <element signature="e#10247#10815#0" expanded="false" />
-                      <element signature="e#13968#14761#0" expanded="false" />
-                      <element signature="e#14809#15365#0" expanded="false" />
-                      <element signature="e#15415#15996#0" expanded="false" />
-                      <element signature="e#16045#16152#0" expanded="false" />
+                      <element signature="e#6879#7441#0" expanded="false" />
+                      <element signature="e#7492#8060#0" expanded="false" />
+                      <element signature="e#8110#8204#0" expanded="false" />
+                      <element signature="e#8268#9122#0" expanded="false" />
+                      <element signature="e#9182#10036#0" expanded="false" />
+                      <element signature="e#10107#10978#0" expanded="false" />
+                      <element signature="e#12130#12686#0" expanded="false" />
+                      <element signature="e#12737#13318#0" expanded="false" />
+                      <element signature="e#13368#13462#0" expanded="false" />
+                      <element signature="e#13526#14379#0" expanded="false" />
+                      <element signature="e#14439#15297#0" expanded="false" />
+                      <element signature="e#15368#16161#0" expanded="false" />
                     </folding>
                   </state>
                 </provider>
@@ -148,10 +153,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="cdr_mongo.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="cdr_mongo.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/routes/cdr_mongo.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.5072655" vertical-offset="5277" max-vertical-offset="6460">
+                <state vertical-scroll-proportion="0.0" vertical-offset="5277" max-vertical-offset="6460">
                   <caret line="411" column="0" selection-start-line="411" selection-start-column="0" selection-end-line="416" selection-end-column="0" />
                   <folding>
                     <element signature="n#!!doc" expanded="true" />
@@ -163,11 +168,21 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="3g_schema.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/mongo_schema/3g_schema.js">
+          <file leaf-file-name="cdr_CRUD_show.ejs" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/views/cdr_CRUD_show.ejs">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4930">
-                  <caret line="15" column="35" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
+                <state vertical-scroll-proportion="3.2692308" vertical-offset="408" max-vertical-offset="1734">
+                  <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="cdr_3g_site_show.ejs" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/views/cdr_3g_site_show.ejs">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.27906978" vertical-offset="0" max-vertical-offset="1105">
+                  <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
                   <folding />
                 </state>
               </provider>
@@ -246,13 +261,13 @@
         <option value="$PROJECT_DIR$/views/layout.ejs" />
         <option value="$PROJECT_DIR$/views/cdr_CRUD_show.ejs" />
         <option value="$PROJECT_DIR$/views/cdr_3g_site_query.ejs" />
-        <option value="$PROJECT_DIR$/views/cdr_3g_site_show.ejs" />
         <option value="$PROJECT_DIR$/views/cdr_CRUD_query.ejs" />
         <option value="$PROJECT_DIR$/views/cdr_CRUD_query_header45.ejs" />
         <option value="$PROJECT_DIR$/mongo_prepare_data/cep3g_join_cron.js" />
         <option value="$PROJECT_DIR$/mongo_prepare_data/query_test/cep3g_gen_query0915.js" />
         <option value="$PROJECT_DIR$/mongo_prepare_data/cep3g_stat_site.js" />
         <option value="$PROJECT_DIR$/routes/cdr_mongo.js" />
+        <option value="$PROJECT_DIR$/views/cdr_3g_site_show.ejs" />
         <option value="$PROJECT_DIR$/mongo_prepare_data/cep3g_join.js" />
       </list>
     </option>
@@ -422,15 +437,15 @@
     <property name="SearchEverywhereHistoryKey" value="mongoexport&#9;null&#9;null&#10;mongo export&#9;null&#9;null" />
   </component>
   <component name="RecentsManager">
-    <key name="OPEN_URL_DIALOG">
-      <recent name="https://github.com/nswbmw/N-blog.git" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\nodespace\CDR08\views" />
       <recent name="C:\nodespace\CDR08\mongo_prepare_data" />
       <recent name="C:\nodespace\CDR08\routes" />
       <recent name="C:\workspace\CDR0324\mongo_agg" />
       <recent name="C:\workspace\CDR0324\views" />
+    </key>
+    <key name="OPEN_URL_DIALOG">
+      <recent name="https://github.com/nswbmw/N-blog.git" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\nodespace\CDR08\views\notInUse" />
@@ -492,12 +507,6 @@
       <created>1427168524473</created>
       <option name="number" value="Default" />
       <updated>1427168524473</updated>
-    </task>
-    <task id="LOCAL-00054" summary="cond">
-      <created>1441850787500</created>
-      <option name="number" value="00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1441850787500</updated>
     </task>
     <task id="LOCAL-00055" summary="035710">
       <created>1441851306762</created>
@@ -787,7 +796,13 @@
       <option name="project" value="LOCAL" />
       <updated>1442312452268</updated>
     </task>
-    <option name="localTasksCounter" value="103" />
+    <task id="LOCAL-00103" summary="join country district">
+      <created>1442370869985</created>
+      <option name="number" value="00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1442370869985</updated>
+    </task>
+    <option name="localTasksCounter" value="104" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -814,7 +829,7 @@
     <frame x="81" y="0" width="1395" height="907" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.59774435" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.59774435" sideWeight="0.49963742" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879582" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32903227" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -824,7 +839,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32617587" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.59774435" sideWeight="0.5003626" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32957393" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26055613" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
@@ -853,8 +868,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="cep3g_stat_035710 HO_MINUTES" />
-    <MESSAGE value="stat" />
     <MESSAGE value="sum" />
     <MESSAGE value="cond" />
     <MESSAGE value="035710" />
@@ -878,7 +891,9 @@
     <MESSAGE value="agg match" />
     <MESSAGE value="cep3g query" />
     <MESSAGE value="cep3g query_string" />
-    <option name="LAST_COMMIT_MESSAGE" value="cep3g query_string" />
+    <MESSAGE value="join country district" />
+    <MESSAGE value="join organize" />
+    <option name="LAST_COMMIT_MESSAGE" value="join organize" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -894,13 +909,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/mongo_agg/kerry/gprs_distinct2.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5974166" vertical-offset="1808" max-vertical-offset="2822">
-          <caret line="139" column="0" selection-start-line="139" selection-start-column="0" selection-end-line="148" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mongo_agg/kerry/gprs_distinct1.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3412271" vertical-offset="1655" max-vertical-offset="2584">
@@ -1163,24 +1171,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/cdr_CRUD_query_header45.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.4186046" vertical-offset="2635" max-vertical-offset="3366">
-          <caret line="94" column="43" selection-start-line="94" selection-start-column="43" selection-end-line="94" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/cdr_3g_site_query.ejs">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5116279" vertical-offset="1615" max-vertical-offset="2941">
           <caret line="117" column="23" selection-start-line="117" selection-start-column="23" selection-end-line="117" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/cdr_3g_site_show.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20930232" vertical-offset="0" max-vertical-offset="1122">
-          <caret line="80" column="27" selection-start-line="80" selection-start-column="27" selection-end-line="80" selection-end-column="27" />
         </state>
       </provider>
     </entry>
@@ -1191,25 +1185,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/cdr_CRUD_show.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44186047" vertical-offset="0" max-vertical-offset="1734">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/cdr_CRUD_query.ejs">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="69.96154" vertical-offset="2822" max-vertical-offset="4318">
           <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mongo_schema/3g_schema.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4930">
-          <caret line="15" column="35" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1226,19 +1205,6 @@
         <state vertical-scroll-proportion="1.7291942" vertical-offset="0" max-vertical-offset="1615">
           <caret line="78" column="22" selection-start-line="78" selection-start-column="22" selection-end-line="78" selection-end-column="22" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/cdr_mongo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5072655" vertical-offset="5277" max-vertical-offset="6460">
-          <caret line="411" column="0" selection-start-line="411" selection-start-column="0" selection-end-line="416" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#1440#1469#0" expanded="false" />
-            <element signature="e#7264#7284#0" expanded="false" />
-            <element signature="e#13433#13981#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1298,23 +1264,81 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/routes/cdr_mongo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="5277" max-vertical-offset="6460">
+          <caret line="411" column="0" selection-start-line="411" selection-start-column="0" selection-end-line="416" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#1440#1469#0" expanded="false" />
+            <element signature="e#7264#7284#0" expanded="false" />
+            <element signature="e#13433#13981#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/cdr_3g_site_show_header45.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2329">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/cdr_CRUD_show.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.2692308" vertical-offset="408" max-vertical-offset="1734">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/cdr_CRUD_query_header45.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="87.61539" vertical-offset="3876" max-vertical-offset="5644">
+          <caret line="94" column="43" selection-start-line="94" selection-start-column="43" selection-end-line="94" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mongo_schema/3g_schema.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.287013" vertical-offset="0" max-vertical-offset="4930">
+          <caret line="15" column="35" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/cdr_3g_site_show.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27906978" vertical-offset="0" max-vertical-offset="1105">
+          <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mongo_prepare_data/cep3g_join.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.0321336" vertical-offset="595" max-vertical-offset="3400">
-          <caret line="251" column="21" selection-start-line="251" selection-start-column="21" selection-end-line="251" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.7596401" vertical-offset="1517" max-vertical-offset="2295">
+          <caret line="350" column="19" selection-start-line="350" selection-start-column="19" selection-end-line="350" selection-end-column="19" />
           <folding>
             <element signature="n#!!block;n#buildPhoneMap#0" expanded="false" />
             <element signature="n#!!block;n#buildSite2gMap#0" expanded="false" />
             <element signature="n#!!block;n#buildSite3gMap#0" expanded="false" />
             <element signature="n#!!block;n#buildSIMmap#0" expanded="false" />
             <element signature="n#!!block;n#buildCARRIERmap#0" expanded="false" />
-            <element signature="e#8716#9587#0" expanded="false" />
-            <element signature="e#9635#10197#0" expanded="false" />
-            <element signature="e#10247#10815#0" expanded="false" />
-            <element signature="e#13968#14761#0" expanded="false" />
-            <element signature="e#14809#15365#0" expanded="false" />
-            <element signature="e#15415#15996#0" expanded="false" />
-            <element signature="e#16045#16152#0" expanded="false" />
+            <element signature="e#6879#7441#0" expanded="false" />
+            <element signature="e#7492#8060#0" expanded="false" />
+            <element signature="e#8110#8204#0" expanded="false" />
+            <element signature="e#8268#9122#0" expanded="false" />
+            <element signature="e#9182#10036#0" expanded="false" />
+            <element signature="e#10107#10978#0" expanded="false" />
+            <element signature="e#12130#12686#0" expanded="false" />
+            <element signature="e#12737#13318#0" expanded="false" />
+            <element signature="e#13368#13462#0" expanded="false" />
+            <element signature="e#13526#14379#0" expanded="false" />
+            <element signature="e#14439#15297#0" expanded="false" />
+            <element signature="e#15368#16161#0" expanded="false" />
           </folding>
         </state>
       </provider>
