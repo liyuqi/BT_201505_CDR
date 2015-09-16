@@ -452,6 +452,7 @@ exports.cdr_3g_site_query = function(mongodb){
             , 通話分鐘數7_10: {$divide:["$SUM_CALLED_SECOND_7_10",60]}
             //, 通話分鐘數10UP: {$divide:["$SUM_CALLED_SECOND_10UP",60]}
         }};
+        var agg_pipe_limit = {$limit:100};
         var agg_pipe_out = {$out:"cep3g_stat_site"};
 
         var agg_pipes = [
@@ -461,6 +462,7 @@ exports.cdr_3g_site_query = function(mongodb){
             ,agg_pipe_match2
             //,agg_pipe_pro_en
             ,agg_pipe_pro_zh
+            ,agg_pipe_limit
             //,agg_pipe_out
         ];
 
