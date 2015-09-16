@@ -152,10 +152,11 @@ var cdr3g = db.cep3g_gen.find({
     //var doc = col.next();
     if(doc.up_flag!=2) {  //======================================== update done, erich up_flag:1
         if(doc.record_type=="1") {
-            doc.CALL_NUMBER = doc.calling_number;
-            doc.CALL_DURATION = Number(doc.orig_mcz_duration);
             doc.DATE = doc.date_time.substr(0,10);
             doc.HOUR = doc.date_time.substr(11,2);
+            doc.CALL_NUMBER = doc.calling_number;
+            doc.CALL_DURATION = Number(doc.orig_mcz_duration);
+
             try{
                 var cell = doc.calling_subs_last_lac + '-' + doc.calling_subs_last_ci;
                 try {
@@ -179,7 +180,7 @@ var cdr3g = db.cep3g_gen.find({
                         doc.CARRIER = CARRIER_map[''].CARRIER;
                 } catch (e) {}   //doc.CARRIER
                 try {
-                    doc.END_CODE = doc.cause_for_termination.substr(-4,4);
+                    doc.END_CODE = doc.cause_for_termination.substr(4,4);
                 } catch (e) {}   //doc.cause_for_termination
                 try {
                     doc.SITE_ID     = site3g_map[cell].SITE_ID;
@@ -245,6 +246,8 @@ var cdr3g = db.cep3g_gen.find({
 //            '\t發imei:'+ doc.calling_imei.substr(0,8) + '\tPT:'+ doc.PT_OID +
 //            '\tCARRIER:'+ doc.CARRIER + '\ted_num:'+ doc.called_number.substr(0,4));
         }else if(doc.record_type=="2") {
+            doc.DATE = doc.date_time.substr(0,10);
+            doc.HOUR = doc.date_time.substr(11,2);
             doc.CALL_NUMBER = doc.called_number;
             doc.CALL_DURATION = Number(doc.term_mcz_duration);
             try {
@@ -272,7 +275,7 @@ var cdr3g = db.cep3g_gen.find({
                     doc.CARRIER = CARRIER_map['MTC'].CARRIER;
                 } catch (e) {}   //doc.CARRIER
                 try {
-                    doc.END_CODE = doc.cause_for_termination.substr(-4,4);
+                    doc.END_CODE = doc.cause_for_termination.substr(4,4);
                 } catch (e) {}   //doc.cause_for_termination
                 try {
                     doc.SITE_ID     = site3g_map[cell].SITE_ID;

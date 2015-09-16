@@ -124,11 +124,11 @@ var agg_3g = db.cep3g_join.aggregate([
             //, SUM_CALLED_MINUTES_10UP: {$divide:["$SUM_CALLED_SECOND_10UP",60]}
         }}
         ,{$match:{
-            $nor:[
-                {SUM_CALLED_COUNT_0_3 :0}
-                ,{SUM_CALLED_COUNT_3_5 :0}
-                ,{SUM_CALLED_COUNT_5_7 :0}
-                ,{SUM_CALLED_COUNT_7_10:0}
+            $or:[
+                 {SUM_CALLED_COUNT_0_3 :{$gt:0}}
+                ,{SUM_CALLED_COUNT_3_5 :{$gt:0}}
+                ,{SUM_CALLED_COUNT_5_7 :{$gt:0}}
+                ,{SUM_CALLED_COUNT_7_10:{$gt:0}}
                 //,{SUM_CALLED_COUNT_10UP:0}
             ]
         }}

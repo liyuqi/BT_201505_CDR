@@ -364,11 +364,11 @@ exports.cdr_3g_site_query = function(mongodb){
             //, SUM_CALLED_SECOND_10UP: {$sum:"$SUM_CALLED_SECOND_7_10"}
         }};
         var agg_pipe_match2 = {$match:{
-            $nor:[
-                 {SUM_CALLED_COUNT_0_3 :0}
-                ,{SUM_CALLED_COUNT_3_5 :0}
-                ,{SUM_CALLED_COUNT_5_7 :0}
-                ,{SUM_CALLED_COUNT_7_10:0}
+            $or:[
+                {SUM_CALLED_COUNT_0_3 :{$gt:0}}
+                ,{SUM_CALLED_COUNT_3_5 :{$gt:0}}
+                ,{SUM_CALLED_COUNT_5_7 :{$gt:0}}
+                ,{SUM_CALLED_COUNT_7_10:{$gt:0}}
                 //,{SUM_CALLED_COUNT_10UP:0}
             ]
         }};
