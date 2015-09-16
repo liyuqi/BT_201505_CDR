@@ -1,5 +1,5 @@
 // mongo cdr cep3g_stat_site.js  > ./log/agg_$(date +"%Y%m%d")_$(date +"%H%M%S").txt
-// mongo cdr cep3g_stat_site.js --eval "query_string={}"
+// mongo cdr cep3g_stat_site.js --eval "query_string={record_type:{$in:["1","2"]}}"
 print(new Date().toLocaleTimeString());
 var agg_3g = db.cep3g_join.aggregate([
         {$match: query_string

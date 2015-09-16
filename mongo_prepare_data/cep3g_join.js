@@ -165,6 +165,10 @@ var cdr3g = db.cep3g_gen.find({
                     doc.CELL_NO     = site3g_map[cell].CELL_NO;  //#
                     doc.LAC_OD      = site3g_map[cell].LAC_OD;   //#
                     doc.BTS_ADDRESS = site3g_map[cell].BTS_ADDRESS;
+
+                    doc.COUNTRY     = site3g_map[cell].BTS_ADDRESS.substr(0,3);
+                    doc.DISTRICT    = site3g_map[cell].BTS_ADDRESS.substr(3,3);
+
                     doc.SITE_NAME   = site3g_map[cell].SITE_NAME;
                     if(site3g_map[cell].SITE_ID){
                         doc.NETWORK_TYPE = "3G";
@@ -179,6 +183,10 @@ var cdr3g = db.cep3g_gen.find({
                     doc.CELL_NO     = site2g_map[cell].CELL_NO;  //#
                     doc.LAC_OD      = site2g_map[cell].LAC_OD;   //#
                     doc.BTS_ADDRESS = site2g_map[cell].BTS_ADDRESS;
+
+                    doc.COUNTRY     = site2g_map[cell].BTS_ADDRESS.substr(0,3);
+                    doc.DISTRICT    = site2g_map[cell].BTS_ADDRESS.substr(3,3);
+
                     doc.SITE_NAME   = site2g_map[cell].SITE_NAME;
                     if(site2g_map[cell].SITE_ID){
                         doc.NETWORK_TYPE = "3G";
@@ -248,6 +256,10 @@ var cdr3g = db.cep3g_gen.find({
                     doc.CELL_NO     = site3g_map[cell].CELL_NO; //#
                     doc.LAC_OD      = site3g_map[cell].LAC_OD;   //#
                     doc.BTS_ADDRESS = site3g_map[cell].BTS_ADDRESS;
+
+                    doc.COUNTRY     = site3g_map[cell].BTS_ADDRESS.substr(0,3);
+                    doc.DISTRICT    = site3g_map[cell].BTS_ADDRESS.substr(3,3);
+
                     doc.SITE_NAME   = site3g_map[cell].SITE_NAME;
                     if(site3g_map[cell].SITE_ID){
                         doc.NETWORK_TYPE = "3G";
@@ -262,6 +274,10 @@ var cdr3g = db.cep3g_gen.find({
                     doc.CELL_NO     = site2g_map[cell].CELL_NO;  //#
                     doc.LAC_OD      = site2g_map[cell].LAC_OD;   //#
                     doc.BTS_ADDRESS = site2g_map[cell].BTS_ADDRESS;
+
+                    doc.COUNTRY     = site2g_map[cell].BTS_ADDRESS.substr(0,3);
+                    doc.DISTRICT    = site2g_map[cell].BTS_ADDRESS.substr(3,3);
+
                     doc.SITE_NAME   = site2g_map[cell].SITE_NAME;
                     if(site2g_map[cell].SITE_ID){
                         doc.NETWORK_TYPE = "3G";
