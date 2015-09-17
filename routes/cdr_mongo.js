@@ -365,6 +365,16 @@ exports.cdr_3g_site_query = function(mongodb){
             , DISTINCT_CALLED_COUNT_7_10 :{$addToSet:"$DISTINCT_CALLED_COUNT_7_10"}
             , DISTINCT_CALLED_COUNT_10UP :{$addToSet:"$DISTINCT_CALLED_COUNT_10UP"}
         }};
+        var agg_pipe_match2 = {$match:{
+            $or:[
+                {SUM_CALLED_COUNT_0_3 :{$gt:0}}
+                ,{SUM_CALLED_COUNT_3_5 :{$gt:0}}
+                ,{SUM_CALLED_COUNT_5_7 :{$gt:0}}
+                ,{SUM_CALLED_COUNT_7_10:{$gt:0}}
+                //,{SUM_CALLED_COUNT_10UP:0}
+            ]
+        }};
+
         var agg_pipe_pro_en = {$project:{
             _id:0
             , DATE          : "$_id.DATE"
@@ -445,15 +455,7 @@ exports.cdr_3g_site_query = function(mongodb){
             , 不重複7_10:"$DISTINCT_CALLED_COUNT_7_10"
             //, 不重複10UP:"$DISTINCT_CALLED_COUNT_10UP"
         }};
-        var agg_pipe_match2 = {$match:{
-            $or:[
-                {SUM_CALLED_COUNT_0_3 :{$gt:0}}
-                ,{SUM_CALLED_COUNT_3_5 :{$gt:0}}
-                ,{SUM_CALLED_COUNT_5_7 :{$gt:0}}
-                ,{SUM_CALLED_COUNT_7_10:{$gt:0}}
-                //,{SUM_CALLED_COUNT_10UP:0}
-            ]
-        }};
+
         var agg_pipe_limit = {$limit:100};
         var agg_pipe_out = {$out:"cep3g_stat_site"};
 
@@ -462,9 +464,9 @@ exports.cdr_3g_site_query = function(mongodb){
             ,agg_pipe_pro1
             ,agg_pipe_group
             ,agg_pipe_match2
+
             //,agg_pipe_pro_en
             ,agg_pipe_pro_zh
-
             ,agg_pipe_limit
             //,agg_pipe_out
         ];
