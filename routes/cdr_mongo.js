@@ -291,7 +291,7 @@ exports.cdr_3g_site_query = function(mongodb){
 
         var agg_pipe_match = {$match:query};
         var agg_pipe_pro1 = {$project:{
-            DATE:{ $substr: [ "$date_time", 0, 10 ] }
+              DATE:{ $substr: [ "$date_time", 0, 10 ] }
             , HOUR:{ $substr: [ "$date_time", 11, 2 ] }
             , NETWORK_TYPE : 1
             , END_CODE : "$cause_for_termination"
@@ -310,12 +310,6 @@ exports.cdr_3g_site_query = function(mongodb){
             //, HO : 1
             //, HO_SECOND : 1
 
-            //, DISTINCT_CALLED_COUNT_0_3  :{$cond :[{$and:[{$gte:["$CALL_DURATION",0 ]},{$lte:["$CALL_DURATION",3 ]} ]},"$CALL_NUMBER",null]}
-            //, DISTINCT_CALLED_COUNT_3_5  :{$cond :[{$and:[{$gt :["$CALL_DURATION",3 ]},{$lte:["$CALL_DURATION",5 ]} ]},"$CALL_NUMBER",null]}
-            //, DISTINCT_CALLED_COUNT_5_7  :{$cond :[{$and:[{$gt :["$CALL_DURATION",5 ]},{$lte:["$CALL_DURATION",7 ]} ]},"$CALL_NUMBER",null]}
-            //, DISTINCT_CALLED_COUNT_7_10 :{$cond :[{$and:[{$gt :["$CALL_DURATION",7 ]},{$lte:["$CALL_DURATION",10]} ]},"$CALL_NUMBER",null]}
-            //, DISTINCT_CALLED_COUNT_10UP :{$cond :[       {$gt :["$CALL_DURATION",10]}                                ,"$CALL_NUMBER",null]}
-
             , SUM_CALLED_COUNT_0_3  :{$cond :[{$and:[{$gte:["$CALL_DURATION",0 ]},{$lte:["$CALL_DURATION",3 ]} ]},1,0]}
             , SUM_CALLED_COUNT_3_5  :{$cond :[{$and:[{$gt :["$CALL_DURATION",3 ]},{$lte:["$CALL_DURATION",5 ]} ]},1,0]}
             , SUM_CALLED_COUNT_5_7  :{$cond :[{$and:[{$gt :["$CALL_DURATION",5 ]},{$lte:["$CALL_DURATION",7 ]} ]},1,0]}
@@ -327,50 +321,49 @@ exports.cdr_3g_site_query = function(mongodb){
             , SUM_CALLED_SECOND_5_7  :{$cond :[{$and:[{$gt :["$CALL_DURATION",5 ]},{$lte:["$CALL_DURATION",7 ]} ]},"$CALL_DURATION",0]}
             , SUM_CALLED_SECOND_7_10 :{$cond :[{$and:[{$gt :["$CALL_DURATION",7 ]},{$lte:["$CALL_DURATION",10]} ]},"$CALL_DURATION",0]}
             //, SUM_CALLED_SECOND_10UP :{$cond :[       {$gt :["$CALL_DURATION",10]}                                ,"$CALL_DURATION",0]}
+
+            , DISTINCT_CALLED_COUNT_0_3  :{$cond :[{$and:[{$gte:["$CALL_DURATION",0 ]},{$lte:["$CALL_DURATION",3 ]} ]},"$CALL_NUMBER","$n"]}
+            , DISTINCT_CALLED_COUNT_3_5  :{$cond :[{$and:[{$gt :["$CALL_DURATION",3 ]},{$lte:["$CALL_DURATION",5 ]} ]},"$CALL_NUMBER","$n"]}
+            , DISTINCT_CALLED_COUNT_5_7  :{$cond :[{$and:[{$gt :["$CALL_DURATION",5 ]},{$lte:["$CALL_DURATION",7 ]} ]},"$CALL_NUMBER","$n"]}
+            , DISTINCT_CALLED_COUNT_7_10 :{$cond :[{$and:[{$gt :["$CALL_DURATION",7 ]},{$lte:["$CALL_DURATION",10]} ]},"$CALL_NUMBER","$n"]}
+            //, DISTINCT_CALLED_COUNT_10UP :{$cond :[       {$gt :["$CALL_DURATION",10]}                                ,"$CALL_NUMBER","$n"]}
+
         }};
         var agg_pipe_group = {$group:{
             _id: {
-                  DATE : "$DATE"
-                , HOUR : "$HOUR"
-                , NETWORK_TYPE : "$NETWORK_TYPE"
-                , END_CODE: "$END_CODE"
-                , SIM_TYPE: "$SIM_TYPE"
-                , CARRIER: "$CARRIER"
+                  DATE : "$DATE"                //日期
+                , HOUR : "$HOUR"                //小時
+                , NETWORK_TYPE : "$NETWORK_TYPE"//網路
+                , END_CODE: "$END_CODE"         //結束
+                , SIM_TYPE: "$SIM_TYPE"         //卡別
+                , CARRIER: "$CARRIER"           //業者
                 ////site
-                , COUNTY: "$COUNTY" //縣市
-                , DISTRICT: "$DISTRICT" //地區
-                , SITE_NAME: "$SITE_NAME"
+                , COUNTY: "$COUNTY"             //縣市
+                , DISTRICT: "$DISTRICT"         //地區
+                , SITE_NAME: "$SITE_NAME"       //基站
                 //, SITE_ID: "$SITE_ID"
                 ////phone_type
                 //, VENDOR: "$VENDOR"
                 //, MODEL: "$MODEL"
                 }
-            //, DISTINCT_CALLED_COUNT_0_3  :{$addToSet:"$DISTINCT_CALLED_COUNT_0_3"}
-            //, DISTINCT_CALLED_COUNT_3_5  :{$addToSet:"$DISTINCT_CALLED_COUNT_3_5"}
-            //, DISTINCT_CALLED_COUNT_5_7  :{$addToSet:"$DISTINCT_CALLED_COUNT_5_7"}
-            //, DISTINCT_CALLED_COUNT_7_10 :{$addToSet:"$DISTINCT_CALLED_COUNT_7_10"}
-            //, DISTINCT_CALLED_COUNT_10UP :{$addToSet:"$DISTINCT_CALLED_COUNT_10UP"}
 
             , SUM_CALLED_COUNT_0_3 : {$sum:"$SUM_CALLED_COUNT_0_3"}
-            , SUM_CALLED_COUNT_3_5 : {$sum:"$SUM_CALLED_COUNT_0_3"}
-            , SUM_CALLED_COUNT_5_7 : {$sum:"$SUM_CALLED_COUNT_3_5"}
-            , SUM_CALLED_COUNT_7_10: {$sum:"$SUM_CALLED_COUNT_5_7"}
-            //, SUM_CALLED_COUNT_10UP: {$sum:"$SUM_CALLED_COUNT_7_10"}
+            , SUM_CALLED_COUNT_3_5 : {$sum:"$SUM_CALLED_COUNT_3_5"}
+            , SUM_CALLED_COUNT_5_7 : {$sum:"$SUM_CALLED_COUNT_5_7"}
+            , SUM_CALLED_COUNT_7_10: {$sum:"$SUM_CALLED_COUNT_7_10"}
+            //, SUM_CALLED_COUNT_10UP: {$sum:"$SUM_CALLED_COUNT_10UP"}
 
             , SUM_CALLED_SECOND_0_3 : {$sum:"$SUM_CALLED_SECOND_0_3"}
-            , SUM_CALLED_SECOND_3_5 : {$sum:"$SUM_CALLED_SECOND_0_3"}
-            , SUM_CALLED_SECOND_5_7 : {$sum:"$SUM_CALLED_SECOND_3_5"}
-            , SUM_CALLED_SECOND_7_10: {$sum:"$SUM_CALLED_SECOND_5_7"}
-            //, SUM_CALLED_SECOND_10UP: {$sum:"$SUM_CALLED_SECOND_7_10"}
-        }};
-        var agg_pipe_match2 = {$match:{
-            $or:[
-                {SUM_CALLED_COUNT_0_3 :{$gt:0}}
-                ,{SUM_CALLED_COUNT_3_5 :{$gt:0}}
-                ,{SUM_CALLED_COUNT_5_7 :{$gt:0}}
-                ,{SUM_CALLED_COUNT_7_10:{$gt:0}}
-                //,{SUM_CALLED_COUNT_10UP:0}
-            ]
+            , SUM_CALLED_SECOND_3_5 : {$sum:"$SUM_CALLED_SECOND_3_5"}
+            , SUM_CALLED_SECOND_5_7 : {$sum:"$SUM_CALLED_SECOND_5_7"}
+            , SUM_CALLED_SECOND_7_10: {$sum:"$SUM_CALLED_SECOND_7_10"}
+            //, SUM_CALLED_SECOND_10UP: {$sum:"$SUM_CALLED_SECOND_10UP"}
+
+            , DISTINCT_CALLED_COUNT_0_3  :{$addToSet:"$DISTINCT_CALLED_COUNT_0_3"}
+            , DISTINCT_CALLED_COUNT_3_5  :{$addToSet:"$DISTINCT_CALLED_COUNT_3_5"}
+            , DISTINCT_CALLED_COUNT_5_7  :{$addToSet:"$DISTINCT_CALLED_COUNT_5_7"}
+            , DISTINCT_CALLED_COUNT_7_10 :{$addToSet:"$DISTINCT_CALLED_COUNT_7_10"}
+            , DISTINCT_CALLED_COUNT_10UP :{$addToSet:"$DISTINCT_CALLED_COUNT_10UP"}
         }};
         var agg_pipe_pro_en = {$project:{
             _id:0
@@ -394,23 +387,23 @@ exports.cdr_3g_site_query = function(mongodb){
             //, HO_CALLED_SECOND  :1
             //, HO_CALLED_MINUTES :{$divide:["$HO_CALLED_SECOND",60]}
 
-            //, DISTINCT_CALLED_COUNT_0_3 :1
-            //, DISTINCT_CALLED_COUNT_3_5 :1
-            //, DISTINCT_CALLED_COUNT_5_7 :1
-            //, DISTINCT_CALLED_COUNT_7_10:1
-            //, DISTINCT_CALLED_COUNT_10UP:1
-
-            , SUM_CALLED_COUNT_0_3 : 1
-            , SUM_CALLED_COUNT_3_5 : 1
-            , SUM_CALLED_COUNT_5_7 : 1
-            , SUM_CALLED_COUNT_7_10: 1
-            //, SUM_CALLED_COUNT_10UP: 1
+            , SUM_CALLED_COUNT_0_3 : "$SUM_CALLED_COUNT_0_3"
+            , SUM_CALLED_COUNT_3_5 : "$SUM_CALLED_COUNT_3_5"
+            , SUM_CALLED_COUNT_5_7 : "$SUM_CALLED_COUNT_5_7"
+            , SUM_CALLED_COUNT_7_10: "$SUM_CALLED_COUNT_7_10"
+            //, SUM_CALLED_COUNT_10UP: "$SUM_CALLED_COUNT_10UP"
 
             , SUM_CALLED_MINUTES_0_3 : {$divide:["$SUM_CALLED_SECOND_0_3",60]}
             , SUM_CALLED_MINUTES_3_5 : {$divide:["$SUM_CALLED_SECOND_3_5",60]}
             , SUM_CALLED_MINUTES_5_7 : {$divide:["$SUM_CALLED_SECOND_5_7",60]}
             , SUM_CALLED_MINUTES_7_10: {$divide:["$SUM_CALLED_SECOND_7_10",60]}
             //, SUM_CALLED_MINUTES_10UP: {$divide:["$SUM_CALLED_SECOND_10UP",60]}
+
+            , DISTINCT_CALLED_COUNT_0_3 :"$DISTINCT_CALLED_COUNT_0_3"
+            , DISTINCT_CALLED_COUNT_3_5 :"$DISTINCT_CALLED_COUNT_3_5"
+            , DISTINCT_CALLED_COUNT_5_7 :"$DISTINCT_CALLED_COUNT_5_7"
+            , DISTINCT_CALLED_COUNT_7_10:"$DISTINCT_CALLED_COUNT_7_10"
+            //, DISTINCT_CALLED_COUNT_10UP:"$DISTINCT_CALLED_COUNT_10UP"
         }};
         var agg_pipe_pro_zh = {$project:{
             _id:0
@@ -418,8 +411,8 @@ exports.cdr_3g_site_query = function(mongodb){
             , 時間        : "$_id.HOUR"
             , 網路        : "$_id.NETWORK_TYPE"
             , 卡別        : "$_id.SIM_TYPE"
-            , 業者別      : "$_id.CARRIER"
-            , 結束碼      : "$_id.END_CODE"
+            , 業者      : "$_id.CARRIER"
+            , 結束      : "$_id.END_CODE"
             ////site
             , 縣市        : "$_id.COUNTY"
             , 區域        : "$_id.DISTRICT"
@@ -434,23 +427,32 @@ exports.cdr_3g_site_query = function(mongodb){
             //, HO_CALLED_SECOND  :1
             //, HO_CALLED_MINUTES :{$divide:["$HO_CALLED_SECOND",60]}
 
-            //, 不重複0_3 :"$DISTINCT_CALLED_COUNT_0_3"
-            //, 不重複3_5 :"$DISTINCT_CALLED_COUNT_3_5"
-            //, 不重複5_7 :"$DISTINCT_CALLED_COUNT_5_7"
-            //, 不重複7_10:"$DISTINCT_CALLED_COUNT_7_10"
+            , 次數0_3 : "$SUM_CALLED_COUNT_0_3"
+            , 次數3_5 : "$SUM_CALLED_COUNT_3_5"
+            , 次數5_7 : "$SUM_CALLED_COUNT_5_7"
+            , 次數7_10: "$SUM_CALLED_COUNT_7_10"
+            //, 次數10UP: "$SUM_CALLED_COUNT_10UP"
+
+            , 分鐘0_3 : {$divide:["$SUM_CALLED_SECOND_0_3",60]}
+            , 分鐘3_5 : {$divide:["$SUM_CALLED_SECOND_3_5",60]}
+            , 分鐘5_7 : {$divide:["$SUM_CALLED_SECOND_5_7",60]}
+            , 分鐘7_10: {$divide:["$SUM_CALLED_SECOND_7_10",60]}
+            //, 分鐘10UP: {$divide:["$SUM_CALLED_SECOND_10UP",60]}
+
+            , 不重複0_3 :"$DISTINCT_CALLED_COUNT_0_3"
+            , 不重複3_5 :"$DISTINCT_CALLED_COUNT_3_5"
+            , 不重複5_7 :"$DISTINCT_CALLED_COUNT_5_7"
+            , 不重複7_10:"$DISTINCT_CALLED_COUNT_7_10"
             //, 不重複10UP:"$DISTINCT_CALLED_COUNT_10UP"
-
-            , 通話次數0_3 : "$SUM_CALLED_COUNT_0_3"
-            , 通話次數3_5 : "$SUM_CALLED_COUNT_3_5"
-            , 通話次數5_7 : "$SUM_CALLED_COUNT_5_7"
-            , 通話次數7_10: "$SUM_CALLED_COUNT_7_10"
-            //, 通話次數10UP: "$SUM_CALLED_COUNT_10UP"
-
-            , 通話分鐘數0_3 : {$divide:["$SUM_CALLED_SECOND_0_3",60]}
-            , 通話分鐘數3_5 : {$divide:["$SUM_CALLED_SECOND_3_5",60]}
-            , 通話分鐘數5_7 : {$divide:["$SUM_CALLED_SECOND_5_7",60]}
-            , 通話分鐘數7_10: {$divide:["$SUM_CALLED_SECOND_7_10",60]}
-            //, 通話分鐘數10UP: {$divide:["$SUM_CALLED_SECOND_10UP",60]}
+        }};
+        var agg_pipe_match2 = {$match:{
+            $or:[
+                {SUM_CALLED_COUNT_0_3 :{$gt:0}}
+                ,{SUM_CALLED_COUNT_3_5 :{$gt:0}}
+                ,{SUM_CALLED_COUNT_5_7 :{$gt:0}}
+                ,{SUM_CALLED_COUNT_7_10:{$gt:0}}
+                //,{SUM_CALLED_COUNT_10UP:0}
+            ]
         }};
         var agg_pipe_limit = {$limit:100};
         var agg_pipe_out = {$out:"cep3g_stat_site"};
@@ -462,6 +464,7 @@ exports.cdr_3g_site_query = function(mongodb){
             ,agg_pipe_match2
             //,agg_pipe_pro_en
             ,agg_pipe_pro_zh
+
             ,agg_pipe_limit
             //,agg_pipe_out
         ];
@@ -472,7 +475,8 @@ exports.cdr_3g_site_query = function(mongodb){
         collection.col.aggregate(agg_pipes, function(err, result) {
             if(err) res.redirect('cdr_3g_site_query');//console.log("err : "+err.message);
             //if(result) console.log("result : "+util.inspect(result));
-            res.render('cdr_3g_site_show', {
+            //res.render('cdr_3g_site_show', {
+            res.render('cdr_3g_site_show_fixHead_zh', {
                     title: 'stat cep3g',
                     //db_count: db_count,
                     totalcount: result.length,

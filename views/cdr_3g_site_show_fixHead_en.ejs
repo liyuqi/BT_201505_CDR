@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <script>
+        $(function() {
+            $('.hint').tooltip({placement: 'top'});
+        });
+    </script>
+</head>
+<body id='bodyWrap'>
+
+<fieldset>
+    <legend>統計 CDR</legend>
+</fieldset>
+
+<% if (resp) { %>
+<h3>搜尋結果</h3></br>
+<% if (resp.length == 0) { %>
+<h4> 查無資料!</h4>
+<% } else /*if (resp.length < 20)*/{%>
+<h4> 回傳 : <%= totalcount %>筆資料,  顯示前 <%= resp.length %> 筆</h4>
+</br></br></br>
+    <table class="table table-striped table-hover table-condensed">
+        <caption></caption>
+        <thead>
+        <tr>
+        <tr>
+            <th>#</th>
+
+            <!--<th>_id</th>-->
+            <th id="th_DATE"    >日期</th>
+            <th id="th_HOUR"    >小時</th>
+
+            <th id="th_COUNTY"  >縣市</th>
+            <th id="th_DISTRICT">區域</th>
+            <th id="th_SITE_NAME">基站</th>
+
+            <th id="th_END_CODE">結束碼</th>
+            <th id="th_SIM_TYPE">卡別</th>
+            <th id="th_CARRIER" >業者別</th>
+
+            <th id="th_count_0_3">次數0_3</th>
+            <th id="th_count_3_5">次數3_5</th>
+            <th id="th_count_5_7">次數5_7</th>
+            <th id="th_count_710">次數7_10</th>
+            <th id="th_count10up">次數10up</th>
+
+            <th id="th_min_0_3"  >分鐘0_3</th>
+            <th id="th_min_3_5"  >分鐘3_5</th>
+            <th id="th_min_5_7"  >分鐘5_7</th>
+            <th id="th_min_710"  >分鐘7_10</th>
+            <th id="th_min10up"  >分鐘10up</th>
+
+            <!--<th id="th_dinstinc_0_3">不重複0_3</th>-->
+            <!--<th id="th_dinstinc_3_5">不重複3_5</th>-->
+            <!--<th id="th_dinstinc_5_7">不重複5_7</th>-->
+            <!--<th id="th_dinstinc_710">不重複7_10</th>-->
+            <!--<th id="th_dinstinc10up">不重複10up</th>-->
+
+            <!--<th id="th_COUNT"   >HO_次數</th>-->
+            <!--<th id="th_SECOND"  >HO_秒數</th>-->
+            <!--<th id="th_MINuTE"  >HO_分鐘</th>-->
+        </tr>
+        </thead>
+        <tbody>
+        <% var i=1; %>
+        <% resp.forEach( function(body){ %>
+        <tr>
+            <td id="#"><%= i++ %></td>
+            <!--<td id="_id"        text="日期時間" ><%# JSON.stringify(body._id) %></td>-->
+
+            <td id="DATE"       text="日期" ><%= body.DATE %></td>
+            <td id="HOUR"       text="小時" ><%= body.HOUR %></td>
+
+            <td id="COUNTRY"    text="縣市" ><%= body.COUNTRY %></td>
+            <td id="DISTRICT"   text="區域" ><%= body.DISTRICT %></td>
+            <td id="SITE_NAME"  text="基站" ><%= body.SITE_NAME %></td>
+            <!--<td id="SITE_ID"    text="基站" ><%= body.SITE_ID %></td>-->
+
+            <td id="END_CODE"   text="結束" ><%= body.END_CODE %></td>
+            <td id="SIM_TYPE"   text="卡別" ><%= body.SIM_TYPE %></td>
+            <td id="CARRIER"    text="業者" ><%= body.CARRIER %></td>
+
+            <!--<td id="HO_COUNT"   text="次數" ><%= body.HO_CALLED_COUNT %></td>-->
+            <!--<td id="HO_SECOND"  text="秒數" ><%= body.HO_CALLED_SECOND %></td>-->
+            <!--<td id="HO_MINUTES" text="分鐘" ><%= body.HO_CALLED_MINUTES %></td>-->
+
+            <td id="c0_3" text="次數0_3" ><a><%= body['SUM_CALLED_COUNT_0_3' ] %></a></td>
+            <td id="c3_5" text="次數3_5" ><a><%= body['SUM_CALLED_COUNT_3_5' ] %></a></td>
+            <td id="c5_7" text="次數5_7" ><a><%= body['SUM_CALLED_COUNT_5_7' ] %></a></td>
+            <td id="c710" text="次數7_10"><a><%= body['SUM_CALLED_COUNT_7_10'] %></a></td>
+            <td id="c710" text="次數10UP"><a><%= body['SUM_CALLED_COUNT_10UP'] %></a></td>
+
+            <td id="m0_3" text="分鐘0_3" ><a href="#" title="<%= body['DISTINCT_CALLED_COUNT_0_3' ] %>" class="hint"><%= body['SUM_CALLED_MINUTES_0_3 '] %></a></td>
+            <td id="m3_5" text="分鐘3_5" ><a href="#" title="<%= body['DISTINCT_CALLED_COUNT_3_5' ] %>" class="hint"><%= body['SUM_CALLED_MINUTES_3_5 '] %></a></td>
+            <td id="m5_7" text="分鐘5_7" ><a href="#" title="<%= body['DISTINCT_CALLED_COUNT_5_7' ] %>" class="hint"><%= body['SUM_CALLED_MINUTES_5_7 '] %></a></td>
+            <td id="m710" text="分鐘7_10"><a href="#" title="<%= body['DISTINCT_CALLED_COUNT_7_10'] %>" class="hint"><%= body['SUM_CALLED_MINUTES_7_10'] %></a></td>
+            <td id="m_10" text="分鐘10UP"><a href="#" title="<%= body["DISTINCT_CALLED_COUNT_10UP"] %>" class="hint"><%= body['SUM_CALLED_MINUTES_10UP'] %></a></td>
+
+        </tr>
+        <% }); %>
+        </tbody>
+    </table>
+<% } %>
+<% } else { %>
+<!--<h3>總量 : <%= totalcount %>筆資料</h3>-->
+<% } %>
+
+</body>
+</html>

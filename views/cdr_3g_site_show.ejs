@@ -2,6 +2,11 @@
 <html>
 <head>
     <title><%= title %></title>
+    <script>
+        $(function() {
+            $('.tooltip').tooltip();
+        });
+    </script>
 </head>
 <body id='bodyWrap'>
 
@@ -44,10 +49,14 @@
         for(var k in keys){
         %>
         <td id="kv">
-            <%  if(typeof(body[''+keys[k]])=='number'&&((body[''+keys[k]])>0)){ //%>
-                <%= (body[''+keys[k]]).toFixed(2) %>
+            <%#  if(typeof(body[''+keys[k]])=='number'&&((body[''+keys[k]])>0)){ //%>
+
+            <% if(keys[k].search('重複')>0){ %>
+            <% }else if(keys[k].search('鐘')>0 && ((body[''+keys[k]])>0)){ %>
+                        <%= (body[''+keys[k]]).toFixed(4) %>
             <% }else{ %>
-                <%= body[''+keys[k]] %>
+                    <a href="#" data-toggle="tooltip" title="first tooltip" class="tooltip">n</a>
+                    <%= body[''+keys[k]] %>
             <% } %>
         </td>
         <%}%>
