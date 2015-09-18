@@ -3,10 +3,16 @@
 <head>
     <title><%= title %></title>
     <script>
-        $(function() {
+        //$(function() {
             $('.hint').tooltip({placement: 'top'});
-        });
+        //});
     </script>
+    <style>
+        .tooltip-inner {
+            white-space:pre-wrap;
+            max-width: 5px;
+        }
+    </style>
 </head>
 <body id='bodyWrap'>
 
@@ -21,7 +27,7 @@
 <% } else /*if (resp.length < 20)*/{%>
 <h4> 回傳 : <%= totalcount %>筆資料,  顯示前 <%= resp.length %> 筆</h4>
 </br></br></br>
-    <table class="table table-striped table-hover table-condensed">
+    <table class="table table-striped table-hover table-condensed container">
         <caption></caption>
         <thead>
         <tr>
@@ -40,11 +46,15 @@
             <th id="th_SIM_TYPE">卡別</th>
             <th id="th_CARRIER" >業者別</th>
 
-            <th id="th_count_0_3">次數0_3</th>
-            <th id="th_count_3_5">次數3_5</th>
-            <th id="th_count_5_7">次數5_7</th>
-            <th id="th_count_710">次數7_10</th>
-            <!--<th id="th_count10up">次數10up</th>-->
+            <th id="th_COUNT"   >HO_次數</th>
+            <th id="th_SECOND"  >HO_秒數</th>
+            <th id="th_MINuTE"  >HO_分鐘</th>
+
+            <th id="th_diff_0_3">/</th>  <th id="th_count_0_3">次數0_3</th>
+            <th id="th_diff_3_5">/</th>  <th id="th_count_3_5">次數3_5</th>
+            <th id="th_diff_5_7">/</th>  <th id="th_count_5_7">次數5_7</th>
+            <th id="th_diff_710">/</th>  <th id="th_count_710">次數7_10</th>
+            <!--<th id="th_diff10up">/</th>  <th id="th_count10up">次數10up</th>-->
 
             <th id="th_min_0_3"  >分鐘0_3</th>
             <th id="th_min_3_5"  >分鐘3_5</th>
@@ -57,10 +67,6 @@
             <!--<th id="th_diff_5_7">不重複5_7</th>-->
             <!--<th id="th_diff_710">不重複7_10</th>-->
             <!--<th id="th_diff10up">不重複10up</th>-->
-
-            <!--<th id="th_COUNT"   >HO_次數</th>-->
-            <!--<th id="th_SECOND"  >HO_秒數</th>-->
-            <!--<th id="th_MINuTE"  >HO_分鐘</th>-->
         </tr>
         </thead>
         <tbody>
@@ -76,20 +82,20 @@
             <td id="COUNTRY"    text="縣市" ><%= body['縣市'] %></td>
             <td id="DISTRICT"   text="區域" ><%= body['區域'] %></td>
             <td id="SITE_NAME"  text="基站" ><%= body['基站'] %></td>
-            <td id="SITE_ID"    text="基站" ><%= body['基站'] %></td>
+            <!--<td id="SITE_ID"    text="基站" ><%= body['基站'] %></td>-->
 
             <td id="END_CODE"   text="結束" ><%= body['結束'] %></td>
             <td id="SIM_TYPE"   text="卡別" ><%= body['卡別'] %></td>
             <td id="CARRIER"    text="業者" ><%= body['業者'] %></td>
 
-            <!--<td id="HO_COUNT"   text="次數" ><%= body.HO_CALLED_COUNT %></td>-->
-            <!--<td id="HO_SECOND"  text="秒數" ><%= body.HO_CALLED_SECOND %></td>-->
-            <!--<td id="HO_MINUTES" text="分鐘" ><%= body.HO_CALLED_MINUTES %></td>-->
+            <td id="HO_COUNT"   class="info" ><%= body.HO_CALLED_COUNT %></td>
+            <td id="HO_SECOND"  class="info" ><%= body.HO_CALLED_SECOND %></td>
+            <td id="HO_MINUTES" class="info" ><%= body.HO_CALLED_MINUTES>0 ? body.HO_CALLED_MINUTES.toFixed(2) : body.HO_CALLED_MINUTES %></td>
 
-            <td id="c0_3"   text="次數0_3" ><a href="#" class="hint" title="<%= body["不重複0_3" ] %>" ><%= body["次數0_3" ] %></a><!--<br><%= util.inspect(body["不重複0_3" ])%>--></td>
-            <td id="c3_5"   text="次數3_5" ><a href="#" class="hint" title="<%= body["不重複3_5" ] %>" ><%= body["次數3_5" ] %></a><!--<br><%= util.inspect(body["不重複3_5" ])%>--></td>
-            <td id="c5_7"   text="次數5_7" ><a href="#" class="hint" title="<%= body["不重複5_7" ] %>" ><%= body["次數5_7" ] %></a><!--<br><%= util.inspect(body["不重複5_7" ])%>--></td>
-            <td id="c710"   text="次數7_10"><a href="#" class="hint" title="<%= body["不重複7_10"] %>" ><%= body["次數7_10"] %></a><!--<br><%= util.inspect(body["不重複7_10"])%>--></td>
+            <td><a href="#" class="hint" title="<%= util.inspect(body["不重複0_3" ]) %>" ><%= body["不重複0_3" ].length %></a></td>    <td id="c0_3"><%= body["次數0_3" ] %></td>
+            <td><a href="#" class="hint" title="<%= util.inspect(body["不重複3_5" ]) %>" ><%= body["不重複3_5" ].length %></a></td>    <td id="c3_5"><%= body["次數3_5" ] %></td>
+            <td><a href="#" class="hint" title="<%= util.inspect(body["不重複5_7" ]) %>" ><%= body["不重複5_7" ].length %></a></td>    <td id="c5_7"><%= body["次數5_7" ] %></td>
+            <td><a href="#" class="hint" title="<%= util.inspect(body["不重複7_10"]) %>" ><%= body["不重複7_10"].length %></a></td>    <td id="c710"><%= body["次數7_10"] %></td>
             <!--<td id="c710"   text="次數10UP"><a href="#" class="hint" title="<%= body["不重複10UP"] %>"><%= body["次數10UP"] %></a></td>-->
 
             <td id="m0_3"  text="分鐘0_3" ><%= body["分鐘0_3" ]>0 ? body["分鐘0_3" ].toFixed(2) : body["分鐘0_3" ] %></td>

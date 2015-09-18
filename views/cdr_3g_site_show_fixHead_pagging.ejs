@@ -40,6 +40,10 @@
             <th id="th_SIM_TYPE">卡別</th>
             <th id="th_CARRIER" >業者別</th>
 
+            <th id="th_COUNT"   >HO_次數</th>
+            <th id="th_SECOND"  >HO_秒數</th>
+            <th id="th_MINuTE"  >HO_分鐘</th>
+
             <th id="th_count_0_3">次數0_3</th>
             <th id="th_count_3_5">次數3_5</th>
             <th id="th_count_5_7">次數5_7</th>
@@ -58,9 +62,7 @@
             <!--<th id="th_dinstinc_710">不重複7_10</th>-->
             <!--<th id="th_dinstinc10up">不重複10up</th>-->
 
-            <!--<th id="th_COUNT"   >HO_次數</th>-->
-            <!--<th id="th_SECOND"  >HO_秒數</th>-->
-            <!--<th id="th_MINuTE"  >HO_分鐘</th>-->
+
         </tr>
         </thead>
         <tbody>
@@ -82,9 +84,9 @@
             <td id="SIM_TYPE"   text="卡別" ><%= body.SIM_TYPE %></td>
             <td id="CARRIER"    text="業者" ><%= body.CARRIER %></td>
 
-            <!--<td id="HO_COUNT"   text="次數" ><%= body.HO_CALLED_COUNT %></td>-->
-            <!--<td id="HO_SECOND"  text="秒數" ><%= body.HO_CALLED_SECOND %></td>-->
-            <!--<td id="HO_MINUTES" text="分鐘" ><%= body.HO_CALLED_MINUTES %></td>-->
+            <td id="HO_COUNT"   text="次數" ><%= body.HO_CALLED_COUNT %></td>
+            <td id="HO_SECOND"  text="秒數" ><%= body.HO_CALLED_SECOND %></td>
+            <td id="HO_MINUTES" text="分鐘" ><%= body.HO_CALLED_MINUTES %></td>
 
             <td id="c0_3" text="次數0_3" ><a href="#" title="<%= body['DISTINCT_0_3' ] %>" class="hint"><%= body['SUM_CALLED_COUNT_0_3' ] %></a></td>
             <td id="c3_5" text="次數3_5" ><a href="#" title="<%= body['DISTINCT_3_5' ] %>" class="hint"><%= body['SUM_CALLED_COUNT_3_5' ] %></a></td>

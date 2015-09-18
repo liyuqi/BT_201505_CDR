@@ -151,9 +151,12 @@ var cdr3g = db.cep3g_gen.find({
 //while(cdr3g.hasNext()){
     //var doc = col.next();
     if(doc.up_flag!=2) {  //======================================== update done, erich up_flag:1
+        doc.DATETIME = new Date(doc.date_time);
+
+        doc.DATE = doc.date_time.substr(0,10);
+        doc.HOUR = doc.date_time.substr(11,2);
         if(doc.record_type=="1") {
-            doc.DATE = doc.date_time.substr(0,10);
-            doc.HOUR = doc.date_time.substr(11,2);
+
             doc.CALL_NUMBER = doc.calling_number;
             doc.CALL_DURATION = Number(doc.orig_mcz_duration);
 
@@ -190,7 +193,7 @@ var cdr3g = db.cep3g_gen.find({
                     doc.LAC_OD      = site3g_map[cell].LAC_OD;   //#
                     doc.BTS_ADDRESS = site3g_map[cell].BTS_ADDRESS;
 
-                    doc.COUNTRY     = site3g_map[cell].BTS_ADDRESS.substr(0,3);
+                    doc.COUNTY     = site3g_map[cell].BTS_ADDRESS.substr(0,3);
                     doc.DISTRICT    = site3g_map[cell].BTS_ADDRESS.substr(3,3);
 
                     doc.SITE_NAME   = site3g_map[cell].SITE_NAME;
@@ -208,7 +211,7 @@ var cdr3g = db.cep3g_gen.find({
                     doc.LAC_OD      = site2g_map[cell].LAC_OD;   //#
                     doc.BTS_ADDRESS = site2g_map[cell].BTS_ADDRESS;
 
-                    doc.COUNTRY     = site2g_map[cell].BTS_ADDRESS.substr(0,3);
+                    doc.COUNTY     = site2g_map[cell].BTS_ADDRESS.substr(0,3);
                     doc.DISTRICT    = site2g_map[cell].BTS_ADDRESS.substr(3,3);
 
                     doc.SITE_NAME   = site2g_map[cell].SITE_NAME;
@@ -246,8 +249,6 @@ var cdr3g = db.cep3g_gen.find({
 //            '\t發imei:'+ doc.calling_imei.substr(0,8) + '\tPT:'+ doc.PT_OID +
 //            '\tCARRIER:'+ doc.CARRIER + '\ted_num:'+ doc.called_number.substr(0,4));
         }else if(doc.record_type=="2") {
-            doc.DATE = doc.date_time.substr(0,10);
-            doc.HOUR = doc.date_time.substr(11,2);
             doc.CALL_NUMBER = doc.called_number;
             doc.CALL_DURATION = Number(doc.term_mcz_duration);
             try {
@@ -285,7 +286,7 @@ var cdr3g = db.cep3g_gen.find({
                     doc.LAC_OD      = site3g_map[cell].LAC_OD;   //#
                     doc.BTS_ADDRESS = site3g_map[cell].BTS_ADDRESS;
 
-                    doc.COUNTRY     = site3g_map[cell].BTS_ADDRESS.substr(0,3);
+                    doc.COUNTY     = site3g_map[cell].BTS_ADDRESS.substr(0,3);
                     doc.DISTRICT    = site3g_map[cell].BTS_ADDRESS.substr(3,3);
 
                     doc.SITE_NAME   = site3g_map[cell].SITE_NAME;
@@ -303,7 +304,7 @@ var cdr3g = db.cep3g_gen.find({
                     doc.LAC_OD      = site2g_map[cell].LAC_OD;   //#
                     doc.BTS_ADDRESS = site2g_map[cell].BTS_ADDRESS;
 
-                    doc.COUNTRY     = site2g_map[cell].BTS_ADDRESS.substr(0,3);
+                    doc.COUNTY     = site2g_map[cell].BTS_ADDRESS.substr(0,3);
                     doc.DISTRICT    = site2g_map[cell].BTS_ADDRESS.substr(3,3);
 
                     doc.SITE_NAME   = site2g_map[cell].SITE_NAME;
@@ -353,6 +354,6 @@ var cdr3g = db.cep3g_gen.find({
 T1 = new Date();
 print(T0.toJSON());
 print(T1.toJSON());
-print((T1-T0)/1000+'\t sec.');
+print((T1-T0)/1000+'\t sec.\t'+(T1-T0)/60000+' min.');
 print(''+'\tprocess:'+i);
 // db.cep3g_gen.findOne({up_flag:1},{time:1,up_flag:1});
