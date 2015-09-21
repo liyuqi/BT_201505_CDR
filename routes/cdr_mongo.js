@@ -311,9 +311,11 @@ exports.cdr_3g_site_query = function(mongodb){
             //, VENDOR : "$VENDOR"
             //, MODEL  : "$MODEL"
 
-            , HO_DISTINCT:{$cond :[{$gt:["$HO",0]},"$called_number",""]}
-            , HO : 1
-            , HO_SECOND : 1
+
+            , HO : "$HO"
+            , HO_SECOND : {$cond :[{$gt:["$HO",0]},"$HO_SECOND",0]}
+            , HO_DISTINCT:{$cond :[{$gt:["$HO",0]},"$CALL_NUMBER","$null"]}
+            , HO_EACH_ID :{$cond :[{$gt:["$HO",0]},"$CALL_NUMBER","$null"]}
 
             , SUM_CALLED_COUNT_0_3  :{$cond :[{$and:[{$gte:["$CALL_DURATION",0 ]},{$lte:["$CALL_DURATION",3 ]} ]},1,0]}
             , SUM_CALLED_COUNT_3_5  :{$cond :[{$and:[{$gt :["$CALL_DURATION",3 ]},{$lte:["$CALL_DURATION",5 ]} ]},1,0]}
@@ -332,6 +334,13 @@ exports.cdr_3g_site_query = function(mongodb){
             , DISTINCT_5_7  :{$cond :[{$and:[{$gt :["$CALL_DURATION",5 ]},{$lte:["$CALL_DURATION",7 ]} ]},"$CALL_NUMBER","$null"]}
             , DISTINCT_7_10 :{$cond :[{$and:[{$gt :["$CALL_DURATION",7 ]},{$lte:["$CALL_DURATION",10]} ]},"$CALL_NUMBER","$null"]}
             //, DISTINCT_10UP :{$cond :[       {$gt :["$CALL_DURATION",10]}                                ,"$CALL_NUMBER","$n"]}
+
+            , EACH_ID_0_3  :{$cond :[{$and:[{$gte:["$CALL_DURATION",0 ]},{$lte:["$CALL_DURATION",3 ]} ]},"$_id","$null"]}
+            , EACH_ID_3_5  :{$cond :[{$and:[{$gt :["$CALL_DURATION",3 ]},{$lte:["$CALL_DURATION",5 ]} ]},"$_id","$null"]}
+            , EACH_ID_5_7  :{$cond :[{$and:[{$gt :["$CALL_DURATION",5 ]},{$lte:["$CALL_DURATION",7 ]} ]},"$_id","$null"]}
+            , EACH_ID_7_10 :{$cond :[{$and:[{$gt :["$CALL_DURATION",7 ]},{$lte:["$CALL_DURATION",10]} ]},"$_id","$null"]}
+            //, EACH_ID_10UP :{$cond :[       {$gt :["$CALL_DURATION",10]}                                ,"$_id","$n"]}
+
 
         }};
         var agg_pipe_group = {$group:{
@@ -352,9 +361,10 @@ exports.cdr_3g_site_query = function(mongodb){
                 //, MODEL: "$MODEL"
                 }
 
-            , HO_DISTINCT:{$addToSet:"$HO_DISTINCT"}
             , HO_CALLED_COUNT:{$sum:"$HO"}
             , HO_CALLED_SECOND:{$sum:"$HO_SECOND"}
+            , HO_DISTINCT:{$addToSet:"$HO_DISTINCT"}
+            , HO_EACH_ID:{$push:"$HO_EACH_ID"}
 
             , SUM_CALLED_COUNT_0_3 : {$sum:"$SUM_CALLED_COUNT_0_3"}
             , SUM_CALLED_COUNT_3_5 : {$sum:"$SUM_CALLED_COUNT_3_5"}
@@ -373,6 +383,12 @@ exports.cdr_3g_site_query = function(mongodb){
             , DISTINCT_5_7  :{$addToSet:"$DISTINCT_5_7"}
             , DISTINCT_7_10 :{$addToSet:"$DISTINCT_7_10"}
             //, DISTINCT_10UP :{$addToSet:"$DISTINCT_10UP"}
+
+            , EACH_ID_0_3  :{$push:"$EACH_ID_0_3"}
+            , EACH_ID_3_5  :{$push:"$EACH_ID_3_5"}
+            , EACH_ID_5_7  :{$push:"$EACH_ID_5_7"}
+            , EACH_ID_7_10 :{$push:"$EACH_ID_7_10"}
+            //, EACH_ID_10UP :{$push:"$EACH_ID_10UP"}
         }};
         var agg_pipe_match2 = {$match:{
             $or:[
@@ -401,10 +417,11 @@ exports.cdr_3g_site_query = function(mongodb){
             //, VENDOR        : "$_id.VENDOR"
             //, MODEL         : "$_id.MODEL"
 
-            , HO_DISTINCT       :1
             , HO_CALLED_COUNT   :1
             , HO_CALLED_SECOND  :1
             , HO_CALLED_MINUTES :{$divide:["$HO_CALLED_SECOND",60]}
+            , HO_DISTINCT       :1
+            , HO_EACH_ID        :1
 
             , SUM_CALLED_COUNT_0_3 : "$SUM_CALLED_COUNT_0_3"
             , SUM_CALLED_COUNT_3_5 : "$SUM_CALLED_COUNT_3_5"
@@ -423,6 +440,13 @@ exports.cdr_3g_site_query = function(mongodb){
             , DISTINCT_5_7 :"$DISTINCT_5_7"
             , DISTINCT_7_10:"$DISTINCT_7_10"
             //, DISTINCT_10UP:"$DISTINCT_10UP"
+
+            , EACH_ID_0_3  :"$EACH_ID_0_3"
+            , EACH_ID_3_5  :"$EACH_ID_3_5"
+            , EACH_ID_5_7  :"$EACH_ID_5_7"
+            , EACH_ID_7_10 :"$EACH_ID_7_10"
+            //, EACH_ID_10UP :"$EACH_ID_10UP"
+
         }};
         var agg_pipe_pro_zh = {$project:{
             _id:0

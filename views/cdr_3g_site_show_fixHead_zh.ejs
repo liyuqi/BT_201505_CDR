@@ -47,7 +47,7 @@
             <th id="th_CARRIER" >業者別</th>
 
             <th id="th_COUNT"   >HO_次數</th>
-            <th id="th_SECOND"  >HO_秒數</th>
+            <!--<th id="th_SECOND"  >HO_秒數</th>-->
             <th id="th_MINuTE"  >HO_分鐘</th>
 
             <th id="th_diff_0_3">/</th>  <th id="th_count_0_3">次數0_3</th>
@@ -88,8 +88,8 @@
             <td id="SIM_TYPE"   text="卡別" ><%= body['卡別'] %></td>
             <td id="CARRIER"    text="業者" ><%= body['業者'] %></td>
 
-            <td id="HO_COUNT"   class="info" ><%= body.HO_CALLED_COUNT %></td>
-            <td id="HO_SECOND"  class="info" ><%= body.HO_CALLED_SECOND %></td>
+            <td id="HO_COUNT"   class="info" ><a href="#" class="hint" title="<%= util.inspect(body["HO_DISTINCT" ]) %>" ><%= body.HO_CALLED_COUNT %></a></td>
+            <!--<td id="HO_SECOND"  class="info" ><%= body.HO_CALLED_SECOND %></td>-->
             <td id="HO_MINUTES" class="info" ><%= body.HO_CALLED_MINUTES>0 ? body.HO_CALLED_MINUTES.toFixed(2) : body.HO_CALLED_MINUTES %></td>
 
             <td><a href="#" class="hint" title="<%= util.inspect(body["不重複0_3" ]) %>" ><%= body["不重複0_3" ].length %></a></td>    <td id="c0_3"><%= body["次數0_3" ] %></td>
