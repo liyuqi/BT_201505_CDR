@@ -145,12 +145,12 @@ var cdr3g = db.cep3g_gen.find({
     ,"record_type" : 1
     ,"term_mcz_duration" : 1        //$sum
     ,"date_time" : 1                //#index date, time
-    ,"up_flag" : 1
+    //,"up_flag" : 1
     ,"_id":1
 }).addOption(DBQuery.Option.noTimeout).sort({_id:1}).forEach(function (doc) {
 //while(cdr3g.hasNext()){
     //var doc = col.next();
-    if(doc.up_flag!=2) {  //======================================== update done, erich up_flag:1
+    //if(doc.up_flag!=2) {  //======================================== update done, erich up_flag:1
         doc.DATETIME = new Date(doc.date_time);
 
         doc.DATE = doc.date_time.substr(0,10);
@@ -346,8 +346,8 @@ var cdr3g = db.cep3g_gen.find({
         //db.cep3g_sample.update({_id: doc._id}, {$set: {up_flag:1}});
 //        db.cep3g_gen.update({_id: doc._id}, {$set: {up_flag:1}});
         db.cep3g_join.save(doc);
-        print(doc._id)
-    }else{}
+        //print(doc._id);
+    //}else{}
     i++;
 });
 

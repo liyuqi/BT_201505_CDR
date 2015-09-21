@@ -343,13 +343,13 @@ var cdr3g = db.cep3g_gen.find({
 //            '\t  imsi:'+ doc.called_imsi.substr(0,6) + '\tSIM:'+ doc.SIM_TYPE +
 //            '\t  imei:'+ doc.called_imei.substr(0,8) + '\tPT:' + doc.PT_OID+
 //            '\tCARRIER:'+ doc.CARRIER +'\ted_num:'+ doc.called_number.substr(0,4));
-//        }
+        }
         //doc.up_flag = 1; //======================================== update done, erich up_flag:1
         //db.cep3g_sample.update({_id: doc._id}, {$set: {up_flag:1}});
 //        db.cep3g_gen.update({_id: doc._id}, {$set: {up_flag:1}});
         db.cep3g_join.save(doc);
-	//print(doc._id)
-    }else{}
+	//print(doc._id);
+    //}else{}
     i++;
 });
 T1 = new Date();
