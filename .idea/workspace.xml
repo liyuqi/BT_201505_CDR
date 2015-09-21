@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ff5f60e6-e6f7-43d7-8834-5a5ddc08f48e" name="Default" comment="">
+    <list default="true" id="ff5f60e6-e6f7-43d7-8834-5a5ddc08f48e" name="Default" comment="cep3g join cron update2">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mongo_prepare_data/cep3g_join_cron.js" afterPath="$PROJECT_DIR$/mongo_prepare_data/cep3g_join_cron.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -31,8 +31,8 @@
                 <file leaf-file-name="cep3g_join_cron.js" pinned="false" current-in-tab="true">
                   <entry file="file://$PROJECT_DIR$/mongo_prepare_data/cep3g_join_cron.js">
                     <provider selected="true" editor-type-id="text-editor">
-                      <state vertical-scroll-proportion="0.43256998" vertical-offset="0" max-vertical-offset="4114">
-                        <caret line="111" column="57" selection-start-line="111" selection-start-column="57" selection-end-line="111" selection-end-column="57" />
+                      <state vertical-scroll-proportion="1.0079365" vertical-offset="2672" max-vertical-offset="4233">
+                        <caret line="353" column="1" selection-start-line="353" selection-start-column="1" selection-end-line="353" selection-end-column="1" />
                         <folding>
                           <element signature="n#!!doc" expanded="true" />
                           <element signature="n#!!block;n#buildPhoneMap#0" expanded="false" />
@@ -40,15 +40,13 @@
                           <element signature="n#!!block;n#buildSite3gMap#0" expanded="false" />
                           <element signature="n#!!block;n#buildSIMmap#0" expanded="false" />
                           <element signature="n#!!block;n#buildCARRIERmap#0" expanded="false" />
-                          <element signature="e#5364#5397#0" expanded="false" />
-                          <element signature="e#7277#7839#0" expanded="false" />
-                          <element signature="e#7890#8458#0" expanded="false" />
-                          <element signature="e#8508#8601#0" expanded="false" />
-                          <element signature="e#8677#9530#0" expanded="false" />
-                          <element signature="e#9590#10443#0" expanded="false" />
-                          <element signature="e#11750#11835#0" expanded="false" />
-                          <element signature="e#13775#13868#0" expanded="false" />
-                          <element signature="e#16918#17003#0" expanded="false" />
+                          <element signature="e#7281#7843#0" expanded="false" />
+                          <element signature="e#7894#8462#0" expanded="false" />
+                          <element signature="e#8512#8605#0" expanded="false" />
+                          <element signature="e#8681#9534#0" expanded="false" />
+                          <element signature="e#9594#10447#0" expanded="false" />
+                          <element signature="e#11754#11839#0" expanded="false" />
+                          <element signature="e#13779#13872#0" expanded="false" />
                         </folding>
                       </state>
                     </provider>
@@ -210,7 +208,7 @@
           <file leaf-file-name="cdr_3g_site_show_fixHead_zh.ejs" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/views/cdr_3g_site_show_fixHead_zh.ejs">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.8589212" vertical-offset="943" max-vertical-offset="2176">
+                <state vertical-scroll-proportion="2.4741037" vertical-offset="943" max-vertical-offset="2176">
                   <caret line="90" column="43" selection-start-line="90" selection-start-column="43" selection-end-line="90" selection-end-column="43" />
                   <caret line="91" column="43" selection-start-line="91" selection-start-column="43" selection-end-line="91" selection-end-column="43" />
                   <caret line="92" column="43" selection-start-line="92" selection-start-column="43" selection-end-line="92" selection-end-column="43" />
@@ -236,7 +234,7 @@
           <file leaf-file-name="cdr_mongo.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/routes/cdr_mongo.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.40453938" vertical-offset="6225" max-vertical-offset="11526">
+                <state vertical-scroll-proportion="1.0938628" vertical-offset="6225" max-vertical-offset="11526">
                   <caret line="447" column="0" selection-start-line="443" selection-start-column="12" selection-end-line="447" selection-end-column="0" />
                   <folding>
                     <element signature="n#!!doc" expanded="true" />
@@ -515,12 +513,6 @@
       <created>1427168524473</created>
       <option name="number" value="Default" />
       <updated>1427168524473</updated>
-    </task>
-    <task id="LOCAL-00063" summary="distinct">
-      <created>1441856604786</created>
-      <option name="number" value="00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1441856604786</updated>
     </task>
     <task id="LOCAL-00064" summary="distinct">
       <created>1441856685143</created>
@@ -810,7 +802,13 @@
       <option name="project" value="LOCAL" />
       <updated>1442573056387</updated>
     </task>
-    <option name="localTasksCounter" value="112" />
+    <task id="LOCAL-00112" summary="cep3g join cron update">
+      <created>1442800040182</created>
+      <option name="number" value="00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1442800040182</updated>
+    </task>
+    <option name="localTasksCounter" value="113" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -834,10 +832,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="78" y="16" width="1406" height="900" extended-state="1" />
+    <frame x="78" y="16" width="1406" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.59774435" sideWeight="0.49963742" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.596713" sideWeight="0.49963742" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879582" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32903227" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -876,8 +874,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="distinct record type" />
-    <MESSAGE value="HO distinct" />
     <MESSAGE value="agg _id:0" />
     <MESSAGE value="all agg" />
     <MESSAGE value="var i" />
@@ -901,7 +897,9 @@
     <MESSAGE value="agg null" />
     <MESSAGE value="agg stat" />
     <MESSAGE value="diff HO show" />
-    <option name="LAST_COMMIT_MESSAGE" value="diff HO show" />
+    <MESSAGE value="cep3g join cron update" />
+    <MESSAGE value="cep3g join cron update2" />
+    <option name="LAST_COMMIT_MESSAGE" value="cep3g join cron update2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1311,16 +1309,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/cdr_3g_site_show_fixHead_zh.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8589212" vertical-offset="943" max-vertical-offset="2176">
-          <caret line="90" column="43" selection-start-line="90" selection-start-column="43" selection-end-line="90" selection-end-column="43" />
-          <caret line="91" column="43" selection-start-line="91" selection-start-column="43" selection-end-line="91" selection-end-column="43" />
-          <caret line="92" column="43" selection-start-line="92" selection-start-column="43" selection-end-line="92" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mongo_prepare_data/cep3g_stat_site.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2703">
@@ -1352,10 +1340,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/views/cdr_3g_site_show_fixHead_zh.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.4741037" vertical-offset="943" max-vertical-offset="2176">
+          <caret line="90" column="43" selection-start-line="90" selection-start-column="43" selection-end-line="90" selection-end-column="43" />
+          <caret line="91" column="43" selection-start-line="91" selection-start-column="43" selection-end-line="91" selection-end-column="43" />
+          <caret line="92" column="43" selection-start-line="92" selection-start-column="43" selection-end-line="92" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mongo_prepare_data/cep3g_join_cron.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43256998" vertical-offset="0" max-vertical-offset="4114">
-          <caret line="111" column="57" selection-start-line="111" selection-start-column="57" selection-end-line="111" selection-end-column="57" />
+        <state vertical-scroll-proportion="1.0079365" vertical-offset="2672" max-vertical-offset="4233">
+          <caret line="353" column="1" selection-start-line="353" selection-start-column="1" selection-end-line="353" selection-end-column="1" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="n#!!block;n#buildPhoneMap#0" expanded="false" />
@@ -1363,15 +1361,13 @@
             <element signature="n#!!block;n#buildSite3gMap#0" expanded="false" />
             <element signature="n#!!block;n#buildSIMmap#0" expanded="false" />
             <element signature="n#!!block;n#buildCARRIERmap#0" expanded="false" />
-            <element signature="e#5364#5397#0" expanded="false" />
-            <element signature="e#7277#7839#0" expanded="false" />
-            <element signature="e#7890#8458#0" expanded="false" />
-            <element signature="e#8508#8601#0" expanded="false" />
-            <element signature="e#8677#9530#0" expanded="false" />
-            <element signature="e#9590#10443#0" expanded="false" />
-            <element signature="e#11750#11835#0" expanded="false" />
-            <element signature="e#13775#13868#0" expanded="false" />
-            <element signature="e#16918#17003#0" expanded="false" />
+            <element signature="e#7281#7843#0" expanded="false" />
+            <element signature="e#7894#8462#0" expanded="false" />
+            <element signature="e#8512#8605#0" expanded="false" />
+            <element signature="e#8681#9534#0" expanded="false" />
+            <element signature="e#9594#10447#0" expanded="false" />
+            <element signature="e#11754#11839#0" expanded="false" />
+            <element signature="e#13779#13872#0" expanded="false" />
           </folding>
         </state>
       </provider>
