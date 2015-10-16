@@ -32,7 +32,7 @@ var monk = require('monk');
 //var dbfluentd = monk('192.168.0.196/fluentd');
 //var dbCDR = monk('172.17.24.196:27017/cdr');
 //var dbCDR = monk('192.168.0.196:40000/cdr');
-var dbCDR = monk('192.168.210.207:27017/cdr');
+var dbCDR = monk('127.0.0.1:27017/cdr_tos2');
 
 
 var partials = require('express-partials');
@@ -50,7 +50,7 @@ var app = express();
 //app.locals.inspect = require('util').inspect;
 app.locals.util = require('util');
 // all environments
-app.set('port', process.env.PORT || 8000);
+app.set('port', process.env.PORT || 8085);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
@@ -104,10 +104,15 @@ app.get('/cdr_CRUD_insert', cdr_mongo.index);
 //app.post('/cdr_CRUD_insert',cdr_mongo.cdr_CRUD_insert(dbCDR));
 app.get('/cdr_CRUD_query', 		cdr_mongo.cdr_CRUD_loglist(dbCDR));
 app.post('/cdr_CRUD_query', 	cdr_mongo.cdr_CRUD_query(dbCDR));
-app.get('/cdr_CRUD_show', 		cdr_mongo.cdr_CRUD_count(dbCDR));
+app.get('/cdr_CRUD_show', 		cdr_mongo.cdr_CRUD_show(dbCDR));
+app.get('/cdr_CRUD_show_pagging', 		cdr_mongo.cdr_CRUD_show_pagging(dbCDR));
 
 app.get('/cdr_3g_site_query', 	cdr_mongo.cdr_3g_site_report(dbCDR));
 app.post('/cdr_3g_site_query', 	cdr_mongo.cdr_3g_site_query(dbCDR));
+
+app.get('/cdr_3g_site_stats', 	cdr_mongo.cdr_3g_site_report(dbCDR));
+app.post('/cdr_3g_site_stats', 	cdr_mongo.cdr_3g_site_stats(dbCDR));
+
 //app.post('/cdr_3g_phone_query', 	cdr_mongo.cdr_3g_site_query(dbCDR));
 //app.use('/cdr_3g_phone_report', cdr_mongo.cdr_3g_phone_report(dbCDR));
 

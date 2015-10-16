@@ -109,13 +109,19 @@
             </thead>
 
             <tbody>
-
+            <script>
+                var today = new Date().toISOString().split('T')[0];
+                var T0 = new Date(new Date()-6*24*60*60*1000).toISOString().split('T')[0];
+                document.getElementsByName("date_time")[0].setAttribute('min', T0);
+                document.getElementsByName("date_time")[0].setAttribute('max', today);
+            </script>
             <tr>
                 <td id="name17">日期時間</td>
                 <td id="field17"><label for="date_time">date_time</label></td>
                 <td id="input17"><input type="text"  class="input-large" id="date_time" name="date_time"/></td>
                 <td id="sample17">2014-12-21</td><!--type="date"-->
             </tr>
+
             <!--<tr>-->
                 <!--<td id="name13">通話開始時間</td>-->
                 <!--<td id="field13"><label for="charging_start_time">charging_start_time</label></td>-->

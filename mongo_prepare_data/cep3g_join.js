@@ -114,13 +114,13 @@ print(new Date().toLocaleTimeString()+'\tbuildMapsEnd:');
 
 var i=0;
 T0 = new Date();
-
+print(T0.toJSON());
 //var d = new Date();
 //var t1 = new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours(),0,0,0);
 //var t0 = new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours()-1,0,0,0);
 //var interval = {$gte:t0,$lt:t1};
 
-var cdr3g = db.cep3g_gen.find({
+var cdr3g = db.cep3g_sample.find({
     //time : interval
     record_type:{$in:["1","2"]}
 },{
