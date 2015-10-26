@@ -14,6 +14,7 @@ $ git clone https://github.com/liyuqi/BT_201505_CDR
 
 ```bash 
 $ sudo npm install
+$ npm install express@3 --save      //此環境express版本為3.x.x
 ```
 
 
