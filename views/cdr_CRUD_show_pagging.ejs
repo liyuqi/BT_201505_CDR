@@ -73,11 +73,13 @@
             /*float: left;*/
             /*vertical-align:top;*/
         }
+        .nowrap {
+            white-space:nowrap;
+        }
     </style>
 </head>
 
 <body id='bodyWrap'>
-
 <fieldset>
     <legend>最新 CDR</legend>
 </fieldset>
@@ -97,18 +99,19 @@
 <% var _pageunit=50;%>
 <h3> 總量 : <%= totalcount %>筆資料,  顯示 <%= (page - 1) * _pageunit +1 %>-<%= (page - 1) * _pageunit + resp.length %></h3>
 <!--<div>-->
-<ul class="pagination">
-    <% if (!isFirstPage) { %>
-    <li class="prepage"><a href="?p=<%= page-1 %>"><i class="icon-chevron-left"></i>上頁 </a></li>
-    <% } %>
-    <% if (!isLastPage) { %>
-    <li class="nextpage"><a href="?p=<%= page+1 %>"> 下頁<i class="icon-chevron-right"></i></a></li>
-    <% } %>
-</ul>
+<!--<ul class="pagination">-->
+    <!--<% if (!isFirstPage) { %>-->
+    <!--<li class="prepage"><a href="?p=<%= page-1 %>"><i class="icon-chevron-left"></i>上頁 </a></li>-->
+    <!--<% } %>-->
+    <!--<% if (!isLastPage) { %>-->
+    <!--<li class="nextpage"><a href="?p=<%= page+1 %>"> 下頁<i class="icon-chevron-right"></i></a></li>-->
+    <!--<% } %>-->
+<!--</ul>-->
+<%- include paging%>
 <!--</div>-->
 <!--<h4> 回傳最新 <%= resp.length %> 筆</h4>-->
 
-<table class="table table-hover table-condensed table-header-rotated">
+<table class="table table-hover table-condensed table-header-rotated nowrap">
     <caption></caption>
     <thead>
     <tr>

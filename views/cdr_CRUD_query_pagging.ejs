@@ -2,10 +2,9 @@
 <html>
 <head>
     <title><%= title %></title>
-    <!--<link href="/stylesheets/c3.css" rel="stylesheet" type="text/css">-->
-    <!--<script src="/javascripts/d3.min.js" charset="utf-8"></script>-->
-    <!--<script src="/javascripts/c3.min.js"></script>-->
-    <script src = ""></script>
+    <link href="/stylesheets/c3.css" rel="stylesheet" type="text/css">
+    <script src="/javascripts/d3.min.js" charset="utf-8"></script>
+    <script src="/javascripts/c3.min.js"></script>
     <script>
         $('#search_button').tooltip(options)
     </script>
@@ -21,7 +20,7 @@
     <div id="collapseTwo" class="accordion-body collapse in"> <!--"collapse in">-->
         <div class="accordion-inner">
 
-<form id="submitForm" class="form-horizontal" method="post">
+<form class="form-horizontal" method="post">
     <fieldset>
         <!--<legend>查詢 CDR</legend>-->
 
@@ -42,7 +41,7 @@
             <tr>
                 <td id="name17">日期時間</td>
                 <td id="field17"><label for="date_time">date_time</label></td>
-                <td id="input17"><input type="text"  class="input-large" id="date_time" name="date_time" value=<%= query.date_time %>></td>
+                <td id="input17"><input type="text"  class="input-large" id="date_time" name="date_time"/></td>
                 <td id="sample17">2014-12-21</td><!--type="date"-->
             </tr>
             <!--<tr>-->
@@ -69,7 +68,7 @@
             <tr>
                 <td id="name2">號碼</td>
                 <td id="field2"><label for=>CALL_NUMBER</label></td>
-                <td id="input2"><input type="text" class="input-large" id="CALL_NUMBER" name="CALL_NUMBER" value=<%= query.CALL_NUMBER%>></td>
+                <td id="input2"><input type="text" class="input-large" id="called_number" name="CALL_NUMBER"/></td>
                 <td id="sample2">926743611</td>
             </tr>
 
@@ -155,12 +154,6 @@
                 <!--<td id="input16"><input type="text" class="input-large" id="record_type" name="record_type"/></td>-->
                 <!--<td id="sample16">1 1:MOC/2:MTC</td>-->
             <!--</tr>-->
-            <tr>
-                <td id="name17">縣市</td>
-                <td id="field17"><label for=>COUNTY</label></td>
-                <td id="input17"><input type="text" class="input-large" id="COUNTY" name="COUNTY" value=<%= query.COUNTY %>></td>
-                <td id="sample17">台東縣</td>
-            </tr>
 
             </tbody>
         </table>
@@ -169,7 +162,6 @@
             <button id="search_button" type="submit" class="btn btn-primary">search</button>
         </div>
     </fieldset>
-    <input id="currentPage" type="hidden" name="page" value=<%= page %>><!--type="hidden"-->
 </form>
 
         </div>
@@ -183,25 +175,8 @@
 <% if (resp.length == 0) { %>
 <h4> 查無資料!</h4>
 <% } else /*if (resp.length < 20)*/{%>
-
-<% var _pageunit=10;%>
-<h3> 總量 : <%= totalcount %>筆資料, 查詢 :<%= query_count %>筆,  顯示 <%= (page - 1) * _pageunit +1 %>-<%= (page - 1) * _pageunit + resp.length %></h3>
-<!--<h4> 回傳 : <%= totalcount!=null ? totalcount :""  %>筆資料,  顯示前 <%= resp.length %> 筆</h4>-->
+<h4> 回傳 : <%= totalcount!=null ? totalcount :""  %>筆資料,  顯示前 <%= resp.length %> 筆</h4>
 </br></br></br>
-
-
-<% if (page!=1) { %>
-<span class="prepage" value=<%= isFirstPage%>>
-    <a onclick="document.getElementById('currentPage').value='<%= page-1 %>';document.getElementById('submitForm').submit();">
-        <i class="icon-chevron-left"></i>上頁 </a></span>
-<% } %>
-
-<% if (query_count!=(page - 1) * _pageunit + resp.length) { %>
-<span class="nextpage" value=<%= isLastPage%>>
-    <a onclick="document.getElementById('currentPage').value='<%= page+1 %>';document.getElementById('submitForm').submit();">下頁
-        <i class="icon-chevron-right"></i></a></span>
-<% } %>
-
 <table class="table table-hover table-condensed">
     <caption></caption>
     <thead>
@@ -238,7 +213,7 @@
     </tr>
     </thead>
     <tbody>
-    <% var i=(page - 1) * _pageunit +1; %>
+    <% var i=1; %>
     <% resp.forEach( function(body){ %>
     <tr>
 

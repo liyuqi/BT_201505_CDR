@@ -3,6 +3,7 @@
 <head>
     <title><%= title %></title>
 </head>
+
 <body>
 
 <div class="accordion-group">
@@ -30,14 +31,14 @@
             </thead>
 
             <tbody>
-            <script>
-                var today = new Date().toISOString().split('T')[0];
-                var T0 = new Date(new Date()-6*24*60*60*1000).toISOString().split('T')[0];
-                document.getElementsByName("DATETIME0")[0].setAttribute('min', T0);
-                document.getElementsByName("DATETIME1")[0].setAttribute('min', T0);
-                document.getElementsByName("DATETIME0")[0].setAttribute('max', today);
-                document.getElementsByName("DATETIME1")[0].setAttribute('max', today);
-            </script>
+            <!--<script>-->
+                <!--var today = new Date().toISOString().split('T')[0];-->
+                <!--var T0 = new Date(new Date()-6*24*60*60*1000).toISOString().split('T')[0];-->
+                <!--document.getElementsByName("DATETIME0")[0].setAttribute('min', T0);-->
+                <!--document.getElementsByName("DATETIME1")[0].setAttribute('min', T0);-->
+                <!--document.getElementsByName("DATETIME0")[0].setAttribute('max', today);-->
+                <!--document.getElementsByName("DATETIME1")[0].setAttribute('max', today);-->
+            <!--</script>-->
             <!--<tr>-->
                 <!--<td id="name17">查詢區間</td>-->
                 <!--<td id="field17"><label for="DATETIME">DATE</label></td>-->

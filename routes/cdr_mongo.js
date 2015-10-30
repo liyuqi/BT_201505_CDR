@@ -6,9 +6,15 @@
  */
 // var mongodb = require('../models/db.js');
 var util = require('util');
-_pageunit = 10;
-_max_pageunit = 50;
+var _pageunit = 10;
+_max_pageunit = 10;
 _statInterval = 5*60*1000;
+
+var query = {
+  COUNTY:''
+};
+
+var page = 1;
 
 exports.index = function(req, res){
     res.render('cdr_CRUD_show', { title: 'show cdr', resp : false});
@@ -34,21 +40,34 @@ exports.cdr_CRUD_loglist = function(mongodb){
         collection.count({},function(err, count) {
             if(err) res.redirect('cdr_CRUD_query');
             //console.log(format("count = %s", count));
-            res.render('cdr_CRUD_query', {title: 'cdr', totalcount : count,resp :null});
+            res.render('cdr_CRUD_query', {
+                title: 'cdr',
+                totalcount : count,
+                resp :null,
+                query:{},
+                page:1,
+                isFirstPage: (page - 1) == 0,
+                isLastPage: ((page - 1) * _pageunit + count) == count
+            });
         });
     };
 };
 
 exports.cdr_CRUD_query = function(mongodb){
     return function(req, res) {
-
+        var page = req.body.page ? parseInt(req.body.page) : 1;
         //field input
         var query = {};
 
         for (var key in req.body){
             if(req.body[key].length==0);
-            else
-                query[key] = req.body[key].trim();
+            else {
+                switch(key){
+                    case 'page':break;
+                    default:
+                        query[key] = req.body[key].trim();
+                }
+            }
         }
 
 
@@ -91,6 +110,8 @@ exports.cdr_CRUD_query = function(mongodb){
         //    query.record_type = req.body.record_type.trim();
         //}
 
+        //console.log('p:'+query['page']);
+
         console.log(util.inspect(query));
 
         var keys = [];
@@ -104,15 +125,22 @@ exports.cdr_CRUD_query = function(mongodb){
         var collection = mongodb.get('cep3g_join');
         collection.count({},function(err,db_count){
             collection.count(query, function (err, query_count) {
-                collection.find(query, {limit: _pageunit}, function (err, docs) {
-                    if (docs.length) console.log('docs.length: ' + docs.length);
-
+                collection.find(query, //{limit: _pageunit}, function (err, docs) {
+                    {skip : (page - 1) * _pageunit,limit : _pageunit,sort : { _id : -1 }}, function (e, docs) {
+                    if(e) res.redirect('cdr_CRUD_query');
+                    //if (docs.length) console.log('docs.length: ' + docs.length);
                     res.render('cdr_CRUD_query', {
                             title: 'query cdr',
                             db_count: db_count,
+                            query_count:query_count,
                             totalcount: db_count,
+                            query:query,
                             //page_count:docs.length,
-                            resp: docs
+                            resp: docs,
+                            page: page,
+                            pageTotal: Math.ceil(docs.length / _pageunit),
+                            isFirstPage: (page - 1) == 0,
+                            isLastPage: ((page - 1) * _pageunit + docs.length) == docs.length
                         }
                     );
                     //if (err) res.redirect('cdr_CRUD_query');
@@ -163,35 +191,9 @@ exports.cdr_CRUD_show = function (mongodb) {
     };
 };
 
-/*exports.cdr_CRUD_show_pagging = function (mongodb) {
-    return function (req, res) {
-        var page = req.query.p ? parseInt(req.query.p) : 1;
-
-        var collection = mongodb.get('cep3g_sample');
-        collection.count({}, function (err, count) {
-            collection.find({}, //{*//*limit: 20,*//* sort: {_id: -1}}, function (e, docs) {
-                {skip : (page - 1) * _pageunit,limit : _pageunit,sort : { _id : -1 }}, function (e, docs) {
-                    // console.log("docs data : "+util.inspect(docs));
-                    var docdetail;
-                    if (docs.length == 1) docdetail = util.inspect(docs);
-                    res.render('cdr_CRUD_show_pagging', {
-                        title: 'cdr',
-                        totalcount: count,
-                        resp: docs,
-                        logdetail: docdetail,
-                        page: page,
-                        pageTotal: Math.ceil(docs.length / _pageunit),
-                        isFirstPage: (page - 1) == 0,
-                        isLastPage: ((page - 1) * _pageunit + docs.length) == docs.length
-                    });
-                });
-        });
-    };
-};*/
-
 exports.cdr_CRUD_show_pagging = function (mongodb) {
     return function (req, res) {
-        var page = req.query.p!=null ? parseInt(req.query.p) : 1;
+        var page = req.query.p ? parseInt(req.query.p) : 2;
 
         //var collection = mongodb.get('cep3g_sample');
         var collection = mongodb.get('cep3g_join');
@@ -239,35 +241,6 @@ exports.cdr_3g_site_query = function(mongodb){
                 query[''+key] = req.body[key].trim();
         }
 
-
-        //if(req.body.DATE){
-        //    query.DATE = req.body.DATE.trim();
-        //}
-        //if(req.body.HOUR){
-        //    query.HOUR = req.body.HOUR.trim();
-        //}
-        //if(req.body.COUNTY){
-        //    query.COUNTY = req.body.COUNTY.trim();
-        //}
-        //if(req.body.DISTRICT){
-        //    query.DISTRICT = req.body.DISTRICT.trim();
-        //}
-        //if(req.body.SITE_NAME){
-        //    query.SITE_NAME = req.body.SITE_NAME.trim();
-        //}
-        //if(req.body.SITE_ID){
-        //    query.SITE_ID = req.body.SITE_ID.trim();
-        //}
-        //if(req.body.END_CODE){
-        //    query.END_CODE = req.body.END_CODE.trim();
-        //}
-        //if(req.body.SIM_TYPE){
-        //    query.SIM_TYPE = req.body.SIM_TYPE.trim();
-        //}
-        //if(req.body.CARRIER){
-        //    query.CARRIER = req.body.CARRIER.trim();
-        //}
-
         console.log(util.inspect(query));
 
         var keys = [];
@@ -281,8 +254,8 @@ exports.cdr_3g_site_query = function(mongodb){
         collection.count({},function(err,db_count){
             collection.count(query, function (err, query_count) {
                 collection.find(query, {limit: _pageunit}, function (err, docs) {
-                    if (docs.length) console.log('docs.length: ' + docs.length);
-
+                    //if (docs.length) console.log('docs.length: ' + docs.length);
+                    if(err) res.redirect('cdr_3g_site_query');
                     //res.render('cdr_3g_site_stats_header45', {
                     res.render('cdr_3g_site_show_header45', {
                             title: 'query cep3g',
@@ -299,26 +272,23 @@ exports.cdr_3g_site_query = function(mongodb){
     };
 };
 
-exports.cdr_3g_site_report = function(mongodb){
-    return function(req, res) {
-        var collection = mongodb.get('cep3g_join');
-        collection.col.count({},function(err, count) {
-            if(err) res.redirect('cdr_3g_site_query');
-            //console.log(format("count = %s", count));
-            res.render('cdr_3g_site_query', {title: 'cdr', totalcount : count,resp :null});
-        });
-    };
-};
-
 exports.cdr_3g_site_stats = function(mongodb){
     return function(req, res) {
-        var query={};
+        var page = req.body.page ? parseInt(req.body.page) : 1;
+        //field input
+        var query = {};
 
         for (var key in req.body){
             if(req.body[key].length==0);
-            else
-                query[''+key] = req.body[key].trim();
+            else {
+                switch(key){
+                    case 'page':break;
+                    default:
+                        query[key] = req.body[key].trim();
+                }
+            }
         }
+
         //if(new Date(req.body.DATETIME0)=='Invalid Date') {
         //    query.DATETIME0 = null;
         //} else {
@@ -344,9 +314,9 @@ exports.cdr_3g_site_stats = function(mongodb){
         var keys = [];
         for(var k in query) keys.push(k);
 
-        if(keys.length==0)
+        if(keys.length==0) {
             res.redirect('cdr_3g_site_stats');
-
+        }
 
         var agg_pipe_match = {$match:query};
         var agg_pipe_pro1  = {$project:{
@@ -550,9 +520,10 @@ exports.cdr_3g_site_stats = function(mongodb){
             //, 重複_10UP :"$EACH_ID_10UP"
         }};
 
-        var agg_pipe_skip = {$skip:req.query.page};
+        var agg_pipe_skip = {$skip:(page - 1) * _pageunit};    //(page - 1) * _pageunit
+        var agg_pipe_limit = {$limit:_pageunit};  //_pageunit
         var agg_pipe_out = {$out:"cep3g_stat_site"};
-        var agg_pipe_limit = {$limit:100};
+
 
         var agg_pipes = [
             agg_pipe_match
@@ -562,41 +533,63 @@ exports.cdr_3g_site_stats = function(mongodb){
 
             //,agg_pipe_pro_en
             ,agg_pipe_pro_zh
+            ,agg_pipe_skip
             ,agg_pipe_limit
-            //,agg_pipe_skip
             //,agg_pipe_out
         ];
 
         //console.log(util.inspect(agg_pipes));
 
         var collection = mongodb.get('cep3g_join');
+        var collection_stat = mongodb.get('cep3g_stat_site');
         collection.count(query, function (err, query_count) {
-            collection.col.aggregate(agg_pipes,{limit:100}, function(err, result) {
-                if(err) res.redirect('cdr_3g_site_stats');//console.log("err : "+err.message);
-                //if(result) console.log("result : "+util.inspect(result));
-                //res.render('cdr_3g_site_show', {
-                res.render('cdr_3g_site_show_fixHead_zh', {
+            collection.col.aggregate(agg_pipes,{ allowDiskUse:true }, function(err, result) {
+                if(err) //res.redirect('cdr_3g_site_stats');
+                    console.log("err : "+err.trace());
+                    res.render('cdr_3g_site_show_fixHead_zh', {
                         title: 'stat cep3g',
                         //db_count: db_count,
                         //totalcount: result.lenth,
-                        totalcount: query_count,
+                        totalcount: result.length,
                         //page_count:docs.length,
-                        resp: result
-                    }
-                );
+                        resp: result,
+                        query:query,
+                        page: page,
+                        pageTotal: Math.ceil(query_count.length / _pageunit),
+                        isFirstPage: (page - 1) == 0,
+                        isLastPage: ((page - 1) * _pageunit + query_count.length) == query_count.length
+                    });
             });
         });
+        //collection_stat.find({}, function(err,docs){
+        //    res.render('cdr_3g_site_show_fixHead_pagging', {
+        //        title: 'stat cep3g',
+        //        //db_count: db_count,
+        //        //totalcount: result.lenth,
+        //        totalcount: docs.length,
+        //        //page_count:docs.length,
+        //        resp: docs
+        //    });
+        //});
     };
 };
 
 exports.cdr_3g_site_query_pagging = function(mongodb){
     return function(req, res) {
-        var query={};
+
+        var page = req.body.page ? parseInt(req.body.page) : 1;
+        //field input
+        var query = {};
 
         for (var key in req.body){
             if(req.body[key].length==0);
-            else
-                query[''+key] = req.body[key].trim();
+            else {
+                switch(key){
+                    case 'page':break;
+                    default:
+                        query[key] = req.body[key].trim();
+                }
+            }
         }
         //if(new Date(req.query.DATETIME0)=='Invalid Date')
         //if(req.query.DATETIME0 && req.query.DATETIME1)
@@ -781,7 +774,8 @@ exports.cdr_3g_site_query_pagging = function(mongodb){
             //, 不重複10UP:"$DISTINCT_10UP"
         }};
 
-        var agg_pipe_skip = {$skip:req.query.page};
+        var agg_pipe_skip = {$skip:500};    //(page - 1) * _pageunit
+        var agg_pipe_limit = {$limit:100};  //_pageunit
         var agg_pipe_out = {$out:"cep3g_stat_site"};
 
         var agg_pipes = [
@@ -792,8 +786,8 @@ exports.cdr_3g_site_query_pagging = function(mongodb){
 
             //,agg_pipe_pro_en
             ,agg_pipe_pro_zh
-            //,agg_pipe_limit
             //,agg_pipe_skip
+            //,agg_pipe_limit
             //,agg_pipe_out
         ];
 
@@ -801,14 +795,14 @@ exports.cdr_3g_site_query_pagging = function(mongodb){
         var page = req.query.p ? parseInt(req.query.p) : 1;
         var collection = mongodb.get('cep3g_join');
         //collection.col.aggregate(agg_pipes,{limit:100}, function(err, result) {
-        collection.col.aggregate(agg_pipes,
-            { skip : (page - 1) * _pageunit
-            , limit : _pageunit },
+        collection.col.aggregate(agg_pipes, { allowDiskUse: true},
             function(err, result) {
-            if(err) res.redirect('cdr_3g_site_query');//console.log("err : "+err.message);
+            if(err) //res.redirect('cdr_3g_site_query');
+                console.log("err : "+err.trace());
             //if(result) console.log("result : "+util.inspect(result));
             //res.render('cdr_3g_site_show', {
             res.render('cdr_3g_site_show_fixHead_pagging', {
+                    query:query,
                     title: 'stat cep3g',
                     //db_count: db_count,
                     totalcount: result.length,

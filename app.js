@@ -32,7 +32,7 @@ var monk = require('monk');
 //var dbfluentd = monk('192.168.0.196/fluentd');
 //var dbCDR = monk('172.17.24.196:27017/cdr');
 //var dbCDR = monk('192.168.0.196:40000/cdr');
-var dbCDR = monk('127.0.0.1:27017/cdr_tos2');
+var dbCDR = monk('127.0.0.1:27017/cdr');
 
 
 var partials = require('express-partials');
@@ -69,7 +69,7 @@ app.use(express.cookieParser());
 app.use(express.session({
 	secret: settings.cookie_secret,
 	cookie: {
-		maxAge: 60000 * 20	//20 minutes
+		maxAge: 1000 * 60 * 20	//20 minutes
 	},
 	store: sessionStore
 }));
@@ -105,7 +105,7 @@ app.get('/cdr_CRUD_insert', cdr_mongo.index);
 app.get('/cdr_CRUD_query', 		cdr_mongo.cdr_CRUD_loglist(dbCDR));
 app.post('/cdr_CRUD_query', 	cdr_mongo.cdr_CRUD_query(dbCDR));
 app.get('/cdr_CRUD_show', 		cdr_mongo.cdr_CRUD_show(dbCDR));
-app.get('/cdr_CRUD_show_pagging', 		cdr_mongo.cdr_CRUD_show_pagging(dbCDR));
+app.get('/cdr_CRUD_show_pagging',cdr_mongo.cdr_CRUD_show_pagging(dbCDR));
 
 app.get('/cdr_3g_site_query', 	cdr_mongo.cdr_3g_site_report(dbCDR));
 app.post('/cdr_3g_site_query', 	cdr_mongo.cdr_3g_site_query(dbCDR));
